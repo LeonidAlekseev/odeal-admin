@@ -16,7 +16,7 @@ i18next
   )
   .init({
     lng: undefined, // let detect the language on client side
-    fallbackLng: ["ru", "en", "de"],
+    fallbackLng: ["ru", "en"],
     defaultNS: "common",
     detection: {
       order: ["htmlTag", "cookie"],
