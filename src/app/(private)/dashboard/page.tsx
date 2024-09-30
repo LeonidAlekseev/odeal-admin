@@ -7,7 +7,6 @@ import {
   DailyRevenue,
   DailyOrders,
   NewCustomers,
-  AllOrdersMap,
   OrderTimeline,
   RecentOrders,
   TrendingMenu,
@@ -313,7 +312,7 @@ const DashboardPage: React.FC = () => {
             }
             title={t("dashboard.deliveryMap.title")}
           >
-            <AllOrdersMap />
+            <div></div>
           </CardWithContent>
         </Col>
         <Col xl={9} lg={9} md={24} sm={24} xs={24}>

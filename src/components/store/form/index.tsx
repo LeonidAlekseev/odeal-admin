@@ -1,5 +1,4 @@
 import { Col, Row, Spin } from "antd";
-import { StoreMap } from "../map";
 import { useStoreForm } from "./useStoreForm";
 import { StoreFormFields } from "./fields";
 import type { UseFormProps } from "@refinedev/antd";
@@ -46,14 +45,7 @@ export const StoreForm = (props: Props) => {
             marginTop: "64px",
           }}
         >
-          <StoreMap
-            lat={latLng?.lat}
-            lng={latLng?.lng}
-            zoom={props.action === "create" ? 4 : 10}
-            store={store}
-            isDisabled={isFormDisabled}
-            onDragEnd={handleMapOnDragEnd}
-          />
+          <div></div>
         </Col>
         <Col
           xs={24}

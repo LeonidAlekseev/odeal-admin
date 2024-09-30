@@ -2,7 +2,7 @@
 
 import { CreateButton, List } from "@refinedev/antd";
 
-import { AllStoresMap, StoreListTable } from "@/components";
+import { StoreListTable } from "@/components";
 import { Flex, Segmented } from "antd";
 import { useState } from "react";
 import { useTranslate } from "@refinedev/core";
@@ -61,7 +61,7 @@ const StoreList = () => {
               marginTop: "32px",
             }}
           >
-            <AllStoresMap />
+            <div></div>
           </Flex>
         )}
       </List>

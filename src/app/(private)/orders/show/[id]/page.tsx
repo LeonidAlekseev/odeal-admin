@@ -8,7 +8,6 @@ import { CloseCircleOutlined, LeftOutlined } from "@ant-design/icons";
 import { ButtonSuccess } from "@/components/button";
 import {
   CardWithContent,
-  OrderDeliveryMap,
   OrderProducts,
   OrderDeliveryDetails,
 } from "@/components";
@@ -104,7 +103,7 @@ const OrderShow = () => {
                 }}
                 title={t("orders.titles.deliveryMap")}
               >
-                <OrderDeliveryMap order={record} />
+                <div></div>
               </CardWithContent>
               <OrderProducts order={record} />
             </Flex>
