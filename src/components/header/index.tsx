@@ -212,6 +212,22 @@ export const Header: React.FC = () => {
         borderBottom: `1px solid ${token.colorBgLayout}`,
       }}
     >
+      {!isMobile && (
+        <div
+          style={{
+            position: "absolute",
+            bottom: " -25px",
+            left: "0px",
+            width: "50px",
+            height: "25px",
+            background:
+              "radial-gradient(circle 1px at 100% 50%, transparent, transparent 25px, white 25px)",
+            backgroundSize: "25px 50px, 25px 50px",
+            backgroundPosition: "0 0, 100% 0",
+            backgroundRepeat: "no-repeat",
+          }}
+        ></div>
+      )}
       <Row
         align="middle"
         style={{
