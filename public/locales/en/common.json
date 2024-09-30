@@ -188,13 +188,13 @@
         "On delivery": "In process"
       },
       "vehicleType": {
-        "label": "Vehicle Type",
-        "placeholder": "Please enter Vehicle Type"
+        "label": "Agency Fee Type",
+        "placeholder": "Please enter Agency Fee Type"
       },
       "licensePlate": {
-        "label": "Vehicle ID",
-        "placeholder": "Please enter Vehicle ID",
-        "patternMessage": "Please enter valid Vehicle ID. Example: ABC 123"
+        "label": "Agent Fee Amount",
+        "placeholder": "Please enter Agent Fee Amount",
+        "patternMessage": "Please enter valid Agent Fee Amount. Example: ABC 123"
       },
       "rating": {
         "label": "Rating",
