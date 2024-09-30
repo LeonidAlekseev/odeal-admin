@@ -1,9 +1,9 @@
 "use client";
 
-import { AuthPage as AntdAuthPage, type AuthProps } from "@refinedev/antd";
+import { AuthPage as AntdAuthPage } from "@refinedev/antd";
 import { authRenderContent } from "../_auth_render";
 
-const AuthPage: React.FC<AuthProps> = ({ formProps }) => {
+const AuthPage = () => {
   const formPropsDemo = {
     initialValues: {
       email: "demo@refine.dev",
@@ -22,7 +22,7 @@ const AuthPage: React.FC<AuthProps> = ({ formProps }) => {
         },
       }}
       renderContent={authRenderContent}
-      formProps={formPropsDemo} // {formProps}
+      formProps={formPropsDemo}
     />
   );
 };
