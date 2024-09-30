@@ -36,22 +36,16 @@ export const ConfigProvider = ({
   theme: themeFromProps,
   children,
 }: PropsWithChildren<ConfigProviderProps>) => {
-  const [defaultMode, setDefaultMode, removeDefaultMode] =
-    useLocalStorage<Mode>("theme", "light");
-  const [mode, setMode] = useState<Mode>(defaultMode);
+  const [mode, setMode, removeMode] = useLocalStorage<Mode>("theme", "light");
 
   const handleSetMode = (mode: Mode) => {
-    localStorage.setItem("theme", mode);
-    const html = document.querySelector("html");
-    html?.setAttribute("data-theme", mode);
     setMode(mode);
   };
 
-  // add data-theme to html tag
   useEffect(() => {
     const html = document.querySelector("html");
     html?.setAttribute("data-theme", mode);
-  }, []);
+  }, [mode]);
 
   return (
     <ConfigProviderContext.Provider value={{ mode, setMode: handleSetMode }}>
