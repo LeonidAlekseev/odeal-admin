@@ -294,7 +294,7 @@ const DashboardPage: React.FC = () => {
             </Col>
           </Row>
         </Col>
-        <Col xl={15} lg={15} md={24} sm={24} xs={24}>
+        {/* <Col xl={15} lg={15} md={24} sm={24} xs={24}>
           <CardWithContent
             bodyStyles={{
               height: "432px",
@@ -314,32 +314,11 @@ const DashboardPage: React.FC = () => {
           >
             <div></div>
           </CardWithContent>
-        </Col>
-        <Col xl={9} lg={9} md={24} sm={24} xs={24}>
+        </Col> */}
+        <Col xl={15} lg={24} md={24} sm={24} xs={24}>
           <CardWithContent
             bodyStyles={{
-              height: "430px",
-              overflow: "hidden",
               padding: 0,
-            }}
-            icon={
-              // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-              <ClockCircleOutlined
-                style={{
-                  fontSize: 14,
-                  color: token.colorPrimary,
-                }}
-              />
-            }
-            title={t("dashboard.timeline.title")}
-          >
-            <OrderTimeline height={"432px"} />
-          </CardWithContent>
-        </Col>
-        <Col xl={15} lg={15} md={24} sm={24} xs={24}>
-          <CardWithContent
-            bodyStyles={{
-              padding: "1px 0px 0px 0px",
             }}
             icon={
               // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
@@ -355,9 +334,29 @@ const DashboardPage: React.FC = () => {
             <RecentOrders />
           </CardWithContent>
         </Col>
-        <Col xl={9} lg={9} md={24} sm={24} xs={24}>
+        <Col xl={9} lg={24} md={24} sm={24} xs={24}>
           <CardWithContent
             bodyStyles={{
+              width: "100%",
+              padding: 0,
+            }}
+            icon={
+              // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+              <ClockCircleOutlined
+                style={{
+                  fontSize: 14,
+                  color: token.colorPrimary,
+                }}
+              />
+            }
+            title={t("dashboard.timeline.title")}
+          >
+            <OrderTimeline />
+          </CardWithContent>
+          <div style={{ paddingBottom: "16px" }}></div>
+          <CardWithContent
+            bodyStyles={{
+              width: "100%",
               padding: 0,
             }}
             icon={
@@ -374,6 +373,8 @@ const DashboardPage: React.FC = () => {
             <TrendingMenu />
           </CardWithContent>
         </Col>
+        {/* <Col xl={9} lg={9} md={24} sm={24} xs={24}>
+        </Col> */}
       </Row>
     </List>
   );
