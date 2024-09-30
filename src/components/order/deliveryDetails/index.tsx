@@ -32,14 +32,14 @@ export const OrderDeliveryDetails = ({ order }: Props) => {
       title: string;
       description: string;
     }[] = [
-      {
-        // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-        icon: <ClockCircleOutlined />,
-        title: t("orders.fields.deliveryTime"),
-        description: dayjs(order.events[0]?.date)
-          .add(60, "minutes")
-          .format("hh:mm A"),
-      },
+      // {
+      //   // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+      //   icon: <ClockCircleOutlined />,
+      //   title: t("orders.fields.deliveryTime"),
+      //   description: dayjs(order.events[0]?.date)
+      //     .add(60, "minutes")
+      //     .format("hh:mm A"),
+      // },
       {
         // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
         icon: <ShopOutlined />,
@@ -105,8 +105,8 @@ export const OrderDeliveryDetails = ({ order }: Props) => {
               description={
                 event.date && (
                   <Flex wrap={"wrap"} gap={4}>
-                    <div>{dayjs(event.date).format("L")}</div>
-                    <div>{dayjs(event.date).format("LT")}</div>
+                    <div>{dayjs(event.date).format("DD.MM.YYYY")}</div>
+                    <div>{dayjs(event.date).format("HH:mm:ss")}</div>
                   </Flex>
                 )
               }
