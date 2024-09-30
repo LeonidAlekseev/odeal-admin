@@ -1,3 +1,4 @@
+import { useTranslate } from "@refinedev/core";
 import { Avatar, Flex, Table, Typography } from "antd";
 import type { IOrder } from "../../../interfaces";
 import { getUniqueListWithCount } from "../../../utils";
@@ -8,6 +9,8 @@ type Props = {
 };
 
 export const OrderProducts = ({ order }: Props) => {
+  const t = useTranslate();
+
   const products = order?.products || [];
   const uniqueProducts = getUniqueListWithCount({
     list: products,
@@ -25,20 +28,20 @@ export const OrderProducts = ({ order }: Props) => {
       footer={(products) => {
         return (
           <Flex justify="flex-end" gap={16}>
-            <Typography.Text>Total</Typography.Text>
+            <Typography.Text>{t("orders.fields.total")}</Typography.Text>
             <NumberField
               value={products.reduce(
                 (acc, product) => acc + product.count * product.price,
-                0,
+                0
               )}
-              options={{ style: "currency", currency: "USD" }}
+              options={{ style: "currency", currency: "RUB" }}
             />
           </Flex>
         );
       }}
     >
       <Table.Column<(typeof uniqueProducts)[number]>
-        title="Product"
+        title={t("orders.fields.product")}
         dataIndex="name"
         key="name"
         render={(_, record) => {
@@ -64,12 +67,12 @@ export const OrderProducts = ({ order }: Props) => {
       />
       <Table.Column
         align="end"
-        title="Quantity"
+        title={t("orders.fields.quantity")}
         dataIndex="count"
         key="count"
       />
       <Table.Column
-        title="Price"
+        title={t("orders.fields.price")}
         dataIndex="price"
         align="end"
         key="price"
@@ -80,13 +83,13 @@ export const OrderProducts = ({ order }: Props) => {
               style={{
                 whiteSpace: "nowrap",
               }}
-              options={{ style: "currency", currency: "USD" }}
+              options={{ style: "currency", currency: "RUB" }}
             />
           );
         }}
       />
       <Table.Column<(typeof uniqueProducts)[number]>
-        title="Total"
+        title={t("orders.fields.total")}
         dataIndex="id"
         align="end"
         key="total"
@@ -94,7 +97,7 @@ export const OrderProducts = ({ order }: Props) => {
           return (
             <NumberField
               value={record.count * record.price}
-              options={{ style: "currency", currency: "USD" }}
+              options={{ style: "currency", currency: "RUB" }}
               style={{
                 whiteSpace: "nowrap",
               }}
