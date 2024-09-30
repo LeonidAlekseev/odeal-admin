@@ -95,16 +95,6 @@ const OrderShow = () => {
         <Row gutter={[16, 16]}>
           <Col xl={15} lg={24} md={24} sm={24} xs={24}>
             <Flex gap={16} vertical>
-              <CardWithContent
-                bodyStyles={{
-                  height: "378px",
-                  overflow: "hidden",
-                  padding: 0,
-                }}
-                title={t("orders.titles.deliveryMap")}
-              >
-                <div></div>
-              </CardWithContent>
               <OrderProducts order={record} />
             </Flex>
           </Col>
