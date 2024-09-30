@@ -97,7 +97,7 @@ const CourierList = () => {
                   whiteSpace: "nowrap",
                 }}
               >
-                ID #
+                ID
               </Typography.Text>
             }
             dataIndex="id"

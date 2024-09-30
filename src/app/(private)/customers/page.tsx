@@ -101,7 +101,7 @@ const CustomerList = () => {
         <Table.Column
           key="id"
           dataIndex="id"
-          title="ID #"
+          title="ID"
           render={(value) => (
             <Typography.Text
               style={{

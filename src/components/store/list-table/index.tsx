@@ -56,7 +56,7 @@ export const StoreListTable = () => {
               whiteSpace: "nowrap",
             }}
           >
-            ID #
+            ID
           </Typography.Text>
         }
         render={(value) => (
