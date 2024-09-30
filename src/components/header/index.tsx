@@ -206,7 +206,7 @@ export const Header: React.FC = () => {
       style={{
         position: "sticky",
         top: 0,
-        zIndex: 1,
+        zIndex: 999,
         padding: isMobile ? "0 12px" : "0 24px",
         backgroundColor: token.colorBgElevated,
         borderBottom: `1px solid ${token.colorBgLayout}`,
