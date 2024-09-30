@@ -105,7 +105,7 @@
     "inTotal": "Insgesamt"
   },
   "search": {
-    "placeholder": "Suchen mit Geschäfts-ID, E-mail oder Stichwort",
+    "placeholder": "Suchen mit Branchen-ID, E-mail oder Stichwort",
     "more": "Noch mehr"
   },
   "status": {
@@ -141,11 +141,11 @@
     }
   },
   "couriers": {
-    "couriers": "Kuriere",
+    "couriers": "Agenten",
     "titles": {
-      "create": "Kurier erstellen",
-      "list": "Kuriere",
-      "edit": "Kurier bearbeiten"
+      "create": "Agent erstellen",
+      "list": "Agenten",
+      "edit": "Agent bearbeiten"
     },
     "fields": {
       "id": "ID",
@@ -155,11 +155,11 @@
       },
       "name": {
         "label": "Name",
-        "placeholder": "Bitte Kuriername eingeben"
+        "placeholder": "Bitte Agentname eingeben"
       },
       "surname": {
         "label": "Nachname",
-        "placeholder": "Bitte Kurier-Nachname eingeben"
+        "placeholder": "Bitte Agent-Nachname eingeben"
       },
       "gender": {
         "label": "Geschlecht",
@@ -167,16 +167,16 @@
         "female": "Weiblich"
       },
       "gsm": {
-        "label": "GSM",
-        "placeholder": "Bitte Kurier-GSM eingeben"
+        "label": "Telefon",
+        "placeholder": "Bitte Agent-Telefon eingeben"
       },
       "email": {
         "label": "E-Mail",
-        "placeholder": "Bitte Kurier-E-Mail eingeben"
+        "placeholder": "Bitte Agent-E-Mail eingeben"
       },
       "address": {
         "label": "Adresse",
-        "placeholder": "Bitte Kurieradresse eingeben"
+        "placeholder": "Bitte Agentadresse eingeben"
       },
       "createdAt": "Erstellt am",
       "isActive": {
@@ -204,8 +204,8 @@
         "validation": "muss 480x480 px sein"
       },
       "store": {
-        "label": "Geschäft",
-        "placeholder": "Geschäft auswählen"
+        "label": "Branche",
+        "placeholder": "Branche auswählen"
       },
       "vehicle": {
         "label": "Fahrzeug",
@@ -227,8 +227,8 @@
         "placeholder": "Kennzeichen suchen"
       },
       "gsm": {
-        "label": "GSM",
-        "placeholder": "GSM suchen"
+        "label": "Telefon",
+        "placeholder": "Telefon suchen"
       },
       "email": {
         "label": "E-Mail",
@@ -242,8 +242,8 @@
       "vehicle": "Fahrzeug"
     },
     "actions": {
-      "add": "Neuen Kurier hinzufügen",
-      "edit": "Kurier bearbeiten"
+      "add": "Neuen Agent hinzufügen",
+      "edit": "Agent bearbeiten"
     }
   },
   "dashboard": {
@@ -325,7 +325,7 @@
       "orderNumber": "Bestellungsnummer",
       "orderID": "Bestellung ID",
       "status": "Bestellung Status",
-      "store": "Geschäfts",
+      "store": "Branchen",
       "user": "Benutzer",
       "products": "Produkte",
       "createdAt": "Erstellt am",
@@ -333,7 +333,7 @@
       "itemsAmount": "{{amount}} Produkt",
       "order": "Bestellung",
       "customer": "Kunde",
-      "courier": "Kurier",
+      "courier": "Agent",
       "phone": "Telefon",
       "deliveryTime": "Lieferzeit"
     },
@@ -341,15 +341,15 @@
       "title": "Filter",
       "search": {
         "label": "Suche",
-        "placeholder": "Suchen mit Geschäfts-ID, E-mail oder Stichwort"
+        "placeholder": "Suchen mit Branchen-ID, E-mail oder Stichwort"
       },
       "status": {
         "label": "Bestellung Status",
         "placeholder": "Bestellung Status"
       },
       "store": {
-        "label": "Geschäft",
-        "placeholder": "Geschäft Suchen"
+        "label": "Branche",
+        "placeholder": "Branche Suchen"
       },
       "user": {
         "label": "Benutzer",
@@ -458,15 +458,15 @@
     }
   },
   "stores": {
-    "stores": "Geschäfte",
+    "stores": "Branchee",
     "titles": {
-      "create": "Geschäft Erstellen",
-      "edit": "Geschäfts Bearbeiten",
-      "list": "Geschäfte",
-      "show": "Geschäft Zeigen"
+      "create": "Branche Erstellen",
+      "edit": "Branchen Bearbeiten",
+      "list": "Branchee",
+      "show": "Branche Zeigen"
     },
     "fields": {
-      "id": "Geschäfts-ID",
+      "id": "Branchen-ID",
       "title": "Titel",
       "isActive": {
         "label": "Status",
@@ -493,12 +493,12 @@
         "placeholder": "E-Mail suchen"
       },
       "gsm": {
-        "label": "Gsm",
-        "placeholder": "Gsm suchen"
+        "label": "Telefon",
+        "placeholder": "Telefon suchen"
       },
       "search": {
         "label": "Suche",
-        "placeholder": "Vorname, Nachname, Gsm, usw."
+        "placeholder": "Vorname, Nachname, Telefon, usw."
       },
       "createdAt": {
         "label": "Erstellt am"
@@ -518,11 +518,11 @@
       "edit": "Produkt bearbeiten"
     },
     "selectLocation": "Wähle einen Ort",
-    "storeProducts": "Produkte des Geschäftes",
+    "storeProducts": "Produkte des Branchen",
     "tagFilterDescription": "Filter mit Etiketten",
     "all": "Alles",
     "productSearch": "Produkt suchen",
-    "addNewStore": "Neues Geschäft hinzufügen"
+    "addNewStore": "Neues Branche hinzufügen"
   },
   "users": {
     "users": "Kunden",
@@ -546,7 +546,7 @@
         "Male": "Mann",
         "Female": "Frau"
       },
-      "gsm": "GSM Num",
+      "gsm": "Telefon",
       "createdAt": "Erstellt am",
       "addresses": "Adressen",
       "isActive": {
@@ -566,12 +566,12 @@
         "placeholder": "Name"
       },
       "gsm": {
-        "label": "GSM",
-        "placeholder": "GSM"
+        "label": "Telefon",
+        "placeholder": "Telefon"
       },
       "search": {
         "label": "Suche",
-        "placeholder": "Vorname, Nachname, GSM..."
+        "placeholder": "Vorname, Nachname, Telefon..."
       },
       "createdAt": {
         "label": "Erstellt am"

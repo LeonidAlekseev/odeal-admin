@@ -106,7 +106,7 @@
     "inTotal": "in total"
   },
   "search": {
-    "placeholder": "Search by Store ID, E-mail, Keyword",
+    "placeholder": "Search by Branch ID, E-mail, Keyword",
     "more": "more"
   },
   "status": {
@@ -143,11 +143,11 @@
     }
   },
   "couriers": {
-    "couriers": "Couriers",
+    "couriers": "Agents",
     "titles": {
-      "create": "Create Courier",
-      "list": "Couriers",
-      "edit": "Edit Courier"
+      "create": "Create Agent",
+      "list": "Agents",
+      "edit": "Edit Agent"
     },
     "fields": {
       "id": "ID",
@@ -157,11 +157,11 @@
       },
       "name": {
         "label": "Name",
-        "placeholder": "Please enter courier name"
+        "placeholder": "Please enter Agent name"
       },
       "surname": {
         "label": "Surname",
-        "placeholder": "Please enter courier surname"
+        "placeholder": "Please enter Agent surname"
       },
       "gender": {
         "label": "Gender",
@@ -169,16 +169,16 @@
         "female": "Female"
       },
       "gsm": {
-        "label": "Gsm",
-        "placeholder": "Please enter courier gsm"
+        "label": "Phone",
+        "placeholder": "Please enter Agent phone"
       },
       "email": {
         "label": "Email",
-        "placeholder": "Please enter courier email"
+        "placeholder": "Please enter Agent email"
       },
       "address": {
         "label": "Address",
-        "placeholder": "Please enter courier address"
+        "placeholder": "Please enter Agent address"
       },
       "createdAt": "Created At",
       "status": {
@@ -206,8 +206,8 @@
         "validation": "must be 480x480 px"
       },
       "store": {
-        "label": "Store",
-        "placeholder": "Select Store"
+        "label": "Branch",
+        "placeholder": "Select Branch"
       },
       "vehicle": {
         "label": "Vehicle",
@@ -229,8 +229,8 @@
         "placeholder": "Search Name"
       },
       "gsm": {
-        "label": "Gsm",
-        "placeholder": "Search Gsm"
+        "label": "Phone",
+        "placeholder": "Search Phone"
       },
       "email": {
         "label": "Email",
@@ -244,8 +244,8 @@
       "vehicle": "Vehicle"
     },
     "actions": {
-      "add": "Add new courier",
-      "edit": "Edit courier"
+      "add": "Add new Agent",
+      "edit": "Edit Agent"
     }
   },
   "dashboard": {
@@ -327,7 +327,7 @@
       "orderNumber": "Order Number",
       "orderID": "Order ID",
       "status": "Status",
-      "store": "Store",
+      "store": "Branch",
       "user": "User",
       "products": "Products",
       "createdAt": "CreatedAt",
@@ -335,7 +335,7 @@
       "itemsAmount": "{{amount}} items",
       "order": "Order",
       "customer": "Customer",
-      "courier": "Courier",
+      "courier": "Agent",
       "phone": "Phone",
       "deliveryTime": "Delivery Time"
     },
@@ -350,8 +350,8 @@
         "placeholder": "Order Status"
       },
       "store": {
-        "label": "Store",
-        "placeholder": "Search Stores"
+        "label": "Branch",
+        "placeholder": "Search Branches"
       },
       "user": {
         "label": "User",
@@ -460,15 +460,15 @@
     }
   },
   "stores": {
-    "stores": "Stores",
+    "stores": "Branches",
     "titles": {
-      "create": "Create Store",
-      "edit": "Edit Store",
-      "list": "Stores",
-      "show": "Show Store"
+      "create": "Create Branch",
+      "edit": "Edit Branch",
+      "list": "Branches",
+      "show": "Show Branch"
     },
     "fields": {
-      "id": "Store ID",
+      "id": "Branch ID",
       "title": "Title",
       "isActive": {
         "label": "Status",
@@ -495,12 +495,12 @@
         "placeholder": "Search Email"
       },
       "gsm": {
-        "label": "Gsm",
-        "placeholder": "Search Gsm"
+        "label": "Phone",
+        "placeholder": "Search Phone"
       },
       "search": {
         "label": "Search",
-        "placeholder": "FirstName, lastName, gsm, etc."
+        "placeholder": "FirstName, lastName, phone, etc."
       },
       "createdAt": {
         "label": "Created At"
@@ -519,12 +519,12 @@
       "outOfStock": "Out Of Stock",
       "edit": "Edit Product"
     },
-    "selectLocation": "Choose store location on the map",
-    "storeProducts": "Store Products",
+    "selectLocation": "Choose Branch location on the map",
+    "storeProducts": "Branch Products",
     "tagFilterDescription": "Use tags to filter your search",
     "all": "All",
     "productSearch": "Product Search",
-    "addNewStore": "Add New Store"
+    "addNewStore": "Add New Branch"
   },
   "users": {
     "users": "Customers",
@@ -547,7 +547,7 @@
         "Male": "Male",
         "Female": "Female"
       },
-      "gsm": "Gsm No",
+      "gsm": "Phone",
       "createdAt": "Created At",
       "addresses": "Addresses",
       "isActive": {
@@ -567,12 +567,12 @@
         "placeholder": "Search Name"
       },
       "gsm": {
-        "label": "Gsm",
-        "placeholder": "Search Gsm"
+        "label": "Phone",
+        "placeholder": "Search Phone"
       },
       "search": {
         "label": "Search",
-        "placeholder": "FirstName, lastName, gsm, etc."
+        "placeholder": "FirstName, lastName, phone, etc."
       },
       "createdAt": {
         "label": "Created At"
