@@ -212,7 +212,7 @@ export const Header: React.FC = () => {
         borderBottom: `1px solid ${token.colorBgLayout}`,
       }}
     >
-      {!isMobile && (
+      {!isMobile && mode == "light" && (
         <div
           style={{
             position: "absolute",
