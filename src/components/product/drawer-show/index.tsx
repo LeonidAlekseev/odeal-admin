@@ -120,7 +120,7 @@ export const ProductDrawerShow = (props: Props) => {
                   value={product?.price || 0}
                   options={{
                     style: "currency",
-                    currency: "USD",
+                    currency: "RUB",
                   }}
                 />
               ),

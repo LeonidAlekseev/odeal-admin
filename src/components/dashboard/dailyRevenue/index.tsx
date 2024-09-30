@@ -51,7 +51,7 @@ export const DailyRevenue = ({ data, height }: Props) => {
           name: t("dashboard.revenue.title"),
           value: new Intl.NumberFormat("en-US", {
             style: "currency",
-            currency: "USD",
+            currency: "RUB",
           }).format(data.value),
         };
       },

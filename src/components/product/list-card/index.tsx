@@ -270,7 +270,7 @@ export const ProductListCard = () => {
                       }}
                       options={{
                         style: "currency",
-                        currency: "USD",
+                        currency: "RUB",
                       }}
                     />
                   </Flex>

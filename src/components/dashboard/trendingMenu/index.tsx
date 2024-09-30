@@ -99,7 +99,7 @@ export const TrendingMenu: React.FC = () => {
                   <NumberField
                     type="secondary"
                     options={{
-                      currency: "USD",
+                      currency: "RUB",
                       style: "currency",
                       notation: "standard",
                     }}

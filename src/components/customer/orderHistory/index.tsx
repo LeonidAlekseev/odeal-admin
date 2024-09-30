@@ -93,7 +93,7 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
               }}
               options={{
                 style: "currency",
-                currency: "USD",
+                currency: "RUB",
               }}
             />
           );

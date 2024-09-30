@@ -226,7 +226,7 @@ export const ProductListTable = () => {
               }}
               options={{
                 style: "currency",
-                currency: "USD",
+                currency: "RUB",
               }}
             />
           );

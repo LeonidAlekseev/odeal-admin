@@ -142,7 +142,7 @@ export const RecentOrders: React.FC = () => {
               }}
               options={{
                 style: "currency",
-                currency: "USD",
+                currency: "RUB",
               }}
             />
           );

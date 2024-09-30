@@ -179,7 +179,7 @@ const OrderList = () => {
             return (
               <NumberField
                 options={{
-                  currency: "USD",
+                  currency: "RUB",
                   style: "currency",
                 }}
                 value={value}

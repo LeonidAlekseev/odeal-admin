@@ -227,7 +227,7 @@ const DashboardPage: React.FC = () => {
                       value={revenue.trend}
                       options={{
                         style: "currency",
-                        currency: "USD",
+                        currency: "RUB",
                       }}
                     />
                     {revenue.trend > 0 ? <TrendUpIcon /> : <TrendDownIcon />}
