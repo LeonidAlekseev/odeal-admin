@@ -324,7 +324,7 @@
     "fields": {
       "orderNumber": "Номер заказа",
       "orderID": "ID заказа",
-      "status": "Статус заказа",
+      "status": "Статус",
       "store": "Магазин",
       "user": "Пользователь",
       "products": "Продукты",
@@ -344,8 +344,8 @@
         "placeholder": "Поиск по ID магазина, e-mail или ключевому слову"
       },
       "status": {
-        "label": "Статус заказа",
-        "placeholder": "Статус заказа"
+        "label": "Статус",
+        "placeholder": "Статус"
       },
       "store": {
         "label": "Магазин",
