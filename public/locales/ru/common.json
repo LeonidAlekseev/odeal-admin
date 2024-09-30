@@ -179,11 +179,11 @@
         "placeholder": "Введите адрес Агента"
       },
       "createdAt": "Создан",
-      "isActive": {
+      "status": {
         "label": "Статус",
         "Available": "Доступен",
-        "Offline": "Не в сети",
-        "On delivery": "В обработке"
+        "Offline": "Неактивен",
+        "On delivery": "В работе"
       },
       "vehicleType": {
         "label": "Тип вознаграждения",
