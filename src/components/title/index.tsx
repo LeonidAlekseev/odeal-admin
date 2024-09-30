@@ -10,9 +10,9 @@ type TitleProps = {
   collapsed: boolean;
 };
 
-const MainLogoIconStyle = {
-  filter:
-    "invert(3%) sepia(35%) saturate(3500%) hue-rotate(315deg) brightness(100%) contrast(85%)",
+const MainLogoProps = {
+  "--main-logo-prop-light": "#FE7D55",
+  "--main-logo-prop-dark": "#FB5821",
 };
 
 export const Title: React.FC<TitleProps> = ({ collapsed }) => {
@@ -21,12 +21,12 @@ export const Title: React.FC<TitleProps> = ({ collapsed }) => {
 
   return (
     <Logo>
-      <Link to="/">
+      <Link to="/" style={MainLogoProps}>
         {collapsed ? (
-          <MainLogoIcon style={MainLogoIconStyle} />
+          <MainLogoIcon />
         ) : (
           <Space size={12}>
-            <MainLogoIcon style={MainLogoIconStyle} />
+            <MainLogoIcon style={{ opacity: 0.9 }} />
             <MainLogoText
               style={{
                 color: token.colorPrimary,
