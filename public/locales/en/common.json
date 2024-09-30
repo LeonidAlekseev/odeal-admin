@@ -210,8 +210,8 @@
         "placeholder": "Select Branch"
       },
       "vehicle": {
-        "label": "Vehicle",
-        "placeholder": "Select Vehicle"
+        "label": "Fee",
+        "placeholder": "Select Fee"
       },
       "accountNumber": {
         "label": "Account No",
@@ -241,7 +241,7 @@
     "steps": {
       "personal": "Personal",
       "company": "Company",
-      "vehicle": "Vehicle"
+      "vehicle": "Fee"
     },
     "actions": {
       "add": "Add new Agent",
