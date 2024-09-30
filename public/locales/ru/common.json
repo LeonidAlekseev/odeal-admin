@@ -183,7 +183,7 @@
         "label": "Статус",
         "Available": "Доступен",
         "Offline": "Не в сети",
-        "On delivery": "В доставке"
+        "On delivery": "В обработке"
       },
       "vehicleType": {
         "label": "Тип транспортного средства",
@@ -261,9 +261,6 @@
         "lastYear": "Прошлый год"
       }
     },
-    "deliveryMap": {
-      "title": "Карта доставки"
-    },
     "orders": {
       "title": "Заказы"
     },
@@ -285,10 +282,10 @@
     "timeline": {
       "title": "Обновление",
       "orderStatuses": {
-        "pending": "В процессе подготовки",
+        "pending": "Подготовка",
         "ready": "Готово",
-        "on the way": "В пути",
-        "delivered": "Доставлено",
+        "on the way": "Обрабатывается",
+        "delivered": "Обработано",
         "cancelled": "Отменено"
       }
     },
@@ -304,19 +301,18 @@
   },
   "enum": {
     "orderStatuses": {
-      "pending": "В процессе подготовки",
-      "ready": "Готово",
-      "on the way": "В пути",
-      "delivered": "Доставлено",
-      "cancelled": "Отменено"
+      "Pending": "Подготовка",
+      "Ready": "Готово",
+      "On The Way": "Обрабатывается",
+      "Delivered": "Обработано",
+      "Cancelled": "Отменено"
     }
   },
   "orders": {
     "orders": "Заказы",
     "order": "Заказ",
     "titles": {
-      "deliveryMap": "Карта доставки",
-      "deliveryDetails": "Детали доставки",
+      "deliveryDetails": "Детали",
       "products": "Продукты",
       "list": "Заказы",
       "show": "Заказ"
@@ -333,9 +329,13 @@
       "itemsAmount": "{{amount}} продукт(ов)",
       "order": "Заказ",
       "customer": "Клиент",
-      "courier": "агент",
+      "courier": "Агент",
       "phone": "Телефон",
-      "deliveryTime": "Время доставки"
+      "deliveryTime": "Время обработки",
+      "product": "Продукт",
+      "quantity": "Количество",
+      "price": "Цена",
+      "total": "Итого"
     },
     "filter": {
       "title": "Фильтр",
@@ -369,11 +369,11 @@
       "submit": "Фильтр"
     },
     "courier": {
-      "deliveryTime": "Время доставки",
+      "deliveryTime": "Время обработки",
       "phone": "Телефон"
     },
     "deliverables": {
-      "deliverables": "Доставляемые",
+      "deliverables": "Обрабатываемые",
       "fields": {
         "items": "Продукты",
         "quantity": "Количество",

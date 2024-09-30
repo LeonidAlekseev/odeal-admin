@@ -185,7 +185,7 @@
         "label": "Status",
         "Available": "Available",
         "Offline": "Offline",
-        "On delivery": "On delivery"
+        "On delivery": "In process"
       },
       "vehicleType": {
         "label": "Vehicle Type",
@@ -263,9 +263,6 @@
         "lastYear": "Last Year"
       }
     },
-    "deliveryMap": {
-      "title": "Delivery Map"
-    },
     "orders": {
       "title": "Orders"
     },
@@ -287,11 +284,11 @@
     "timeline": {
       "title": "Timeline",
       "orderStatuses": {
-        "pending": "Preparing order",
-        "ready": "Order is ready",
-        "on the way": "Order is on the way",
-        "delivered": "Order is delivered",
-        "cancelled": "Order is cancelled"
+        "pending": "Pending",
+        "ready": "Ready",
+        "on the way": "Processing",
+        "delivered": "Processed",
+        "cancelled": "Cancelled"
       }
     },
     "recentOrders": {
@@ -308,8 +305,8 @@
     "orderStatuses": {
       "Pending": "Pending",
       "Ready": "Ready",
-      "On The Way": "On the way",
-      "Delivered": "Delivered",
+      "On The Way": "Processing",
+      "Delivered": "Processed",
       "Cancelled": "Cancelled"
     }
   },
@@ -317,8 +314,7 @@
     "orders": "Orders",
     "order": "Order",
     "titles": {
-      "deliveryMap": "Delivery Map",
-      "deliveryDetails": "Delivery Details",
+      "deliveryDetails": "Details",
       "products": "Products",
       "list": "Orders",
       "show": "Order"
@@ -337,7 +333,11 @@
       "customer": "Customer",
       "courier": "Agent",
       "phone": "Phone",
-      "deliveryTime": "Delivery Time"
+      "deliveryTime": "Process Time",
+      "product": "Product",
+      "quantity": "Quantity",
+      "price": "Price",
+      "total": "Total"
     },
     "filter": {
       "title": "Filters",
@@ -371,11 +371,11 @@
       "submit": "Filter"
     },
     "courier": {
-      "deliveryTime": "Delivery Time",
+      "deliveryTime": "Process Time",
       "phone": "Phone"
     },
     "deliverables": {
-      "deliverables": "Deliverables",
+      "deliverables": "Processable",
       "fields": {
         "items": "Items",
         "quantity": "Quantity",
