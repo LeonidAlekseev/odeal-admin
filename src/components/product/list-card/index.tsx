@@ -75,7 +75,7 @@ export const ProductListCard = () => {
     });
 
     const filterValues = filter?.value?.map((value: string | number) =>
-      Number(value),
+      Number(value)
     );
 
     return {
@@ -211,7 +211,7 @@ export const ProductListCard = () => {
                         options: {
                           keepQuery: true,
                         },
-                        type: "replace",
+                        type: "push",
                       });
                     }}
                     className={cx(styles.viewButton, "viewButton")}
@@ -241,7 +241,7 @@ export const ProductListCard = () => {
                   <Typography.Text key="category.title">
                     {
                       categories.find(
-                        (category) => category.id === item.category.id,
+                        (category) => category.id === item.category.id
                       )?.title
                     }
                   </Typography.Text>

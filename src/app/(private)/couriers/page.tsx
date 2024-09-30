@@ -23,9 +23,8 @@ import {
   CourierTableColumnRating,
 } from "@/components";
 import { usePathname } from "next/navigation";
-import type { PropsWithChildren } from "react";
 
-const CourierList = ({ children }: PropsWithChildren) => {
+const CourierList = () => {
   const go = useGo();
   const pathname = usePathname();
   const { createUrl } = useNavigation();
@@ -72,7 +71,7 @@ const CourierList = ({ children }: PropsWithChildren) => {
                 options: {
                   keepQuery: true,
                 },
-                type: "replace",
+                type: "push",
               });
             }}
           >
@@ -278,7 +277,6 @@ const CourierList = ({ children }: PropsWithChildren) => {
           />
         </Table>
       </List>
-      {children}
     </>
   );
 };

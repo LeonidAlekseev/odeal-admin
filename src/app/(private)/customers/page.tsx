@@ -30,10 +30,9 @@ import {
 import type { IUser, IUserFilterVariables } from "@/interfaces";
 import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
 import { PaginationTotal, UserStatus } from "@/components";
-import type { PropsWithChildren } from "react";
 import { usePathname } from "next/navigation";
 
-const CustomerList = ({ children }: PropsWithChildren) => {
+const CustomerList = () => {
   const go = useGo();
   const pathname = usePathname();
   const { showUrl } = useNavigation();
@@ -219,14 +218,13 @@ const CustomerList = ({ children }: PropsWithChildren) => {
                   options: {
                     keepQuery: true,
                   },
-                  type: "replace",
+                  type: "push",
                 });
               }}
             />
           )}
         />
       </Table>
-      {children}
     </List>
   );
 };

@@ -2,8 +2,7 @@ import { SaveButton, useDrawerForm } from "@refinedev/antd";
 import {
   type BaseKey,
   useApiUrl,
-  useGetToPath,
-  useGo,
+  useBack,
   useTranslate,
 } from "@refinedev/core";
 import { getValueFromEvent, useSelect } from "@refinedev/antd";
@@ -21,7 +20,6 @@ import {
   Spin,
 } from "antd";
 import type { IProduct, ICategory } from "../../../interfaces";
-import { useSearchParams } from 'next/navigation';
 import { Drawer } from "../../drawer";
 import { UploadOutlined } from "@ant-design/icons";
 import { useStyles } from "./styled";
@@ -34,9 +32,7 @@ type Props = {
 };
 
 export const ProductDrawerForm = (props: Props) => {
-  const getToPath = useGetToPath();
-  const searchParams = useSearchParams();
-  const go = useGo();
+  const back = useBack();
   const t = useTranslate();
   const apiUrl = useApiUrl();
   const breakpoint = Grid.useBreakpoint();
@@ -65,21 +61,7 @@ export const ProductDrawerForm = (props: Props) => {
       return;
     }
 
-    go({
-      to:
-        searchParams.get("to") ??
-        getToPath({
-          action: "list",
-        }) ??
-        "",
-      query: {
-        to: undefined,
-      },
-      options: {
-        keepQuery: true,
-      },
-      type: "replace",
-    });
+    back();
   };
 
   const images = Form.useWatch("images", formProps.form);

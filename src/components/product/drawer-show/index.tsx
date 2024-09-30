@@ -1,7 +1,7 @@
 import {
   type BaseKey,
   type HttpError,
-  useGetToPath,
+  useBack,
   useGo,
   useNavigation,
   useOne,
@@ -18,7 +18,6 @@ import {
   Typography,
   theme,
 } from "antd";
-import { useSearchParams } from 'next/navigation';
 import { Drawer } from "../../drawer";
 import type { ICategory, IProduct } from "../../../interfaces";
 import { DeleteButton, NumberField } from "@refinedev/antd";
@@ -32,9 +31,8 @@ type Props = {
 };
 
 export const ProductDrawerShow = (props: Props) => {
-  const getToPath = useGetToPath();
-  const searchParams = useSearchParams();
   const go = useGo();
+  const back = useBack();
   const { editUrl } = useNavigation();
   const t = useTranslate();
   const { token } = theme.useToken();
@@ -61,21 +59,7 @@ export const ProductDrawerShow = (props: Props) => {
       return;
     }
 
-    go({
-      to:
-        searchParams.get("to") ??
-        getToPath({
-          action: "list",
-        }) ??
-        "",
-      query: {
-        to: undefined,
-      },
-      options: {
-        keepQuery: true,
-      },
-      type: "replace",
-    });
+    back();
   };
 
   return (
@@ -204,7 +188,7 @@ export const ProductDrawerShow = (props: Props) => {
               options: {
                 keepQuery: true,
               },
-              type: "replace",
+              type: "push",
             });
           }}
         >

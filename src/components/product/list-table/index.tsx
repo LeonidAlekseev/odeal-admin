@@ -187,7 +187,7 @@ export const ProductListTable = () => {
         defaultFilteredValue={getDefaultFilter(
           "description",
           filters,
-          "contains",
+          "contains"
         )}
         filterDropdown={(props) => (
           <FilterDropdown {...props}>
@@ -256,7 +256,7 @@ export const ProductListTable = () => {
         }}
         render={(_, record) => {
           const category = categories.find(
-            (category) => category?.id === record.category?.id,
+            (category) => category?.id === record.category?.id
           );
 
           return (
@@ -306,8 +306,6 @@ export const ProductListTable = () => {
         render={(_, record: IProduct) => {
           return (
             <Button
-              // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-              icon={<EyeOutlined />}
               onClick={() => {
                 return go({
                   to: `${showUrl("products", record.id)}`,
@@ -317,9 +315,11 @@ export const ProductListTable = () => {
                   options: {
                     keepQuery: true,
                   },
-                  type: "replace",
+                  type: "push",
                 });
               }}
+              // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+              icon={<EyeOutlined />}
             />
           );
         }}

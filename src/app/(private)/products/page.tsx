@@ -3,14 +3,14 @@
 import { useGo, useNavigation, useTranslate } from "@refinedev/core";
 import { CreateButton, List } from "@refinedev/antd";
 import { ProductListCard, ProductListTable } from "@/components";
-import { type PropsWithChildren, useState } from "react";
+import { useState } from "react";
 import { AppstoreOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import { Segmented } from "antd";
 import { usePathname } from "next/navigation";
 
 type View = "table" | "card";
 
-const ProductList = ({ children }: PropsWithChildren) => {
+const ProductList = () => {
   const go = useGo();
   const { replace } = useNavigation();
   const pathname = usePathname();
@@ -68,7 +68,7 @@ const ProductList = ({ children }: PropsWithChildren) => {
               options: {
                 keepQuery: true,
               },
-              type: "replace",
+              type: "push",
             });
           }}
         >
@@ -78,7 +78,6 @@ const ProductList = ({ children }: PropsWithChildren) => {
     >
       {view === "table" && <ProductListTable />}
       {view === "card" && <ProductListCard />}
-      {children}
     </List>
   );
 };

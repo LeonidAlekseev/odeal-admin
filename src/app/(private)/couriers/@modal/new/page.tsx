@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslate, useGetToPath, useGo } from "@refinedev/core";
+import { useTranslate, useGetToPath, useBack } from "@refinedev/core";
 import {
   SaveButton,
   useStepsForm,
@@ -26,33 +26,13 @@ import { CourierFormItemAvatar } from "@/components";
 
 const CourierCreate = () => {
   const t = useTranslate();
-  const getToPath = useGetToPath();
-  const searchParams = useSearchParams();
-  const go = useGo();
+  const back = useBack();
   const { token } = theme.useToken();
 
   const { current, gotoStep, stepsProps, formProps, saveButtonProps } =
     useStepsForm<ICourier>();
 
   const { formList } = useFormList({ formProps });
-
-  const handleModalClose = () => {
-    go({
-      to:
-        searchParams.get("to") ??
-        getToPath({
-          action: "list",
-        }) ??
-        "",
-      query: {
-        to: undefined,
-      },
-      options: {
-        keepQuery: true,
-      },
-      type: "replace",
-    });
-  };
 
   const isLastStep = current === formList.length - 1;
   const isFirstStep = current === 0;
@@ -81,7 +61,7 @@ const CourierCreate = () => {
       footer={() => {
         return (
           <Flex align="center" justify="space-between">
-            <Button onClick={handleModalClose}>{t("buttons.cancel")}</Button>
+            <Button onClick={back}>{t("buttons.cancel")}</Button>
             <Flex align="center" gap={16}>
               <Button
                 disabled={isFirstStep}
@@ -107,7 +87,7 @@ const CourierCreate = () => {
           </Flex>
         );
       }}
-      onCancel={handleModalClose}
+      onCancel={back}
     >
       <Flex style={{ padding: "20px 24px" }}>
         <Steps {...stepsProps} responsive>

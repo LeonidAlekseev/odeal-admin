@@ -1,6 +1,8 @@
 "use client";
 
-import { useShow, useNavigation } from "@refinedev/core";
+import { useCallback } from "react";
+import { useShow } from "@refinedev/core";
+import { useBack } from "@refinedev/core";
 import { Flex, Grid } from "antd";
 import type { IUser } from "@/interfaces";
 import {
@@ -11,7 +13,8 @@ import {
 } from "@/components";
 
 const CustomerShow = () => {
-  const { list } = useNavigation();
+  const back = useBack();
+
   const breakpoint = Grid.useBreakpoint();
   const { query: queryResult } = useShow<IUser>();
 
@@ -19,11 +22,7 @@ const CustomerShow = () => {
   const user = data?.data;
 
   return (
-    <Drawer
-      open
-      onClose={() => list("users")}
-      width={breakpoint.sm ? "736px" : "100%"}
-    >
+    <Drawer open onClose={back} width={breakpoint.sm ? "736px" : "100%"}>
       <Flex
         vertical
         gap={32}
