@@ -3,23 +3,10 @@
 import { CreateButton, List } from "@refinedev/antd";
 
 import { StoreListTable } from "@/components";
-import { Flex, Segmented } from "antd";
-import { useState } from "react";
+import { Segmented } from "antd";
 import { useTranslate } from "@refinedev/core";
-import { EnvironmentOutlined, UnorderedListOutlined } from "@ant-design/icons";
-
-type View = "table" | "map";
 
 const StoreList = () => {
-  const [view, setView] = useState<View>(
-    (localStorage.getItem("store-view") as View) || "table"
-  );
-
-  const handleViewChange = (value: View) => {
-    setView(value);
-    localStorage.setItem("store-view", value);
-  };
-
   const t = useTranslate();
 
   return (
@@ -27,43 +14,19 @@ const StoreList = () => {
       <List
         breadcrumb={false}
         headerButtons={(props) => [
-          <Segmented<View>
+          <Segmented
             key="view"
             size="large"
-            value={view}
+            value={"table"}
             style={{ marginRight: 24 }}
-            options={[
-              {
-                label: "",
-                value: "table",
-                // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-                icon: <UnorderedListOutlined />,
-              },
-              {
-                label: "",
-                value: "map",
-                // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-                icon: <EnvironmentOutlined />,
-              },
-            ]}
-            onChange={handleViewChange}
+            options={[]}
           />,
           <CreateButton {...props.createButtonProps} key="create" size="large">
             {t("stores.addNewStore")}
           </CreateButton>,
         ]}
       >
-        {view === "table" && <StoreListTable />}
-        {view === "map" && (
-          <Flex
-            style={{
-              height: "calc(100dvh - 232px)",
-              marginTop: "32px",
-            }}
-          >
-            <div></div>
-          </Flex>
-        )}
+        <StoreListTable />
       </List>
     </>
   );
