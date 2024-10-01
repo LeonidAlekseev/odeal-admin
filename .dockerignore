@@ -1,0 +1,15 @@
+# See https://docs.docker.com/build/concepts/context/#dockerignore-files for more about ignoring files.
+
+.git
+.gitignore 
+**/.gitkeep
+**/.DS_Store
+.dockerignore 
+Dockerfile 
+docker-compose.yml
+nginx
+node_modules
+.next
+npm-debug.log
+LICENSE
+README.md

@@ -1,0 +1,26 @@
+services:
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nextjs
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - nextjs
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
