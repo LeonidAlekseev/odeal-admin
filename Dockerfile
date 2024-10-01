@@ -9,7 +9,8 @@ WORKDIR /app
 # Install dependencies based on the preferred package manager
 COPY package.json package-lock.json* ./
 RUN \
-  if [ -f package-lock.json ]; then npm ci; \
+  # if [ -f package-lock.json ]; then npm ci; \ 
+  if [ -f package-lock-fixed.json ]; then npm ci; \ 
   elif [ -f package.json ]; then npm i; \
   else echo "Package not found." && exit 1; \
   fi
