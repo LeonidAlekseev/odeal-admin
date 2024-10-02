@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import { useTranslate } from "@refinedev/core";
 import { Tag } from "antd";
-import { BikeIcon, BikeWhiteIcon } from "../../icons";
+import { AgentWhiteIcon } from "../../icons";
 
 type OrderStatusProps = {
   status: "Pending" | "Ready" | "On The Way" | "Delivered" | "Cancelled";
@@ -33,7 +33,7 @@ export const OrderStatus: React.FC<OrderStatusProps> = ({ status }) => {
     case "On The Way":
       color = "blue";
       // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon = <BikeWhiteIcon />;
+      icon = <AgentWhiteIcon />;
       break;
     case "Delivered":
       color = "green";

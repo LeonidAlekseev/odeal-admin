@@ -26,7 +26,7 @@ import InputMask from "react-input-mask";
 
 import type { ICourier } from "@/interfaces";
 import {
-  BikeWhiteIcon,
+  AgentWhiteIcon,
   CourierFormItemAvatar,
   CourierReviewTable,
   CourierStatus,
@@ -260,7 +260,7 @@ const CourierEdit = () => {
               />
               <FormItemHorizontal
                 // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-                icon={<BikeWhiteIcon />}
+                icon={<AgentWhiteIcon />}
                 label={t("couriers.fields.vehicle.label")}
                 name={["vehicle", "id"]}
                 rules={[

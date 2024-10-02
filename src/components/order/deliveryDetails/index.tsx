@@ -13,7 +13,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { useMemo } from "react";
-import { BikeWhiteIcon } from "../../icons";
+import { AgentWhiteIcon } from "../../icons";
 import { useConfigProvider } from "../../../context";
 
 type Props = {
@@ -48,7 +48,7 @@ export const OrderDeliveryDetails = ({ order }: Props) => {
       },
       {
         // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-        icon: <BikeWhiteIcon />,
+        icon: <AgentWhiteIcon />,
         title: t("orders.fields.courier"),
         description: order.courier?.name,
       },

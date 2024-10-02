@@ -22,7 +22,7 @@ import {
   TagsOutlined,
 } from "@ant-design/icons";
 
-import { BikeWhiteIcon } from "@/components/icons";
+import { AgentWhiteIcon } from "@/components/icons";
 
 export const RefineContext = ({ children }: PropsWithChildren) => {
   const { t, i18n } = useTranslation();
@@ -110,7 +110,7 @@ export const RefineContext = ({ children }: PropsWithChildren) => {
                 show: "/couriers/show/:id",
                 meta: {
                   // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-                  icon: <BikeWhiteIcon />,
+                  icon: <AgentWhiteIcon />,
                 },
               },
             ]}

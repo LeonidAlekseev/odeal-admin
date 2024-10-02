@@ -5,7 +5,7 @@ import { CheckCircleOutlined, PoweroffOutlined } from "@ant-design/icons";
 import { useTranslate } from "@refinedev/core";
 import type { ICourier } from "../../../interfaces";
 import { useConfigProvider } from "../../../context";
-import { BikeWhiteIcon } from "../../icons";
+import { AgentWhiteIcon } from "../../icons";
 
 type Status = ICourier["status"];
 
@@ -45,7 +45,7 @@ export const CourierStatus = ({ value, isLoading }: Props) => {
         light: token.blue5,
       },
       // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <BikeWhiteIcon />,
+      icon: <AgentWhiteIcon />,
     },
   };
 
