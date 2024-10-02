@@ -105,7 +105,7 @@
     "inTotal": "Всего"
   },
   "search": {
-    "placeholder": "Искать по ID бизнеса, email или ключевому слову",
+    "placeholder": "Искать по ID Филиала, email или ключевому слову",
     "more": "Ещё"
   },
   "status": {
