@@ -4,9 +4,9 @@ import type { AuthProvider } from "@refinedev/core";
 import { AuthHelper } from "@refinedev/strapi-v4";
 import Cookies from "js-cookie";
 import { axiosInstance } from "@/utils/axios-instance";
-import { API_URL, TOKEN_KEY } from "@/utils/constants";
+import { AUTH_API_URL, AUTH_TOKEN_KEY } from "@/utils/constants";
 
-const strapiAuthHelper = AuthHelper(API_URL + "/api");
+const strapiAuthHelper = AuthHelper(AUTH_API_URL);
 
 export const authProvider: AuthProvider = {
   login: async ({ email, password }) => {
@@ -17,7 +17,7 @@ export const authProvider: AuthProvider = {
     };
     const status = 200;
     if (status === 200) {
-      Cookies.set(TOKEN_KEY, data.jwt, {
+      Cookies.set(AUTH_TOKEN_KEY, data.jwt, {
         expires: 30, // 30 days
         path: "/",
       });
@@ -105,7 +105,7 @@ export const authProvider: AuthProvider = {
     };
   },
   logout: async () => {
-    Cookies.remove(TOKEN_KEY, { path: "/" });
+    Cookies.remove(AUTH_TOKEN_KEY, { path: "/" });
     return {
       success: true,
       redirectTo: "/login",
@@ -121,7 +121,7 @@ export const authProvider: AuthProvider = {
     return { error };
   },
   check: async () => {
-    const token = Cookies.get(TOKEN_KEY);
+    const token = Cookies.get(AUTH_TOKEN_KEY);
     if (token) {
       axiosInstance.defaults.headers.common = {
         Authorization: `Bearer ${token}`,
@@ -144,7 +144,7 @@ export const authProvider: AuthProvider = {
   getPermissions: async () => null,
   getIdentity: async () => {
     // TODO
-    const token = Cookies.get(TOKEN_KEY);
+    const token = Cookies.get(AUTH_TOKEN_KEY);
     if (!token) {
       return null;
     }

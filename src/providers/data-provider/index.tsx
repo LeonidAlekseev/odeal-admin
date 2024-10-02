@@ -1,7 +1,7 @@
 "use client";
 
-import jsonServerDataProvider from "@refinedev/simple-rest";
+import { DataProvider } from "@refinedev/strapi-v4";
+import { axiosInstance } from "@/utils/axios-instance";
+import { DATA_API_URL } from "@/utils/constants";
 
-const API_URL = "https://api.finefoods.refine.dev";
-
-export const dataProvider = jsonServerDataProvider(API_URL);
+export const dataProvider = DataProvider(DATA_API_URL, axiosInstance);

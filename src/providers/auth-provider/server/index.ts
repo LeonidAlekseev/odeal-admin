@@ -1,12 +1,12 @@
 import type { AuthProvider } from "@refinedev/core";
-import { API_URL, TOKEN_KEY } from "@/utils/constants";
+import { AUTH_API_URL, AUTH_TOKEN_KEY } from "@/utils/constants";
 import { cookies } from "next/headers";
 
 export const authProviderServer: Pick<AuthProvider, "check"> = {
   check: async () => {
     const cookieStore = cookies();
-    const token = cookieStore.get(TOKEN_KEY);
-    const url = new URL("/api/users/me", API_URL);
+    const token = cookieStore.get(AUTH_TOKEN_KEY);
+    const url = new URL("/users/me", AUTH_API_URL);
 
     if (!token) {
       return {
