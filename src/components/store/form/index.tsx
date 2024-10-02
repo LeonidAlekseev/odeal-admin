@@ -11,14 +11,12 @@ type Props = {
 export const StoreForm = (props: Props) => {
   const {
     store,
-    handleMapOnDragEnd,
     formProps,
     saveButtonProps,
     handleAddressChange,
     formLoading,
     isFormDisabled,
     setIsFormDisabled,
-    latLng,
   } = useStoreForm({
     action: props.action,
   });
