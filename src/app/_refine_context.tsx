@@ -94,9 +94,9 @@ export const RefineContext = ({ children }: PropsWithChildren) => {
               },
               {
                 name: "stores",
-                list: "/stores",
-                create: "/stores/new",
-                edit: "/stores/edit/:id",
+                list: "/branches",
+                create: "/branches/new",
+                edit: "/branches/edit/:id",
                 meta: {
                   // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                   icon: <ShopOutlined />,
@@ -104,10 +104,10 @@ export const RefineContext = ({ children }: PropsWithChildren) => {
               },
               {
                 name: "couriers",
-                list: "/couriers",
-                create: "/couriers/new",
-                edit: "/couriers/edit/:id",
-                show: "/couriers/show/:id",
+                list: "/agents",
+                create: "/agents/new",
+                edit: "/agents/edit/:id",
+                show: "/agents/show/:id",
                 meta: {
                   // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                   icon: <AgentWhiteIcon />,
