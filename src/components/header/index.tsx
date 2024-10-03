@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   useGetLocale,
   useSetLocale,
@@ -8,7 +9,6 @@ import {
   useTranslate,
   useList,
 } from "@refinedev/core";
-import Link from "next/link";
 import { SearchOutlined, DownOutlined, BarsOutlined } from "@ant-design/icons";
 import { useThemedLayoutContext } from "@refinedev/antd";
 
@@ -298,6 +298,7 @@ export const Header: React.FC = () => {
               icon={mode === "light" ? <IconMoon /> : <IconSun />}
               onClick={() => {
                 setMode(mode === "light" ? "dark" : "light");
+                window.location.reload();
               }}
             />
 
