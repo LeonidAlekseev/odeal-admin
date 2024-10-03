@@ -10,11 +10,17 @@ import { useTranslate } from "@refinedev/core";
 import { Tag } from "antd";
 import { AgentWhiteIcon } from "../../icons";
 
-type OrderStatusProps = {
-  status: "Pending" | "Ready" | "On The Way" | "Delivered" | "Cancelled";
+type StatusProps = {
+  status:
+    | "Pending"
+    | "Ready"
+    | "On The Way"
+    | "Delivered"
+    | "Cancelled"
+    | "Offline";
 };
 
-export const OrderStatus: React.FC<OrderStatusProps> = ({ status }) => {
+export const OrderStatus: React.FC<StatusProps> = ({ status }) => {
   const t = useTranslate();
   let color;
   let icon;

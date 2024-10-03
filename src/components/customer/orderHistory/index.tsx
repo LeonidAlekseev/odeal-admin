@@ -1,11 +1,15 @@
 import { NumberField, useTable } from "@refinedev/antd";
-import type { IUser, IOrder, IOrderFilterVariables } from "../../../interfaces";
+import type {
+  IOrder,
+  IOrderFilterVariables,
+  ICustomer,
+} from "../../../interfaces";
 import { type HttpError, useNavigation, useTranslate } from "@refinedev/core";
 import { Table, Typography } from "antd";
 import { OrderStatus, OrderTableColumnProducts } from "../../order";
 
 type Props = {
-  customer?: IUser;
+  customer?: ICustomer;
 };
 
 export const CustomerOrderHistory = ({ customer }: Props) => {
@@ -22,7 +26,7 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
     ],
     permanentFilter: [
       {
-        field: "user.id",
+        field: "customer.id",
         operator: "eq",
         value: customer?.id,
       },
@@ -32,6 +36,14 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
       enabled: customer !== undefined,
     },
     syncWithLocation: false,
+    meta: {
+      populate: {
+        products: { populate: ["images"] },
+        customer: { populate: ["id"] },
+        courier: { populate: { user: { populate: ["fullName"] } } },
+        status: { populate: ["status"] },
+      },
+    },
   });
 
   return (
@@ -48,6 +60,9 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
       pagination={{
         ...tableProps.pagination,
         hideOnSinglePage: true,
+      }}
+      locale={{
+        emptyText: t("search.nothing"),
       }}
     >
       <Table.Column
@@ -100,9 +115,9 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
         }}
       />
       <Table.Column
-        key="store.title"
-        dataIndex={["store", "title"]}
-        title={t("orders.fields.store")}
+        key="courier.user.fullName"
+        dataIndex={["courier", "user", "fullName"]}
+        title={t("couriers.couriers")}
       />
     </Table>
   );

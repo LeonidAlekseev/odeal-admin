@@ -27,7 +27,7 @@ import {
   PaginationTotal,
   OrderTableColumnProducts,
 } from "@/components";
-import type { IOrder, IOrderFilterVariables, IOrderStatus } from "@/interfaces";
+import type { IOrder, IOrderFilterVariables, IStatus } from "@/interfaces";
 
 const OrderList = () => {
   const { token } = theme.useToken();
@@ -40,16 +40,29 @@ const OrderList = () => {
     filters: {
       initial: [
         {
-          field: "user.fullName",
+          field: "customer.user.fullName",
           operator: "contains",
           value: "",
         },
         {
-          field: "store.title",
+          field: "courier.user.fullName",
           operator: "contains",
           value: "",
         },
       ],
+    },
+    meta: {
+      populate: {
+        products: { populate: ["images"] },
+        customer: { populate: { user: { populate: ["fullName"] } } },
+        courier: {
+          populate: {
+            user: { populate: ["fullName"] },
+            store: { populate: ["title"] },
+          },
+        },
+        status: { populate: ["text"] },
+      },
     },
   });
 
@@ -59,22 +72,35 @@ const OrderList = () => {
   const { isLoading, triggerExport } = useExport<IOrder>({
     sorters,
     filters,
+    meta: {
+      populate: {
+        customer: { populate: { user: { populate: ["fullName"] } } },
+        courier: {
+          populate: {
+            user: { populate: ["fullName"] },
+            store: { populate: ["title"] },
+          },
+        },
+        status: { populate: ["text"] },
+      },
+    },
     pageSize: 50,
-    maxItemCount: 50,
+    maxItemCount: 50, // TODO
     mapData: (item) => {
       return {
         id: item.id,
-        amount: item.amount,
         orderNumber: item.orderNumber,
-        status: item.status.text,
-        store: item.store.title,
-        user: item.user.firstName,
+        status: item.status?.text,
+        amount: item.amount,
+        branch: item.courier?.store?.title,
+        agent: item.courier?.user?.fullName,
+        customer: item.customer?.user?.fullName,
       };
     },
   });
 
-  const { selectProps: orderSelectProps } = useSelect<IOrderStatus>({
-    resource: "orderStatuses",
+  const { selectProps: orderSelectProps } = useSelect<IStatus>({
+    resource: "statuses",
     optionLabel: "text",
     optionValue: "text",
     defaultValue: getDefaultFilter("status.text", filters, "in"),
@@ -82,6 +108,7 @@ const OrderList = () => {
 
   return (
     <List
+      breadcrumb={false}
       headerProps={{
         extra: <ExportButton onClick={triggerExport} loading={isLoading} />,
       }}
@@ -104,6 +131,9 @@ const OrderList = () => {
           showTotal: (total) => (
             <PaginationTotal total={total} entityName="orders" />
           ),
+        }}
+        locale={{
+          emptyText: t("search.nothing"),
         }}
       >
         <Table.Column
@@ -188,8 +218,8 @@ const OrderList = () => {
           }}
         />
         <Table.Column
-          key="store.title"
-          dataIndex={["store", "title"]}
+          key="courier.store.title"
+          dataIndex={["courier", "store", "title"]}
           title={t("orders.fields.store")}
           filterIcon={(filtered) => (
             // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
@@ -200,7 +230,7 @@ const OrderList = () => {
             />
           )}
           defaultFilteredValue={getDefaultFilter(
-            "store.title",
+            "courier.store.title",
             filters,
             "contains"
           )}
@@ -211,8 +241,31 @@ const OrderList = () => {
           )}
         />
         <Table.Column
-          key="user.fullName"
-          dataIndex={["user", "fullName"]}
+          key="courier.user.fullName"
+          dataIndex={["courier", "user", "fullName"]}
+          title={t("orders.fields.courier")}
+          filterIcon={(filtered) => (
+            // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+            <SearchOutlined
+              style={{
+                color: filtered ? token.colorPrimary : undefined,
+              }}
+            />
+          )}
+          defaultFilteredValue={getDefaultFilter(
+            "courier.user.fullName",
+            filters,
+            "contains"
+          )}
+          filterDropdown={(props) => (
+            <FilterDropdown {...props}>
+              <Input placeholder={t("orders.filter.courier.placeholder")} />
+            </FilterDropdown>
+          )}
+        />
+        <Table.Column
+          key="customer.user.fullName"
+          dataIndex={["customer", "user", "fullName"]}
           title={t("orders.fields.customer")}
           filterIcon={(filtered) => (
             // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
@@ -223,7 +276,7 @@ const OrderList = () => {
             />
           )}
           defaultFilteredValue={getDefaultFilter(
-            "user.fullName",
+            "customer.user.fullName",
             filters,
             "contains"
           )}

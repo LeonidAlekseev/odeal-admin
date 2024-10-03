@@ -29,6 +29,7 @@ type Props = {
 };
 
 export const OrderTimeline = ({ height = "432px" }: Props) => {
+  const t = useTranslate();
   const { token } = theme.useToken();
   const { show } = useNavigation();
 
@@ -44,6 +45,11 @@ export const OrderTimeline = ({ height = "432px" }: Props) => {
       pagination: {
         current: 1,
         pageSize: 8,
+      },
+      meta: {
+        populate: {
+          status: { populate: ["text"] },
+        },
       },
     });
 
@@ -73,7 +79,7 @@ export const OrderTimeline = ({ height = "432px" }: Props) => {
             }}
           />
         }
-        endMessage={<Divider plain>That&apos;s all, nothing more.</Divider>}
+        endMessage={<Divider plain>{t("search.nothing")}</Divider>}
         scrollableTarget="scrollableDiv"
       >
         <List

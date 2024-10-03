@@ -40,31 +40,10 @@ export const StoreForm = (props: Props) => {
           lg={15}
           style={{
             height: props.action === "create" ? "calc(100vh - 300px)" : "432px",
-            marginTop: "64px",
+            marginTop: "72px",
           }}
         >
-          <div></div>
-        </Col>
-        <Col
-          xs={24}
-          sm={{
-            span: 24,
-            offset: 0,
-          }}
-          lg={{
-            span: 15,
-            offset: 9,
-          }}
-        >
-          {props.action === "edit" && (
-            <div
-              style={{
-                marginTop: "16px",
-              }}
-            >
-              <StoreCourierTable store={store} />
-            </div>
-          )}
+          {props.action === "edit" && <StoreCourierTable store={store} />}
         </Col>
       </Row>
     </Spin>

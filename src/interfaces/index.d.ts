@@ -21,9 +21,15 @@ export interface ISalesChart {
   value: number;
 }
 
-export interface IOrderStatus {
+export interface IStatus {
   id: number;
-  text: "Pending" | "Ready" | "On The Way" | "Delivered" | "Cancelled";
+  text:
+    | "Pending"
+    | "Ready"
+    | "On The Way"
+    | "Delivered"
+    | "Cancelled"
+    | "Offline";
 }
 
 export interface IUser {
@@ -35,14 +41,20 @@ export interface IUser {
   gsm: string;
   createdAt: string;
   isActive: boolean;
-  avatar: IFile[];
-  addresses: IAddress[];
+  avatar: IFile & { thumbnail?: IFile };
 }
 
 export interface IIdentity {
-  id: number;
-  name: string;
-  avatar: string;
+  id: number | string;
+  username: string;
+  email: string;
+  provider: string;
+  confirmed: boolean;
+  blocked: boolean;
+  role: IRole;
+  created_at: string;
+  updated_at: string;
+  avatar: IFile & { thumbnail?: IFile };
 }
 
 export interface IAddress {
@@ -61,8 +73,16 @@ export interface IFile {
 }
 
 export interface IEvent {
-  date: string;
-  status: string;
+  createdAt: string;
+  status: IStatus;
+}
+
+export interface ICustomer {
+  id: number;
+  createdAt: string;
+  publishedAt: string;
+  updatedAt: string;
+  user: IUser;
 }
 
 export interface IStore {
@@ -83,33 +103,28 @@ export interface ICourierStatus {
 
 export interface ICourier {
   id: number;
-  name: string;
-  surname: string;
-  email: string;
-  gender: string;
-  gsm: string;
   createdAt: string;
-  accountNumber: string;
+  publishedAt: string;
+  updatedAt: string;
+  title: string;
   licensePlate: string;
-  address: string;
-  avatar: IFile[];
+  status: IStatus;
+  user: IUser;
   store: IStore;
-  status: ICourierStatus;
-  vehicle: IVehicle;
 }
 
 export interface IOrder {
   id: number;
-  user: IUser;
   createdAt: string;
-  products: IProduct[];
-  status: IOrderStatus;
-  adress: IAddress;
-  store: IStore;
-  courier: ICourier;
-  events: IEvent[];
+  publishedAt: string;
+  updatedAt: string;
   orderNumber: number;
+  products: IProduct[];
   amount: number;
+  status: IStatus;
+  events: IEvent[];
+  customer: ICustomer;
+  courier: ICourier;
 }
 
 export interface IProduct {
@@ -117,7 +132,7 @@ export interface IProduct {
   name: string;
   isActive: boolean;
   description: string;
-  images: (IFile & { thumbnailUrl?: string })[];
+  images: (IFile & { thumbnail?: IFile })[];
   createdAt: string;
   price: number;
   category: {

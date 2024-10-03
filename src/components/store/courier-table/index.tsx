@@ -2,7 +2,6 @@ import { useTable } from "@refinedev/antd";
 import type { ICourier, IStore } from "../../../interfaces";
 import { Table } from "antd";
 import { useTranslate } from "@refinedev/core";
-import { CourierTableColumnRating } from "../../courier";
 
 type Props = {
   store?: IStore;
@@ -28,6 +27,13 @@ export const StoreCourierTable = (props: Props) => {
     queryOptions: {
       enabled: !!props.store?.id,
     },
+    meta: {
+      populate: {
+        user: {
+          populate: ["fullName"],
+        },
+      },
+    },
   });
 
   return (
@@ -37,9 +43,12 @@ export const StoreCourierTable = (props: Props) => {
       scroll={{
         x: true,
       }}
+      locale={{
+        emptyText: t("search.nothing"),
+      }}
     >
       <Table.Column
-        dataIndex="name"
+        dataIndex={["user", "fullName"]}
         title={t("couriers.couriers")}
         render={(value) => value}
       />
@@ -47,13 +56,6 @@ export const StoreCourierTable = (props: Props) => {
         dataIndex="licensePlate"
         title={t("couriers.fields.licensePlate.label")}
         render={(value) => value}
-      />
-      <Table.Column<ICourier>
-        dataIndex="licensePlate"
-        title={t("couriers.fields.rating.label")}
-        render={(_, record) => {
-          return <CourierTableColumnRating courier={record} />;
-        }}
       />
     </Table>
   );

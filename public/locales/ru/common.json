@@ -105,8 +105,9 @@
     "inTotal": "Всего"
   },
   "search": {
-    "placeholder": "Искать по ID Филиала, email или ключевому слову",
-    "more": "Ещё"
+    "placeholder": "Искать по Заказу, Филиалу, Агенту",
+    "more": "Ещё",
+    "nothing": "Больше ничего нет"
   },
   "status": {
     "enable": "Активный",
@@ -523,6 +524,9 @@
     "all": "Все",
     "productSearch": "Поиск продукта",
     "addNewStore": "Добавить новый Филиал"
+  },
+  "customers": {
+    "customers": "Клиенты"
   },
   "users": {
     "users": "Клиенты",

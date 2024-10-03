@@ -23,6 +23,7 @@ import type { IProduct, ICategory } from "../../../interfaces";
 import { Drawer } from "../../drawer";
 import { UploadOutlined } from "@ant-design/icons";
 import { useStyles } from "./styled";
+import { MEDIA_API_URL } from "@/utils/constants";
 
 type Props = {
   id?: BaseKey;
@@ -47,6 +48,9 @@ export const ProductDrawerForm = (props: Props) => {
       onMutationSuccess: () => {
         props.onMutationSuccess?.();
       },
+      meta: {
+        populate: ["images"],
+      },
     });
 
   const { selectProps: categorySelectProps } = useSelect<ICategory>({
@@ -66,7 +70,7 @@ export const ProductDrawerForm = (props: Props) => {
 
   const images = Form.useWatch("images", formProps.form);
   const image = images?.[0] || null;
-  const previewImageURL = image?.url || image?.response?.url;
+  const previewImageURL = `${MEDIA_API_URL}${image?.thumbnail.url || image?.url}`;
   const title = props.action === "edit" ? null : t("products.actions.add");
 
   return (

@@ -3,6 +3,7 @@ import { Avatar, Flex, Table, Typography } from "antd";
 import type { IOrder } from "../../../interfaces";
 import { getUniqueListWithCount } from "../../../utils";
 import { NumberField } from "@refinedev/antd";
+import { MEDIA_API_URL } from "@/utils/constants";
 
 type Props = {
   order?: IOrder;
@@ -39,6 +40,9 @@ export const OrderProducts = ({ order }: Props) => {
           </Flex>
         );
       }}
+      locale={{
+        emptyText: t("search.nothing"),
+      }}
     >
       <Table.Column<(typeof uniqueProducts)[number]>
         title={t("orders.fields.product")}
@@ -57,7 +61,7 @@ export const OrderProducts = ({ order }: Props) => {
             >
               <Avatar
                 shape="square"
-                src={image?.thumbnailUrl || image?.url}
+                src={`${MEDIA_API_URL}${image?.thumbnail?.url || image?.url}`}
                 alt={image?.name}
               />
               <Typography.Text>{record.name}</Typography.Text>

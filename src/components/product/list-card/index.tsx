@@ -25,6 +25,7 @@ import { EyeOutlined, TagOutlined } from "@ant-design/icons";
 import { useMemo } from "react";
 import { useStyles } from "./styled";
 import { usePathname } from "next/navigation";
+import { MEDIA_API_URL } from "@/utils/constants";
 
 export const ProductListCard = () => {
   const { styles, cx } = useStyles();
@@ -51,6 +52,9 @@ export const ProductListCard = () => {
           value: [],
         },
       ],
+    },
+    meta: {
+      populate: ["images", "category"],
     },
   });
 
@@ -221,7 +225,7 @@ export const ProductListCard = () => {
                     View
                   </Tag>
                   <img
-                    src={item.images[0].url}
+                    src={`${MEDIA_API_URL}${item.images[0].url}`}
                     alt={item.images[0].name}
                     style={{
                       aspectRatio: 288 / 160,

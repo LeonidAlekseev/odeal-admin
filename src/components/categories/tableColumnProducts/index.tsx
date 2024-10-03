@@ -1,11 +1,12 @@
 "use client";
 
+import { useState } from "react";
+import { type HttpError, useList } from "@refinedev/core";
 import { Flex, Popover, Avatar } from "antd";
 import type { ICategory, IProduct } from "../../../interfaces";
-import { type HttpError, useList } from "@refinedev/core";
 import { ProductDrawerForm } from "../../product/drawer-form";
-import { useState } from "react";
 import { ProductDrawerShow } from "../../product/drawer-show";
+import { MEDIA_API_URL } from "@/utils/constants";
 
 type Props = {
   category: ICategory;
@@ -30,6 +31,9 @@ export const TableCategoryProductColumn = ({ category }: Props) => {
         value: category.id,
       },
     ],
+    meta: {
+      populate: ["images"],
+    },
   });
 
   const products = data?.data || [];
@@ -58,10 +62,14 @@ export const TableCategoryProductColumn = ({ category }: Props) => {
         {products.map((product) => {
           const image = product?.images?.[0];
           return (
-            <Popover key={product.id} title={product?.name}>
+            <Popover
+              key={product.id}
+              title={product?.name}
+              content={product?.description.substring(0, 24) + "..."}
+            >
               <Avatar
                 shape="square"
-                src={image?.thumbnailUrl || image?.url}
+                src={`${MEDIA_API_URL}${image?.thumbnail?.url || image?.url}`}
                 alt={image?.name}
                 style={{
                   cursor: "pointer",

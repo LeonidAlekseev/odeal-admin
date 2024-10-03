@@ -2,6 +2,7 @@ import { Flex, Popover, Typography, Badge, Avatar, theme } from "antd";
 import { getUniqueListWithCount } from "../../../utils";
 import type { IOrder } from "../../../interfaces";
 import { useTranslate } from "@refinedev/core";
+import { MEDIA_API_URL } from "@/utils/constants";
 
 const visibleProductCount = 4;
 
@@ -37,7 +38,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
             >
               <Avatar
                 shape="square"
-                src={image?.thumbnailUrl || image?.url}
+                src={`${MEDIA_API_URL}${image?.thumbnail?.url || image?.url}`}
                 alt={image?.name}
               />
             </Badge>
@@ -64,7 +65,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
                     >
                       <Avatar
                         shape="square"
-                        src={image?.thumbnailUrl || image?.url}
+                        src={`${MEDIA_API_URL}${image?.thumbnail?.url || image?.url}`}
                         alt={image?.name}
                       />
                     </Badge>

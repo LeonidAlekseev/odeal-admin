@@ -30,6 +30,9 @@ const CategoryList = () => {
             <PaginationTotal total={total} entityName="categories" />
           ),
         }}
+        locale={{
+          emptyText: t("search.nothing"),
+        }}
       >
         <Table.Column
           key="title"

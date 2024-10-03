@@ -144,32 +144,6 @@ export const StoreFormFields = ({
           }}
         />
         <FormItemHorizontal
-          name={["address", "text"]}
-          // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-          icon={<EnvironmentOutlined />}
-          label={t("stores.fields.address")}
-          flexProps={{
-            align: "flex-start",
-          }}
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input.TextArea
-            rows={2}
-            onChange={(e) => {
-              handleAddressChange(e.target.value);
-            }}
-          />
-        </FormItemHorizontal>
-        <Divider
-          style={{
-            margin: 0,
-          }}
-        />
-        <FormItemHorizontal
           name="gsm"
           // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
           icon={<PhoneOutlined />}

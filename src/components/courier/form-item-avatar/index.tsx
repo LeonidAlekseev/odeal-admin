@@ -4,6 +4,7 @@ import { useApiUrl } from "@refinedev/core";
 import type { ICourier } from "../../../interfaces";
 import { useStyles } from "./styled";
 import { CloudUploadOutlined } from "@ant-design/icons";
+import { MEDIA_API_URL } from "@/utils/constants";
 
 type Props = {
   formProps: UseFormReturnType<ICourier>["formProps"];
@@ -21,13 +22,12 @@ export const CourierFormItemAvatar = ({
   const apiUrl = useApiUrl();
   const { styles } = useStyles();
 
-  const avatars = Form.useWatch("avatar", formProps.form);
-  const avatar = avatars?.[0] || null;
-  const previewImageURL = avatar?.url || avatar?.response?.url;
+  const avatar = formProps.initialValues?.user?.avatar;
+  const previewImageURL = avatar ? `${MEDIA_API_URL}${avatar?.url}` : null;
 
   return (
     <Form.Item
-      name="avatar"
+      name={"avatar"}
       valuePropName="fileList"
       getValueFromEvent={getValueFromEvent}
       className={styles.formItem}
@@ -59,7 +59,6 @@ export const CourierFormItemAvatar = ({
             shape="circle"
             className={styles.avatar}
             src={previewImageURL || "/images/courier-default-avatar.png"}
-            alt="Courier Avatar"
           />
           {showUploadOverlay && !disabled && (
             <div className={styles.overlay}>

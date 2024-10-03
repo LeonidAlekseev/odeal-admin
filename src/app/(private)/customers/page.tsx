@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import {
   useTranslate,
   type HttpError,
@@ -27,10 +28,11 @@ import {
   Button,
 } from "antd";
 
-import type { IUser, IUserFilterVariables } from "@/interfaces";
+import type { ICustomer, IUser, IUserFilterVariables } from "@/interfaces";
 import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
 import { PaginationTotal, UserStatus } from "@/components";
 import { usePathname } from "next/navigation";
+import { MEDIA_API_URL } from "@/utils/constants";
 
 const CustomerList = () => {
   const go = useGo();
@@ -40,14 +42,14 @@ const CustomerList = () => {
   const { token } = theme.useToken();
 
   const { tableProps, filters, sorters } = useTable<
-    IUser,
+    ICustomer,
     HttpError,
     IUserFilterVariables
   >({
     filters: {
       initial: [
         {
-          field: "fullName",
+          field: "user.fullName",
           operator: "contains",
           value: "",
         },
@@ -62,19 +64,33 @@ const CustomerList = () => {
       ],
     },
     syncWithLocation: true,
+    meta: {
+      populate: {
+        user: {
+          populate: ["avatar"],
+        },
+      },
+    },
   });
 
-  const { isLoading, triggerExport } = useExport<IUser>({
+  const { isLoading, triggerExport } = useExport<ICustomer>({
     sorters,
     filters,
+    meta: {
+      populate: {
+        user: {
+          populate: ["fullName", "gsm", "isActive"],
+        },
+      },
+    },
     pageSize: 50,
-    maxItemCount: 50,
+    maxItemCount: 50, // TODO
     mapData: (item) => {
       return {
         id: item.id,
-        fullName: item.fullName,
-        gsm: item.gsm,
-        isActive: item.isActive,
+        fullName: item.user?.fullName,
+        gsm: item.user?.gsm,
+        isActive: item.user?.isActive,
         createdAt: item.createdAt,
       };
     },
@@ -97,11 +113,23 @@ const CustomerList = () => {
             <PaginationTotal total={total} entityName="users" />
           ),
         }}
+        locale={{
+          emptyText: t("search.nothing"),
+        }}
       >
         <Table.Column
           key="id"
           dataIndex="id"
-          title="ID"
+          title={
+            <Typography.Text
+              style={{
+                whiteSpace: "nowrap",
+              }}
+            >
+              ID
+            </Typography.Text>
+          }
+          width={80}
           render={(value) => (
             <Typography.Text
               style={{
@@ -119,7 +147,7 @@ const CustomerList = () => {
               }}
             />
           )}
-          defaultFilteredValue={getDefaultFilter("orderNumber", filters, "eq")}
+          defaultFilteredValue={getDefaultFilter("id", filters, "eq")}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
               <InputNumber
@@ -131,18 +159,17 @@ const CustomerList = () => {
           )}
         />
         <Table.Column
-          align="center"
           key="avatar"
-          dataIndex={["avatar"]}
+          dataIndex={["user", "avatar"]}
           title={t("users.fields.avatar.label")}
-          render={(value) => <Avatar src={value[0].url} />}
+          render={(value) => <Avatar src={`${MEDIA_API_URL}${value?.url}`} />}
         />
         <Table.Column
           key="fullName"
-          dataIndex="fullName"
+          dataIndex={["user", "fullName"]}
           title={t("users.fields.name")}
           defaultFilteredValue={getDefaultFilter(
-            "fullName",
+            "user.fullName",
             filters,
             "contains"
           )}
@@ -157,9 +184,9 @@ const CustomerList = () => {
         />
         <Table.Column
           key="gsm"
-          dataIndex="gsm"
+          dataIndex={["user", "gsm"]}
           title={t("users.fields.gsm")}
-          defaultFilteredValue={getDefaultFilter("gsm", filters, "eq")}
+          defaultFilteredValue={getDefaultFilter("user.gsm", filters, "eq")}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
               <Input
@@ -178,14 +205,18 @@ const CustomerList = () => {
         />
         <Table.Column
           key="isActive"
-          dataIndex="isActive"
+          dataIndex={["user", "isActive"]}
           title={t("users.fields.isActive.label")}
           render={(value) => {
             return <UserStatus value={value} />;
           }}
           sorter
           defaultSortOrder={getDefaultSortOrder("isActive", sorters)}
-          defaultFilteredValue={getDefaultFilter("isActive", filters, "eq")}
+          defaultFilteredValue={getDefaultFilter(
+            "user.isActive",
+            filters,
+            "eq"
+          )}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
               <Select
@@ -202,7 +233,7 @@ const CustomerList = () => {
             </FilterDropdown>
           )}
         />
-        <Table.Column<IUser>
+        <Table.Column<ICustomer>
           fixed="right"
           title={t("table.actions")}
           render={(_, record) => (
@@ -211,7 +242,7 @@ const CustomerList = () => {
               icon={<EyeOutlined />}
               onClick={() => {
                 return go({
-                  to: `${showUrl("users", record.id)}`,
+                  to: `${showUrl("customers", record.id)}`,
                   query: {
                     to: pathname,
                   },

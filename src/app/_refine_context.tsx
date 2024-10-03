@@ -65,7 +65,7 @@ export const RefineContext = ({ children }: PropsWithChildren) => {
                 },
               },
               {
-                name: "users",
+                name: "customers",
                 list: "/customers",
                 show: "/customers/show/:id",
                 meta: {

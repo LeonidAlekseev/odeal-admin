@@ -1,14 +1,18 @@
 import { Flex, Avatar, Typography } from "antd";
-import type { IUser } from "../../../interfaces";
+import type { ICustomer } from "../../../interfaces";
+import { MEDIA_API_URL } from "@/utils/constants";
 
 type Props = {
-  customer?: IUser;
+  customer?: ICustomer;
 };
 
 export const CustomerInfoSummary = ({ customer }: Props) => {
   return (
     <Flex align="center" gap={32}>
-      <Avatar size={96} src={customer?.avatar?.[0]?.url} />
+      <Avatar
+        size={96}
+        src={`${MEDIA_API_URL}${customer?.user?.avatar?.url}`}
+      />
       <Flex vertical>
         <Typography.Text type="secondary">#{customer?.id}</Typography.Text>
         <Typography.Title
@@ -17,7 +21,7 @@ export const CustomerInfoSummary = ({ customer }: Props) => {
             margin: 0,
           }}
         >
-          {customer?.fullName}
+          {customer?.user?.fullName}
         </Typography.Title>
       </Flex>
     </Flex>

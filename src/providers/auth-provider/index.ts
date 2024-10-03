@@ -5,17 +5,14 @@ import { AuthHelper } from "@refinedev/strapi-v4";
 import Cookies from "js-cookie";
 import { axiosInstance } from "@/utils/axios-instance";
 import { AUTH_API_URL, AUTH_TOKEN_KEY } from "@/utils/constants";
+import type { IIdentity } from "@/interfaces";
 
 const strapiAuthHelper = AuthHelper(AUTH_API_URL);
 
 export const authProvider: AuthProvider = {
   login: async ({ email, password }) => {
-    // TODO
-    // const { data, status } = await strapiAuthHelper.login(email, password);
-    const data = {
-      jwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-    };
-    const status = 200;
+    const { data, status } = await strapiAuthHelper.login(email, password);
+
     if (status === 200) {
       Cookies.set(AUTH_TOKEN_KEY, data.jwt, {
         expires: 30, // 30 days
@@ -49,76 +46,16 @@ export const authProvider: AuthProvider = {
       },
     };
   },
-  register: async ({ email, password }) => {
-    try {
-      await authProvider.login({ email, password });
-      return {
-        success: true,
-        successNotification: {
-          message: "Успешная регистрация",
-          description: "Вы зарегистрировались системе",
-        },
-      };
-    } catch (error) {
-      return {
-        success: false,
-        error: {
-          statusCode: 401,
-          message: "Ошибка регистрации",
-          description: "Попробуйте повторить еще раз",
-        },
-        errorNotification: {
-          message: "Ошибка регистрации",
-          description: "Попробуйте повторить еще раз",
-        },
-      };
-    }
-  },
-  updatePassword: async () => {
-    // TODO
-    return {
-      success: false,
-      error: {
-        statusCode: 401,
-        message: "Ошибка обновления пароля",
-        description: "Попробуйте повторить еще раз",
-      },
-      errorNotification: {
-        message: "Ошибка обновления пароля",
-        description: "Попробуйте повторить еще раз",
-      },
-    };
-  },
-  forgotPassword: async ({ email }) => {
-    // TODO
-    return {
-      success: false,
-      error: {
-        statusCode: 401,
-        message: "Ошибка сброса пароля",
-        description: "Попробуйте повторить еще раз",
-      },
-      errorNotification: {
-        message: "Ошибка сброса пароля",
-        description: "Попробуйте повторить еще раз",
-      },
-    };
-  },
   logout: async () => {
     Cookies.remove(AUTH_TOKEN_KEY, { path: "/" });
     return {
       success: true,
-      redirectTo: "/login",
+      redirectTo: "/",
+      successNotification: {
+        message: "Успешный выход",
+        description: "Вы вышли из системы",
+      },
     };
-  },
-  onError: async (error) => {
-    if (error.response?.status === 401) {
-      return {
-        logout: true,
-      };
-    }
-
-    return { error };
   },
   check: async () => {
     const token = Cookies.get(AUTH_TOKEN_KEY);
@@ -133,26 +70,40 @@ export const authProvider: AuthProvider = {
 
     return {
       authenticated: false,
-      error: {
-        message: "Проверка не пройдена",
-        name: "Токен не найден",
-      },
-      logout: true,
       redirectTo: "/login",
     };
   },
   getPermissions: async () => null,
   getIdentity: async () => {
-    // TODO
     const token = Cookies.get(AUTH_TOKEN_KEY);
     if (!token) {
       return null;
     }
 
-    return {
-      id: 1,
-      name: "James Sullivan",
-      avatar: "https://i.pravatar.cc/150",
-    };
+    const { data, status } = await strapiAuthHelper.me(token, {
+      meta: {
+        populate: ["avatar"],
+      },
+    });
+    if (status === 200) {
+      const { id, username, email, avatar } = data as IIdentity;
+      return {
+        id,
+        username,
+        email,
+        avatar,
+      };
+    }
+
+    return null;
+  },
+  onError: async (error) => {
+    if (error.response?.status === 401) {
+      return {
+        logout: true,
+      };
+    }
+
+    return { error };
   },
 };

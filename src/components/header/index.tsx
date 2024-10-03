@@ -35,6 +35,7 @@ import { useConfigProvider } from "@/context";
 import { IconMoon, IconSun } from "@/components/icons";
 import type { IOrder, IStore, ICourier, IIdentity } from "@/interfaces";
 import { useStyles } from "./styled";
+import { MEDIA_API_URL } from "@/utils/constants";
 
 const { Header: AntdHeader } = AntdLayout;
 const { useToken } = theme;
@@ -93,16 +94,15 @@ export const Header: React.FC = () => {
   const { refetch: refetchOrders } = useList<IOrder>({
     resource: "orders",
     config: {
-      filters: [{ field: "q", operator: "contains", value }],
+      filters: [{ field: "orderNumber", operator: "contains", value }],
     },
     queryOptions: {
       enabled: false,
       onSuccess: (data) => {
         const orderOptionGroup = data.data.map((item) =>
           renderItem(
-            `${item.store.title} / #${item.orderNumber}`,
-            item?.products?.[0].images?.[0]?.url ||
-              "/images/default-order-img.png",
+            `${item.customer.user.fullName} / #${item.orderNumber}`,
+            `${MEDIA_API_URL}${item?.products?.[0].images?.[0]?.url}`,
             `/orders/show/${item.id}`
           )
         );
@@ -117,12 +117,18 @@ export const Header: React.FC = () => {
         }
       },
     },
+    meta: {
+      populate: {
+        products: { populate: ["images"] },
+        customer: { populate: ["user"] },
+      },
+    },
   });
 
   const { refetch: refetchStores } = useList<IStore>({
     resource: "stores",
     config: {
-      filters: [{ field: "q", operator: "contains", value }],
+      filters: [{ field: "title", operator: "contains", value }],
     },
     queryOptions: {
       enabled: false,
@@ -146,15 +152,15 @@ export const Header: React.FC = () => {
   const { refetch: refetchCouriers } = useList<ICourier>({
     resource: "couriers",
     config: {
-      filters: [{ field: "q", operator: "contains", value }],
+      filters: [{ field: "user.fullName", operator: "contains", value }],
     },
     queryOptions: {
       enabled: false,
       onSuccess: (data) => {
         const courierOptionGroup = data.data.map((item) =>
           renderItem(
-            `${item.name} ${item.surname}`,
-            item.avatar[0].url,
+            item.user.fullName,
+            `${MEDIA_API_URL}${item.user?.avatar?.thumbnail?.url || item.user?.avatar?.url}`,
             `/couriers/show/${item.id}`
           )
         );
@@ -167,6 +173,11 @@ export const Header: React.FC = () => {
             },
           ]);
         }
+      },
+    },
+    meta: {
+      populate: {
+        user: { populate: ["avatar"] },
       },
     },
   });
@@ -294,7 +305,11 @@ export const Header: React.FC = () => {
               {/* <Text ellipsis className={styles.userName}>
                 {user?.name}
               </Text> */}
-              <Avatar size="large" src={user?.avatar} alt={user?.name} />
+              <Avatar
+                size="large"
+                src={`${MEDIA_API_URL}${user?.avatar?.url}`}
+                alt={user?.username}
+              />
             </Space>
           </Space>
         </Col>

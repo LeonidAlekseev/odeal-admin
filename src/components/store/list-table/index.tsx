@@ -46,6 +46,9 @@ export const StoreListTable = () => {
           <PaginationTotal total={total} entityName="stores" />
         ),
       }}
+      locale={{
+        emptyText: t("search.nothing"),
+      }}
     >
       <Table.Column
         dataIndex="id"
@@ -135,10 +138,6 @@ export const StoreListTable = () => {
             {value}
           </Typography.Text>
         )}
-      />
-      <Table.Column
-        dataIndex={["address", "text"]}
-        title={t("stores.fields.address")}
       />
       <Table.Column
         dataIndex="isActive"

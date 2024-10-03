@@ -1,5 +1,6 @@
 "use client";
 
+import { ReactNode } from "react";
 import { Flex, Skeleton, Spin, Tag, Typography, theme } from "antd";
 import { CheckCircleOutlined, PoweroffOutlined } from "@ant-design/icons";
 import { useTranslate } from "@refinedev/core";
@@ -8,6 +9,15 @@ import { useConfigProvider } from "../../../context";
 import { AgentWhiteIcon } from "../../icons";
 
 type Status = ICourier["status"];
+
+interface IVariant {
+  icon: ReactNode;
+  tagColor: string;
+  tagTextColor: {
+    dark: string;
+    light: string;
+  };
+}
 
 type Props = {
   value?: Status;
@@ -19,7 +29,7 @@ export const CourierStatus = ({ value, isLoading }: Props) => {
   const { token } = theme.useToken();
   const { mode } = useConfigProvider();
 
-  const variant = {
+  const variant: { [key: string]: IVariant } = {
     Available: {
       // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
       icon: <CheckCircleOutlined />,
@@ -30,22 +40,22 @@ export const CourierStatus = ({ value, isLoading }: Props) => {
       },
     },
     Offline: {
+      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+      icon: <PoweroffOutlined />,
       tagColor: "default",
       tagTextColor: {
         dark: token.colorTextTertiary,
         light: token.colorTextTertiary,
       },
-      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <PoweroffOutlined />,
     },
     "On delivery": {
+      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+      icon: <AgentWhiteIcon />,
       tagColor: "blue",
       tagTextColor: {
         dark: token.blue7,
         light: token.blue5,
       },
-      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <AgentWhiteIcon />,
     },
   };
 

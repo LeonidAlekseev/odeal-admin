@@ -29,6 +29,7 @@ import { ProductStatus } from "../status";
 import { PaginationTotal } from "../../paginationTotal";
 import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
 import { usePathname } from "next/navigation";
+import { MEDIA_API_URL } from "@/utils/constants";
 
 export const ProductListTable = () => {
   const { token } = theme.useToken();
@@ -62,6 +63,9 @@ export const ProductListTable = () => {
         },
       ],
     },
+    meta: {
+      populate: ["images", "category"],
+    },
   });
 
   const { selectProps: categorySelectProps, query: queryResult } =
@@ -84,6 +88,9 @@ export const ProductListTable = () => {
         showTotal: (total) => (
           <PaginationTotal total={total} entityName="products" />
         ),
+      }}
+      locale={{
+        emptyText: t("search.nothing"),
       }}
     >
       <Table.Column
@@ -135,7 +142,7 @@ export const ProductListTable = () => {
           return (
             <Avatar
               shape="square"
-              src={images?.[0]?.thumbnailUrl || images?.[0]?.url}
+              src={`${MEDIA_API_URL}${images?.[0]?.thumbnail?.url || images?.[0]?.url}`}
               alt={images?.[0].name}
             />
           );

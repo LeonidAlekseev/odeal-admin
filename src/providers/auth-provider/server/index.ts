@@ -1,6 +1,6 @@
 import type { AuthProvider } from "@refinedev/core";
-import { AUTH_API_URL, AUTH_TOKEN_KEY } from "@/utils/constants";
 import { cookies } from "next/headers";
+import { AUTH_API_URL, AUTH_TOKEN_KEY } from "@/utils/constants";
 
 export const authProviderServer: Pick<AuthProvider, "check"> = {
   check: async () => {
@@ -15,17 +15,12 @@ export const authProviderServer: Pick<AuthProvider, "check"> = {
       };
     }
 
-    // TODO
-    return {
-      authenticated: true,
-    };
-
     try {
       const response = await fetch(url.href, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token!.value}`,
+          Authorization: `Bearer ${token.value}`,
         },
         cache: "no-cache",
       });

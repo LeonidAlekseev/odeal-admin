@@ -106,8 +106,9 @@
     "inTotal": "in total"
   },
   "search": {
-    "placeholder": "Search by Branch ID, E-mail, Keyword",
-    "more": "more"
+    "placeholder": "Search by Order, Branch, Agent",
+    "more": "more",
+    "nothing": "nothing more"
   },
   "status": {
     "enable": "Enable",
@@ -525,6 +526,9 @@
     "all": "All",
     "productSearch": "Product Search",
     "addNewStore": "Add New Branch"
+  },
+  "customers": {
+    "customers": "Customers"
   },
   "users": {
     "users": "Customers",

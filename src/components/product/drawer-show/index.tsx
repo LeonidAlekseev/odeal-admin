@@ -23,6 +23,7 @@ import type { ICategory, IProduct } from "../../../interfaces";
 import { DeleteButton, NumberField } from "@refinedev/antd";
 import { ProductStatus } from "../status";
 import { EditOutlined } from "@ant-design/icons";
+import { MEDIA_API_URL } from "@/utils/constants";
 
 type Props = {
   id?: BaseKey;
@@ -41,6 +42,9 @@ export const ProductDrawerShow = (props: Props) => {
   const { query: queryResult } = useShow<IProduct, HttpError>({
     resource: "products",
     id: props?.id, // when undefined, id will be read from the URL.
+    meta: {
+      populate: ["images"],
+    },
   });
   const product = queryResult.data?.data;
 
@@ -80,7 +84,7 @@ export const ProductDrawerShow = (props: Props) => {
             margin: "16px auto",
             borderRadius: "8px",
           }}
-          src={product?.images?.[0].url}
+          src={`${MEDIA_API_URL}${product?.images?.[0].url}`}
           alt={product?.images?.[0].name}
         />
       </Flex>

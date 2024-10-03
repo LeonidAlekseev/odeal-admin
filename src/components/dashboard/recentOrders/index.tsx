@@ -1,4 +1,4 @@
-import { useNavigation } from "@refinedev/core";
+import { useNavigation, useTranslate } from "@refinedev/core";
 import { NumberField, useTable } from "@refinedev/antd";
 import { Typography, Table, theme, Space, Flex } from "antd";
 
@@ -9,6 +9,7 @@ import { useStyles } from "./styled";
 import { getUniqueListWithCount } from "@/utils";
 
 export const RecentOrders: React.FC = () => {
+  const t = useTranslate();
   const { token } = theme.useToken();
   const { styles } = useStyles();
 
@@ -29,6 +30,12 @@ export const RecentOrders: React.FC = () => {
       },
     ],
     syncWithLocation: false,
+    meta: {
+      populate: {
+        customer: { populate: { user: { populate: ["fullName"] } } },
+        courier: { populate: { user: { populate: ["fullName"] } } },
+      },
+    },
   });
 
   const { show } = useNavigation();
@@ -36,14 +43,17 @@ export const RecentOrders: React.FC = () => {
   return (
     <Table
       {...tableProps}
+      rowKey="id"
+      showHeader={false}
       pagination={{
         ...tableProps.pagination,
         hideOnSinglePage: true,
         showSizeChanger: false,
         className: styles.pagination,
       }}
-      showHeader={false}
-      rowKey="id"
+      locale={{
+        emptyText: t("search.nothing"),
+      }}
     >
       <Table.Column<IOrder>
         dataIndex="orderNumber"
@@ -78,7 +88,7 @@ export const RecentOrders: React.FC = () => {
                   fontSize: 14,
                 }}
               >
-                {record?.user?.firstName} {record?.user?.lastName}
+                {record?.customer?.user?.fullName}
               </Typography.Text>
               <Typography.Text
                 ellipsis
@@ -87,7 +97,7 @@ export const RecentOrders: React.FC = () => {
                 }}
                 type="secondary"
               >
-                {record?.user?.addresses?.[0]?.text}
+                {record?.orderNumber}
               </Typography.Text>
             </Space>
           );

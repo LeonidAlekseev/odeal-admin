@@ -17,12 +17,9 @@ import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
 import { Table, Avatar, Typography, theme, InputNumber, Input } from "antd";
 import InputMask from "react-input-mask";
 import type { ICourier } from "@/interfaces";
-import {
-  PaginationTotal,
-  CourierStatus,
-  CourierTableColumnRating,
-} from "@/components";
+import { PaginationTotal, CourierStatus } from "@/components";
 import { usePathname } from "next/navigation";
+import { MEDIA_API_URL } from "@/utils/constants";
 
 const CourierList = () => {
   const go = useGo();
@@ -35,7 +32,7 @@ const CourierList = () => {
     filters: {
       initial: [
         {
-          field: "name",
+          field: "user.fullName",
           operator: "contains",
           value: "",
         },
@@ -45,11 +42,30 @@ const CourierList = () => {
           value: "",
         },
         {
-          field: "email",
+          field: "user.email",
           operator: "contains",
           value: "",
         },
       ],
+    },
+    sorters: {
+      initial: [
+        {
+          field: "id",
+          order: "desc",
+        },
+      ],
+    },
+    syncWithLocation: true,
+    meta: {
+      populate: {
+        user: {
+          populate: ["avatar"],
+        },
+        store: {
+          populate: ["title"],
+        },
+      },
     },
   });
 
@@ -86,11 +102,16 @@ const CourierList = () => {
           pagination={{
             ...tableProps.pagination,
             showTotal: (total) => (
-              <PaginationTotal total={total} entityName="products" />
+              <PaginationTotal total={total} entityName="couriers" />
             ),
+          }}
+          locale={{
+            emptyText: t("search.nothing"),
           }}
         >
           <Table.Column
+            key="id"
+            dataIndex="id"
             title={
               <Typography.Text
                 style={{
@@ -100,8 +121,6 @@ const CourierList = () => {
                 ID
               </Typography.Text>
             }
-            dataIndex="id"
-            key="id"
             width={80}
             render={(value) => (
               <Typography.Text
@@ -126,25 +145,20 @@ const CourierList = () => {
                 <InputNumber
                   addonBefore="#"
                   style={{ width: "100%" }}
-                  placeholder={t("products.filter.id.placeholder")}
+                  placeholder={t("couriers.filter.id.placeholder")}
                 />
               </FilterDropdown>
             )}
           />
-          <Table.Column<ICourier>
+          <Table.Column
             key="avatar"
-            dataIndex="avatar"
+            dataIndex={["user", "avatar"]}
             title={t("couriers.fields.avatar.label")}
-            render={(_, record) => (
-              <Avatar
-                src={record.avatar?.[0]?.url}
-                alt={record?.avatar?.[0].name}
-              />
-            )}
+            render={(value) => <Avatar src={`${MEDIA_API_URL}${value?.url}`} />}
           />
           <Table.Column<ICourier>
-            key="name"
-            dataIndex="name"
+            key="fullName"
+            dataIndex={["user", "fullName"]}
             title={t("couriers.fields.name.label")}
             filterIcon={(filtered) => (
               // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
@@ -154,7 +168,11 @@ const CourierList = () => {
                 }}
               />
             )}
-            defaultFilteredValue={getDefaultFilter("name", filters, "contains")}
+            defaultFilteredValue={getDefaultFilter(
+              "user.fullName",
+              filters,
+              "contains"
+            )}
             filterDropdown={(props) => (
               <FilterDropdown {...props}>
                 <Input placeholder={t("couriers.filter.name.placeholder")} />
@@ -206,8 +224,8 @@ const CourierList = () => {
             )}
           />
           <Table.Column
-            dataIndex="gsm"
             key="gsm"
+            dataIndex={["user", "gsm"]}
             title={t("couriers.fields.gsm.label")}
             filterIcon={(filtered) => (
               // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
@@ -217,7 +235,7 @@ const CourierList = () => {
                 }}
               />
             )}
-            defaultFilteredValue={getDefaultFilter("gsm", filters, "eq")}
+            defaultFilteredValue={getDefaultFilter("user.gsm", filters, "eq")}
             filterDropdown={(props) => (
               <FilterDropdown {...props}>
                 <InputMask mask="(999) 999 99 99">
@@ -244,14 +262,6 @@ const CourierList = () => {
             title={t("couriers.fields.store.label")}
           />
           <Table.Column<ICourier>
-            dataIndex="id"
-            key="ratings"
-            title={t("couriers.fields.rating.label")}
-            render={(_, record) => {
-              return <CourierTableColumnRating courier={record} />;
-            }}
-          />
-          <Table.Column<ICourier>
             dataIndex="status"
             key="status"
             title={t("couriers.fields.status.label")}
@@ -262,15 +272,16 @@ const CourierList = () => {
           <Table.Column
             title={t("table.actions")}
             key="actions"
+            dataIndex="id"
             fixed="right"
             align="center"
-            render={(_, record: ICourier) => {
+            render={(value) => {
               return (
                 <EditButton
                   // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                   icon={<EyeOutlined />}
                   hideText
-                  recordItemId={record.id}
+                  recordItemId={value}
                 />
               );
             }}

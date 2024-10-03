@@ -7,8 +7,8 @@ const AuthPage = () => {
   // TODO
   const formPropsDemo = {
     initialValues: {
-      email: "demo@refine.dev",
-      password: "demodemo",
+      email: "admindemo@demo.demo",
+      password: "admindemo",
       remember: false,
     },
   };

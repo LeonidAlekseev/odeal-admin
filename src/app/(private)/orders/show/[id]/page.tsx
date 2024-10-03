@@ -14,12 +14,39 @@ import {
 
 const OrderShow = () => {
   const t = useTranslate();
-  const { query: queryResult } = useShow<IOrder>();
+  const { query: queryResult } = useShow<IOrder>({
+    meta: {
+      populate: {
+        customer: { populate: { user: { populate: ["fullName"] } } },
+        courier: {
+          populate: {
+            user: { populate: ["fullName"] },
+            store: { populate: ["title"] },
+          },
+        },
+        status: { populate: ["text"] },
+        events: { populate: ["status"] },
+      },
+    },
+  });
   const { data, isLoading } = queryResult;
   const record = data?.data;
   const { mutate } = useUpdate({
     resource: "orders",
     id: record?.id.toString(),
+    meta: {
+      populate: {
+        customer: { populate: { user: { populate: ["fullName"] } } },
+        courier: {
+          populate: {
+            user: { populate: ["fullName"] },
+            store: { populate: ["title"] },
+          },
+        },
+        status: { populate: ["text"] },
+        events: { populate: ["status"] },
+      },
+    },
   });
 
   const handleMutate = (status: { id: number; text: string }) => {
@@ -32,12 +59,12 @@ const OrderShow = () => {
     }
   };
 
-  const canAcceptOrder = isLoading ? false : record?.status.text === "Pending";
+  const canAcceptOrder = isLoading ? false : record?.status?.text === "Pending";
   const canRejectOrder = isLoading
     ? false
-    : record?.status.text === "Pending" ||
-      record?.status.text === "Ready" ||
-      record?.status.text === "On The Way";
+    : record?.status?.text === "Pending" ||
+      record?.status?.text === "Ready" ||
+      record?.status?.text === "On The Way";
 
   return (
     <>
@@ -54,7 +81,7 @@ const OrderShow = () => {
               active
               style={{
                 width: "144px",
-                minWidth: "144pxpx",
+                minWidth: "144px",
                 height: "28px",
               }}
             />
