@@ -551,6 +551,8 @@
         "Female": "Женщина"
       },
       "gsm": "Телефон",
+      "birthDate": "Дата рождения",
+      "city": "Город",
       "createdAt": "Создано",
       "addresses": "Адреса",
       "isActive": {
@@ -572,6 +574,14 @@
       "gsm": {
         "label": "Телефон",
         "placeholder": "Телефон"
+      },
+      "birthDate": {
+        "label": "Дата рождения",
+        "placeholder": "Дата рождения"
+      },
+      "city": {
+        "label": "Город",
+        "placeholder": "Город"
       },
       "search": {
         "label": "Поиск",

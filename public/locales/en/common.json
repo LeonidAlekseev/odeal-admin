@@ -552,6 +552,8 @@
         "Female": "Female"
       },
       "gsm": "Phone",
+      "birthDate": "Birth Date",
+      "city": "City",
       "createdAt": "Created At",
       "addresses": "Addresses",
       "isActive": {
@@ -573,6 +575,14 @@
       "gsm": {
         "label": "Phone",
         "placeholder": "Search Phone"
+      },
+      "birthDate": {
+        "label": "Birth Date",
+        "placeholder": "Search Birth Date"
+      },
+      "city": {
+        "label": "Phone",
+        "placeholder": "Search City"
       },
       "search": {
         "label": "Search",

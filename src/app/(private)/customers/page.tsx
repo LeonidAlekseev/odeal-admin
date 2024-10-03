@@ -197,6 +197,38 @@ const CustomerList = () => {
           )}
         />
         <Table.Column
+          key="birthDate"
+          dataIndex={["user", "birthDate"]}
+          title={t("users.fields.birthDate")}
+          defaultFilteredValue={getDefaultFilter(
+            "user.birthDate",
+            filters,
+            "eq"
+          )}
+          filterDropdown={(props) => (
+            <FilterDropdown {...props}>
+              <Input
+                style={{ width: "100%" }}
+                placeholder={t("users.filter.birthDate.placeholder")}
+              />
+            </FilterDropdown>
+          )}
+        />
+        <Table.Column
+          key="gsm"
+          dataIndex={["user", "city"]}
+          title={t("users.fields.city")}
+          defaultFilteredValue={getDefaultFilter("user.city", filters, "eq")}
+          filterDropdown={(props) => (
+            <FilterDropdown {...props}>
+              <Input
+                style={{ width: "100%" }}
+                placeholder={t("users.filter.city.placeholder")}
+              />
+            </FilterDropdown>
+          )}
+        />
+        <Table.Column
           key="createdAt"
           dataIndex="createdAt"
           title={t("users.fields.createdAt")}
