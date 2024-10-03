@@ -7,7 +7,7 @@ import {
   useNavigation,
   useTranslate,
 } from "@refinedev/core";
-import { NumberField, useSimpleList } from "@refinedev/antd";
+import { EditButton, NumberField, useSimpleList } from "@refinedev/antd";
 import type { ICategory, IProduct } from "../../../interfaces";
 import {
   Card,
@@ -205,25 +205,13 @@ export const ProductListCard = () => {
               }}
               cover={
                 <>
-                  <Tag
-                    onClick={() => {
-                      return go({
-                        to: `${showUrl("products", item.id)}`,
-                        query: {
-                          to: pathname,
-                        },
-                        options: {
-                          keepQuery: true,
-                        },
-                        type: "push",
-                      });
-                    }}
-                    className={cx(styles.viewButton, "viewButton")}
+                  <EditButton
                     // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                     icon={<EyeOutlined />}
-                  >
-                    View
-                  </Tag>
+                    hideText
+                    recordItemId={item.id}
+                    className={cx(styles.viewButton, "viewButton")}
+                  />
                   <img
                     src={`${MEDIA_API_URL}${item.images[0].url}`}
                     alt={item.images[0].name}

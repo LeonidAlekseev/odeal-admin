@@ -49,7 +49,7 @@ export const ProductDrawerForm = (props: Props) => {
         props.onMutationSuccess?.();
       },
       meta: {
-        populate: ["images"],
+        populate: ["category", "images"],
       },
     });
 
@@ -229,7 +229,7 @@ export const ProductDrawerForm = (props: Props) => {
                 type="primary"
                 icon={null}
               >
-                Save
+                {t("buttons.save")}
               </SaveButton>
             </Flex>
           </Flex>

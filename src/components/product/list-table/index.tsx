@@ -8,6 +8,7 @@ import {
   useTranslate,
 } from "@refinedev/core";
 import {
+  EditButton,
   FilterDropdown,
   NumberField,
   getDefaultSortOrder,
@@ -312,21 +313,11 @@ export const ProductListTable = () => {
         align="center"
         render={(_, record: IProduct) => {
           return (
-            <Button
-              onClick={() => {
-                return go({
-                  to: `${showUrl("products", record.id)}`,
-                  query: {
-                    to: pathname,
-                  },
-                  options: {
-                    keepQuery: true,
-                  },
-                  type: "push",
-                });
-              }}
+            <EditButton
               // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
               icon={<EyeOutlined />}
+              hideText
+              recordItemId={record.id}
             />
           );
         }}

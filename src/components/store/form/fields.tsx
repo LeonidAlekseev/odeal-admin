@@ -181,7 +181,7 @@ export const StoreFormFields = ({
               type="primary"
               icon={null}
             >
-              Save
+              {t("buttons.save")}
             </SaveButton>
           </>
         )}
@@ -223,7 +223,7 @@ export const StoreFormFields = ({
                 type="primary"
                 icon={null}
               >
-                Save
+                {t("buttons.save")}
               </SaveButton>
             </>
           ))}

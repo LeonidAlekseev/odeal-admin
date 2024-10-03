@@ -24,13 +24,14 @@ import {
 } from "antd";
 import InputMask from "react-input-mask";
 
-import type { ICourier } from "@/interfaces";
+import type { IProduct } from "@/interfaces";
 import {
   AgentWhiteIcon,
   CourierFormItemAvatar,
   CourierStatus,
   FormItemEditable,
   FormItemHorizontal,
+  ProductFormItemAvatar,
 } from "@/components";
 import {
   BankOutlined,
@@ -43,7 +44,7 @@ import {
   ShopOutlined,
 } from "@ant-design/icons";
 
-const CourierEdit = () => {
+const ProductEdit = () => {
   const titleInputRef = useRef<InputRef>(null);
 
   const [isFormDisabled, setIsFormDisabled] = useState(true);
@@ -54,25 +55,18 @@ const CourierEdit = () => {
     formProps,
     query: queryResult,
     saveButtonProps,
-  } = useForm<ICourier>({
+  } = useForm<IProduct>({
     meta: {
-      populate: {
-        user: {
-          populate: ["avatar", "gsm", "email"],
-        },
-        store: {
-          populate: ["id"],
-        },
-      },
+      populate: ["category", "images"],
     },
   });
-  const courier = queryResult?.data?.data;
+  const product = queryResult?.data?.data;
 
   const { selectProps: storeSelectProps } = useSelect({
-    resource: "stores",
-    defaultValue: courier?.store?.id,
+    resource: "categories",
+    defaultValue: product?.category?.id,
     queryOptions: {
-      enabled: !!courier,
+      enabled: !!product,
     },
   });
 
@@ -87,7 +81,7 @@ const CourierEdit = () => {
       <Flex>
         {/* @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66 */}
         <ListButton icon={<LeftOutlined />}>
-          {t("couriers.couriers")}
+          {t("products.products")}
         </ListButton>
       </Flex>
       <Divider />
@@ -96,13 +90,13 @@ const CourierEdit = () => {
         <Col span={16}>
           <Form {...formProps} layout="horizontal" disabled={isFormDisabled}>
             <Flex align="center" gap={24}>
-              <CourierFormItemAvatar
+              <ProductFormItemAvatar
                 formProps={formProps}
                 disabled={isFormDisabled}
               />
               <FormItemEditable
                 formItemProps={{
-                  name: ["user", "fullName"],
+                  name: "name",
                   style: {
                     width: "100%",
                     marginBottom: "0",
@@ -117,7 +111,7 @@ const CourierEdit = () => {
                 <Input
                   ref={titleInputRef}
                   size="large"
-                  placeholder={t("couriers.fields.name.placeholder")}
+                  placeholder={t("products.fields.name")}
                 />
               </FormItemEditable>
             </Flex>
@@ -132,41 +126,20 @@ const CourierEdit = () => {
               }}
             >
               <FormItemHorizontal
-                isInput={false}
+                name="description"
                 // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-                icon={<RightCircleOutlined />}
-                label={t("couriers.fields.status.label")}
-                flexProps={{
-                  style: { padding: "24px 16px 24px 16px" },
-                }}
-              >
-                <CourierStatus
-                  isLoading={queryResult?.isLoading}
-                  value={courier?.status}
-                />
-              </FormItemHorizontal>
-              <Divider
-                style={{
-                  margin: "0",
-                }}
-              />
-              <FormItemHorizontal
-                name={["user", "gsm"]}
-                // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-                icon={<PhoneOutlined />}
-                label={t("couriers.fields.gsm.label")}
+                icon={<ShopOutlined />}
+                label={t("products.fields.description")}
                 rules={[
                   {
                     required: true,
                   },
                 ]}
+                style={{
+                  alignSelf: "flex-start",
+                }}
               >
-                <InputMask mask="(999) 999 99 99">
-                  {/* 
-                                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                                    // @ts-ignore */}
-                  {(props: InputProps) => <Input {...props} />}
-                </InputMask>
+                <Input.TextArea />
               </FormItemHorizontal>
               <Divider
                 style={{
@@ -175,13 +148,12 @@ const CourierEdit = () => {
               />
               <FormItemHorizontal
                 // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-                icon={<MailOutlined />}
-                label={t("couriers.fields.email.label")}
-                name={["user", "email"]}
+                icon={<ShopOutlined />}
+                label={`${t("products.fields.price")} ₽`}
+                name="price"
                 rules={[
                   {
                     required: true,
-                    type: "email",
                   },
                 ]}
               >
@@ -195,8 +167,8 @@ const CourierEdit = () => {
               <FormItemHorizontal
                 // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                 icon={<ShopOutlined />}
-                label={t("couriers.fields.store.label")}
-                name={["store", "id"]}
+                label={t("products.fields.category")}
+                name={["category", "id"]}
                 rules={[
                   {
                     required: true,
@@ -213,15 +185,24 @@ const CourierEdit = () => {
               <FormItemHorizontal
                 // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                 icon={<ScanOutlined />}
-                label={t("couriers.fields.licensePlate.label")}
-                name="licensePlate"
+                label={t("products.fields.isActive.label")}
+                name="isActive"
                 rules={[
                   {
                     required: true,
                   },
                 ]}
               >
-                <Input />
+                <Select
+                  defaultValue={product?.isActive}
+                  options={[
+                    { value: true, label: t("products.fields.isActive.true") },
+                    {
+                      value: false,
+                      label: t("products.fields.isActive.false"),
+                    },
+                  ]}
+                />
               </FormItemHorizontal>
             </Card>
             <Flex
@@ -236,7 +217,7 @@ const CourierEdit = () => {
                   <DeleteButton
                     type="text"
                     onSuccess={() => {
-                      list("couriers");
+                      list("products");
                     }}
                     style={{
                       marginLeft: "-16px",
@@ -281,4 +262,4 @@ const CourierEdit = () => {
   );
 };
 
-export default CourierEdit;
+export default ProductEdit;
