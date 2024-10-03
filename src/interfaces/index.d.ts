@@ -39,6 +39,8 @@ export interface IUser {
   fullName: string;
   gender: string;
   gsm: string;
+  city: string;
+  birthDate: string;
   createdAt: string;
   isActive: boolean;
   avatar: IFile & { thumbnail?: IFile };

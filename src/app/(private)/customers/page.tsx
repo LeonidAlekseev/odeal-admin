@@ -90,6 +90,8 @@ const CustomerList = () => {
         id: item.id,
         fullName: item.user?.fullName,
         gsm: item.user?.gsm,
+        birthDate: item.user?.birthDate,
+        City: item.user?.city,
         isActive: item.user?.isActive,
         createdAt: item.createdAt,
       };
