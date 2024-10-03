@@ -149,7 +149,7 @@ const ProductEdit = () => {
               <FormItemHorizontal
                 // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                 icon={<ShopOutlined />}
-                label={`${t("products.fields.price")} ₽`}
+                label={t("products.fields.price")}
                 name="price"
                 rules={[
                   {
@@ -157,7 +157,7 @@ const ProductEdit = () => {
                   },
                 ]}
               >
-                <Input />
+                <InputNumber prefix={"₽"} style={{ width: "150px" }} />
               </FormItemHorizontal>
               <Divider
                 style={{
