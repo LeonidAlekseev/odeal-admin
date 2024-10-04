@@ -228,52 +228,6 @@ export const StoreFormFields = ({
             </>
           ))}
       </Flex>
-
-      {/* this is a workaround for registering fields to ant design form*/}
-      {/* otherwise these fields will be null */}
-      <Flex
-        vertical
-        style={{
-          display: "none",
-        }}
-      >
-        <Form.Item
-          name={["address", "coordinate", 0]}
-          style={{
-            display: "none",
-          }}
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <InputNumber
-            style={{
-              width: "100%",
-            }}
-            addonBefore="Lat"
-          />
-        </Form.Item>
-        <Form.Item
-          style={{
-            display: "none",
-          }}
-          name={["address", "coordinate", 1]}
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <InputNumber
-            addonBefore="Lng"
-            style={{
-              width: "100%",
-            }}
-          />
-        </Form.Item>
-      </Flex>
     </Form>
   );
 };
