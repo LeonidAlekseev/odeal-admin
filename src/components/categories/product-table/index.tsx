@@ -42,12 +42,12 @@ export const CategoryProductTable = (props: Props) => {
     >
       <Table.Column
         dataIndex="name"
-        title={t("couriers.couriers")}
+        title={t("products.products")}
         render={(value) => value}
       />
       <Table.Column
         dataIndex="description"
-        title={t("couriers.fields.licensePlate.label")}
+        title={t("products.fields.description")}
         render={(value) => value}
       />
     </Table>
