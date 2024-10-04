@@ -126,9 +126,9 @@
     "importProgress": "{{processed}}/{{total}} импортировано"
   },
   "categories": {
-    "categories": "Категории",
+    "categories": "Линии",
     "titles": {
-      "list": "Категории"
+      "list": "Линии"
     },
     "fields": {
       "id": "ID",
@@ -401,7 +401,7 @@
         "false": "Неактивен"
       },
       "price": "Цена",
-      "category": "Категория",
+      "category": "Линия",
       "images": {
         "label": "Фотографии",
         "description": "Загрузить фото.",
@@ -412,8 +412,8 @@
     "filter": {
       "title": "Фильтр",
       "allCategories": {
-        "label": "Все категории",
-        "placeholder": "Все категории"
+        "label": "Все Линии",
+        "placeholder": "Все Линии"
       },
       "id": {
         "label": "ID",
@@ -428,8 +428,8 @@
         "placeholder": "Поиск по описанию"
       },
       "category": {
-        "label": "Категория",
-        "placeholder": "Поиск по категории"
+        "label": "Линия",
+        "placeholder": "Поиск по Линии"
       },
       "createdAt": {
         "label": "Создано"

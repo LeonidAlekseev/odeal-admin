@@ -128,9 +128,9 @@
     "importProgress": "Importing: {{processed}}/{{total}}"
   },
   "categories": {
-    "categories": "Categories",
+    "categories": "Lines",
     "titles": {
-      "list": "Categories"
+      "list": "Lines"
     },
     "fields": {
       "id": "ID",
@@ -403,7 +403,7 @@
         "false": "Unavailable"
       },
       "price": "Price",
-      "category": "Category",
+      "category": "Line",
       "images": {
         "label": "Images",
         "description": "Upload Image",
@@ -414,8 +414,8 @@
     "filter": {
       "title": "Filters",
       "allCategories": {
-        "label": "All Categories",
-        "placeholder": "All Categories"
+        "label": "All Lines",
+        "placeholder": "All Lines"
       },
       "id": {
         "label": "ID",
@@ -430,8 +430,8 @@
         "placeholder": "Search Description"
       },
       "category": {
-        "label": "Category",
-        "placeholder": "Search Category"
+        "label": "Line",
+        "placeholder": "Search Line"
       },
       "createdAt": {
         "label": "Created At"
