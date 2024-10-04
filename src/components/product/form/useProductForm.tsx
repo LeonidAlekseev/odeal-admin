@@ -20,7 +20,7 @@ export const useProductForm = (props: Props) => {
       setIsFormDisabled(true);
     },
     meta: {
-      populate: ["category", "images"],
+      populate: ["category", "image"],
     },
   });
   const product = form.queryResult?.data?.data;

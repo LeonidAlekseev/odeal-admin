@@ -43,7 +43,7 @@ export const ProductDrawerShow = (props: Props) => {
     resource: "products",
     id: props?.id, // when undefined, id will be read from the URL.
     meta: {
-      populate: ["images"],
+      populate: ["image"],
     },
   });
   const product = queryResult.data?.data;
@@ -84,8 +84,8 @@ export const ProductDrawerShow = (props: Props) => {
             margin: "16px auto",
             borderRadius: "8px",
           }}
-          src={`${MEDIA_API_URL}${product?.images?.[0].url}`}
-          alt={product?.images?.[0].name}
+          src={`${MEDIA_API_URL}${product?.image?.url}`}
+          alt={product?.image?.name}
         />
       </Flex>
       <Flex

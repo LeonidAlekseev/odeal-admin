@@ -32,7 +32,7 @@ export const TableCategoryProductColumn = ({ category }: Props) => {
       },
     ],
     meta: {
-      populate: ["images"],
+      populate: ["image"],
     },
   });
 
@@ -60,7 +60,7 @@ export const TableCategoryProductColumn = ({ category }: Props) => {
     <>
       <Flex gap={8} wrap="wrap">
         {products.map((product) => {
-          const image = product?.images?.[0];
+          const image = product?.image;
           return (
             <Popover
               key={product.id}

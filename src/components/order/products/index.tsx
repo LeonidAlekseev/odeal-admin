@@ -12,7 +12,7 @@ type Props = {
 export const OrderProducts = ({ order }: Props) => {
   const t = useTranslate();
 
-  const products = order?.products || [];
+  const products = order?.product ? [order?.product] : [];
   const uniqueProducts = getUniqueListWithCount({
     list: products,
     field: "id",
@@ -49,7 +49,7 @@ export const OrderProducts = ({ order }: Props) => {
         dataIndex="name"
         key="name"
         render={(_, record) => {
-          const image = record.images?.[0];
+          const image = record.image;
 
           return (
             <Flex

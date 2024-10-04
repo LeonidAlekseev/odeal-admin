@@ -17,7 +17,7 @@ const OrderShow = () => {
   const { query: queryResult } = useShow<IOrder>({
     meta: {
       populate: {
-        products: { populate: ["images"] },
+        product: { populate: ["image"] },
         customer: { populate: { user: { populate: ["fullName"] } } },
         courier: {
           populate: {
@@ -37,7 +37,7 @@ const OrderShow = () => {
     id: record?.id.toString(),
     meta: {
       populate: {
-        products: { populate: ["images"] },
+        product: { populate: ["image"] },
         customer: { populate: { user: { populate: ["fullName"] } } },
         courier: {
           populate: {

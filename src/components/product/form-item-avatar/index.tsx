@@ -22,12 +22,12 @@ export const ProductFormItemAvatar = ({
   const apiUrl = useApiUrl();
   const { styles } = useStyles();
 
-  const image = formProps.initialValues?.images?.[0];
+  const image = formProps.initialValues?.image;
   const previewImageURL = image ? `${MEDIA_API_URL}${image?.url}` : null;
 
   return (
     <Form.Item
-      name={"images"}
+      name={"image"}
       valuePropName="fileList"
       getValueFromEvent={getValueFromEvent}
       className={styles.formItem}

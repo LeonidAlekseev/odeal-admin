@@ -59,11 +59,6 @@ export interface IIdentity {
   avatar: IFile & { thumbnail?: IFile };
 }
 
-export interface IAddress {
-  text: string;
-  coordinate: [number, number];
-}
-
 export interface IFile {
   name: string;
   percent: number;
@@ -94,8 +89,6 @@ export interface IStore {
   createdAt: string;
   gsm: string;
   email: string;
-  address: IAddress;
-  products: IProduct[];
 }
 
 export interface ICourierStatus {
@@ -121,7 +114,7 @@ export interface IOrder {
   publishedAt: string;
   updatedAt: string;
   orderNumber: number;
-  products: IProduct[];
+  product: IProduct;
   amount: number;
   status: IStatus;
   events: IEvent[];
@@ -134,7 +127,7 @@ export interface IProduct {
   name: string;
   isActive: boolean;
   description: string;
-  images: (IFile & { thumbnail?: IFile })[];
+  image: IFile & { thumbnail?: IFile };
   createdAt: string;
   price: number;
   category: {

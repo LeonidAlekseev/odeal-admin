@@ -49,7 +49,7 @@ export const ProductDrawerForm = (props: Props) => {
         props.onMutationSuccess?.();
       },
       meta: {
-        populate: ["category", "images"],
+        populate: ["category", "image"],
       },
     });
 
@@ -68,8 +68,7 @@ export const ProductDrawerForm = (props: Props) => {
     back();
   };
 
-  const images = Form.useWatch("images", formProps.form);
-  const image = images?.[0] || null;
+  const image = Form.useWatch("image", formProps.form);
   const previewImageURL = `${MEDIA_API_URL}${image?.thumbnail.url || image?.url}`;
   const title = props.action === "edit" ? null : t("products.actions.add");
 
@@ -85,7 +84,7 @@ export const ProductDrawerForm = (props: Props) => {
       <Spin spinning={formLoading}>
         <Form {...formProps} layout="vertical">
           <Form.Item
-            name="images"
+            name="image"
             valuePropName="fileList"
             getValueFromEvent={getValueFromEvent}
             style={{
@@ -145,7 +144,7 @@ export const ProductDrawerForm = (props: Props) => {
                     }),
                   }}
                 >
-                  {t("products.fields.images.description")}
+                  {t("products.fields.image.description")}
                 </Button>
               </Flex>
             </Upload.Dragger>

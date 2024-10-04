@@ -15,7 +15,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
   const { token } = theme.useToken();
 
   const uniqueProducts = getUniqueListWithCount({
-    list: order?.products || [],
+    list: order?.product ? [order?.product] : [],
     field: "id",
   });
   const visibleProducts = uniqueProducts.slice(0, visibleProductCount);
@@ -24,7 +24,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
   return (
     <Flex gap={12}>
       {visibleProducts.map((product) => {
-        const image = product.images?.[0];
+        const image = product.image;
         return (
           <Popover
             key={product.id}
@@ -51,7 +51,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
           content={
             <Flex gap={8}>
               {unvisibleProducts.map((product) => {
-                const image = product.images?.[0];
+                const image = product.image;
                 return (
                   <Popover
                     key={product.id}

@@ -38,7 +38,7 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
     syncWithLocation: false,
     meta: {
       populate: {
-        products: { populate: ["images"] },
+        product: { populate: ["image"] },
         customer: { populate: ["id"] },
         courier: { populate: { user: { populate: ["fullName"] } } },
         status: { populate: ["status"] },
@@ -88,8 +88,8 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
         }}
       />
       <Table.Column<IOrder>
-        key="products"
-        dataIndex="products"
+        key="product"
+        dataIndex="product"
         title={t("orders.fields.products")}
         render={(_, record) => {
           return <OrderTableColumnProducts order={record} />;

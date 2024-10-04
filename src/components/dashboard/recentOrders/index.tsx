@@ -104,16 +104,17 @@ export const RecentOrders: React.FC = () => {
         }}
       />
       <Table.Column<IOrder>
-        dataIndex="products"
+        dataIndex="product"
         className={styles.column}
-        render={(products: IOrder["products"]) => {
-          if (!products.length) {
+        render={(product: IOrder["product"]) => {
+          if (!product) {
             return <Typography.Text>-</Typography.Text>;
           }
 
-          const uniqueProducts = getUniqueListWithCount<
-            IOrder["products"][number]
-          >({ list: products, field: "id" });
+          const uniqueProducts = getUniqueListWithCount({
+            list: [product],
+            field: "id",
+          });
 
           return (
             <Space

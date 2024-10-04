@@ -65,7 +65,7 @@ export const ProductListTable = () => {
       ],
     },
     meta: {
-      populate: ["images", "category"],
+      populate: ["image", "category"],
     },
   });
 
@@ -136,15 +136,15 @@ export const ProductListTable = () => {
         )}
       />
       <Table.Column
-        title={t("products.fields.images.label")}
-        dataIndex="images"
-        key="images"
-        render={(images: IProduct["images"]) => {
+        title={t("products.fields.image.label")}
+        dataIndex="image"
+        key="image"
+        render={(image: IProduct["image"]) => {
           return (
             <Avatar
               shape="square"
-              src={`${MEDIA_API_URL}${images?.[0]?.thumbnail?.url || images?.[0]?.url}`}
-              alt={images?.[0].name}
+              src={`${MEDIA_API_URL}${image?.thumbnail?.url || image?.url}`}
+              alt={image?.name}
             />
           );
         }}

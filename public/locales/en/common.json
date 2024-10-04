@@ -226,8 +226,8 @@
         "label": "Rating",
         "placeholder": "Please enter rating"
       },
-      "images": {
-        "label": "Images",
+      "image": {
+        "label": "Image",
         "description": "Add user picture",
         "validation": "must be 480x480 px"
       },
@@ -429,8 +429,8 @@
       },
       "price": "Price",
       "category": "Line",
-      "images": {
-        "label": "Images",
+      "image": {
+        "label": "Image",
         "description": "Upload Image",
         "validation": "must be 1080x1080 px"
       },

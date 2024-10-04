@@ -56,7 +56,7 @@ export const TrendingMenu: React.FC = () => {
                     xl: 120,
                     xxl: 120,
                   }}
-                  src={item.product?.images[0]?.url}
+                  src={item.product?.image?.url}
                 />
                 <div
                   style={{

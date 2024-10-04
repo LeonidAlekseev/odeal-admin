@@ -54,7 +54,7 @@ export const ProductListCard = () => {
       ],
     },
     meta: {
-      populate: ["images", "category"],
+      populate: ["image", "category"],
     },
   });
 
@@ -213,8 +213,8 @@ export const ProductListCard = () => {
                     className={cx(styles.viewButton, "viewButton")}
                   />
                   <img
-                    src={`${MEDIA_API_URL}${item.images[0].url}`}
-                    alt={item.images[0].name}
+                    src={`${MEDIA_API_URL}${item.image?.url}`}
+                    alt={item.image?.name}
                     style={{
                       aspectRatio: 288 / 160,
                       objectFit: "cover",
