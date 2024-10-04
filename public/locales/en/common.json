@@ -106,7 +106,7 @@
     "inTotal": "in total"
   },
   "search": {
-    "placeholder": "Search by Order, Branch, Agent",
+    "placeholder": "Search by Order, Business, Agent",
     "more": "more",
     "nothing": "nothing more"
   },
@@ -207,8 +207,8 @@
         "validation": "must be 480x480 px"
       },
       "store": {
-        "label": "Branch",
-        "placeholder": "Select Branch"
+        "label": "Business",
+        "placeholder": "Select Business"
       },
       "vehicle": {
         "label": "Fee",
@@ -324,7 +324,7 @@
       "orderNumber": "Order Number",
       "orderID": "Order ID",
       "status": "Status",
-      "store": "Branch",
+      "store": "Business",
       "user": "User",
       "products": "Products",
       "createdAt": "CreatedAt",
@@ -351,8 +351,8 @@
         "placeholder": "Order Status"
       },
       "store": {
-        "label": "Branch",
-        "placeholder": "Search Branches"
+        "label": "Business",
+        "placeholder": "Search Businesses"
       },
       "user": {
         "label": "User",
@@ -461,15 +461,15 @@
     }
   },
   "stores": {
-    "stores": "Branches",
+    "stores": "Businesses",
     "titles": {
-      "create": "Create Branch",
-      "edit": "Edit Branch",
-      "list": "Branches",
-      "show": "Show Branch"
+      "create": "Create Business",
+      "edit": "Edit Business",
+      "list": "Businesses",
+      "show": "Show Business"
     },
     "fields": {
-      "id": "Branch ID",
+      "id": "Business ID",
       "title": "Title",
       "isActive": {
         "label": "Status",
@@ -520,12 +520,12 @@
       "outOfStock": "Out Of Stock",
       "edit": "Edit Product"
     },
-    "selectLocation": "Choose Branch location on the map",
-    "storeProducts": "Branch Products",
+    "selectLocation": "Choose Business location on the map",
+    "storeProducts": "Business Products",
     "tagFilterDescription": "Use tags to filter your search",
     "all": "All",
     "productSearch": "Product Search",
-    "addNewStore": "Add New Branch"
+    "addNewStore": "Add New Business"
   },
   "customers": {
     "customers": "Customers"
