@@ -23,7 +23,7 @@ import type { IProduct, ICategory } from "../../../interfaces";
 import { Drawer } from "../../drawer";
 import { UploadOutlined } from "@ant-design/icons";
 import { useStyles } from "./styled";
-import { MEDIA_API_URL } from "@/utils/constants";
+import { AUTH_TOKEN_KEY, MEDIA_API_URL } from "@/utils/constants";
 
 type Props = {
   id?: BaseKey;
@@ -99,11 +99,16 @@ export const ProductDrawerForm = (props: Props) => {
           >
             <Upload.Dragger
               name="file"
-              action={`${apiUrl}/media/upload`}
-              maxCount={1}
+              action={`${apiUrl}/upload`}
+              headers={{
+                AccessControlAllowHeaders:
+                  "Origin, X-Requested-With, Content-Type, Accept",
+                Authorization: `Bearer ${localStorage.getItem(AUTH_TOKEN_KEY)}`,
+              }}
               accept=".png,.jpg,.jpeg"
-              className={styles.uploadDragger}
+              maxCount={1}
               showUploadList={false}
+              className={styles.uploadDragger}
             >
               <Flex
                 vertical

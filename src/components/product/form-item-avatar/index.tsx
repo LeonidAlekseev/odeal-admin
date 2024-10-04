@@ -4,7 +4,7 @@ import { useApiUrl } from "@refinedev/core";
 import type { IProduct } from "../../../interfaces";
 import { useStyles } from "./styled";
 import { CloudUploadOutlined } from "@ant-design/icons";
-import { MEDIA_API_URL } from "@/utils/constants";
+import { AUTH_TOKEN_KEY, MEDIA_API_URL } from "@/utils/constants";
 
 type Props = {
   formProps: UseFormReturnType<IProduct>["formProps"];
@@ -43,9 +43,14 @@ export const ProductFormItemAvatar = ({
     >
       <Upload.Dragger
         name="file"
-        action={`${apiUrl}/media/upload`}
+        action={`${apiUrl}/upload`}
+        headers={{
+          AccessControlAllowHeaders:
+            "Origin, X-Requested-With, Content-Type, Accept",
+          Authorization: `Bearer ${localStorage.getItem(AUTH_TOKEN_KEY)}`,
+        }}
+        accept=".png,.jpg,.jpeg"
         maxCount={1}
-        accept=".png"
         showUploadList={false}
         className={styles.upload}
       >
