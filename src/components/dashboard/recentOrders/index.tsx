@@ -32,7 +32,6 @@ export const RecentOrders: React.FC = () => {
     syncWithLocation: false,
     meta: {
       populate: {
-        customer: { populate: { user: { populate: ["fullName"] } } },
         courier: { populate: { user: { populate: ["fullName"] } } },
       },
     },
@@ -84,13 +83,6 @@ export const RecentOrders: React.FC = () => {
               }}
             >
               <Typography.Text
-                style={{
-                  fontSize: 14,
-                }}
-              >
-                {record?.customer?.user?.fullName}
-              </Typography.Text>
-              <Typography.Text
                 ellipsis
                 style={{
                   fontSize: 12,
@@ -98,6 +90,13 @@ export const RecentOrders: React.FC = () => {
                 type="secondary"
               >
                 {record?.orderNumber}
+              </Typography.Text>
+              <Typography.Text
+                style={{
+                  fontSize: 14,
+                }}
+              >
+                {record?.amount}
               </Typography.Text>
             </Space>
           );

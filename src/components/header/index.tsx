@@ -101,7 +101,7 @@ export const Header: React.FC = () => {
       onSuccess: (data) => {
         const orderOptionGroup = data.data.map((item) =>
           renderItem(
-            `${item.customer.user.fullName} / #${item.orderNumber}`,
+            `#${item.orderNumber} / ${item.amount}`,
             `${MEDIA_API_URL}${item?.product?.image?.url}`,
             `/orders/show/${item.id}`
           )
@@ -120,7 +120,6 @@ export const Header: React.FC = () => {
     meta: {
       populate: {
         product: { populate: ["image"] },
-        customer: { populate: ["user"] },
       },
     },
   });

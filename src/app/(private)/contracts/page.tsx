@@ -40,11 +40,6 @@ const OrderList = () => {
     filters: {
       initial: [
         {
-          field: "customer.user.fullName",
-          operator: "contains",
-          value: "",
-        },
-        {
           field: "courier.user.fullName",
           operator: "contains",
           value: "",
@@ -54,7 +49,6 @@ const OrderList = () => {
     meta: {
       populate: {
         product: { populate: ["image"] },
-        customer: { populate: { user: { populate: ["fullName"] } } },
         courier: {
           populate: {
             user: { populate: ["fullName"] },
@@ -74,7 +68,6 @@ const OrderList = () => {
     filters,
     meta: {
       populate: {
-        customer: { populate: { user: { populate: ["fullName"] } } },
         courier: {
           populate: {
             user: { populate: ["fullName"] },
@@ -94,7 +87,6 @@ const OrderList = () => {
         amount: item.amount,
         branch: item.courier?.store?.title,
         agent: item.courier?.user?.fullName,
-        customer: item.customer?.user?.fullName,
       };
     },
   });
@@ -260,29 +252,6 @@ const OrderList = () => {
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
               <Input placeholder={t("orders.filter.courier.placeholder")} />
-            </FilterDropdown>
-          )}
-        />
-        <Table.Column
-          key="customer.user.fullName"
-          dataIndex={["customer", "user", "fullName"]}
-          title={t("orders.fields.customer")}
-          filterIcon={(filtered) => (
-            // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-            <SearchOutlined
-              style={{
-                color: filtered ? token.colorPrimary : undefined,
-              }}
-            />
-          )}
-          defaultFilteredValue={getDefaultFilter(
-            "customer.user.fullName",
-            filters,
-            "contains"
-          )}
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Input placeholder={t("orders.filter.customer.placeholder")} />
             </FilterDropdown>
           )}
         />

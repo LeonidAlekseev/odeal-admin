@@ -18,7 +18,6 @@ const OrderShow = () => {
     meta: {
       populate: {
         product: { populate: ["image"] },
-        customer: { populate: { user: { populate: ["fullName"] } } },
         courier: {
           populate: {
             user: { populate: ["fullName"] },
@@ -38,7 +37,6 @@ const OrderShow = () => {
     meta: {
       populate: {
         product: { populate: ["image"] },
-        customer: { populate: { user: { populate: ["fullName"] } } },
         courier: {
           populate: {
             user: { populate: ["fullName"] },
