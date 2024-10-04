@@ -63,6 +63,9 @@ const CourierEdit = () => {
         store: {
           populate: ["id"],
         },
+        status: {
+          populate: ["text"],
+        },
       },
     },
   });
@@ -142,7 +145,7 @@ const CourierEdit = () => {
               >
                 <CourierStatus
                   isLoading={queryResult?.isLoading}
-                  value={courier?.status}
+                  value={courier?.status?.text}
                 />
               </FormItemHorizontal>
               <Divider
