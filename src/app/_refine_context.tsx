@@ -19,7 +19,7 @@ import {
   DashboardOutlined,
   UserOutlined,
   UnorderedListOutlined,
-  TagsOutlined,
+  ScanOutlined,
 } from "@ant-design/icons";
 
 import { AgentWhiteIcon } from "@/components/icons";
@@ -83,7 +83,7 @@ export const RefineContext = ({ children }: PropsWithChildren) => {
                 edit: "/lines/edit/:id",
                 meta: {
                   // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-                  icon: <TagsOutlined />,
+                  icon: <ScanOutlined />,
                 },
               },
               {
