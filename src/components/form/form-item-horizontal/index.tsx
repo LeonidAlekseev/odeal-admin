@@ -30,9 +30,9 @@ export const FormItemHorizontal = ({
   const { styles } = useStyles();
   return (
     <Flex
-      align="baseline"
+      align={flexProps?.align || "baseline"}
       style={{
-        padding: "24px 16px 0px 16px",
+        padding: "24px 16px",
       }}
       {...flexProps}
     >
@@ -57,6 +57,7 @@ export const FormItemHorizontal = ({
           className={styles.formItem}
           style={{
             width: "100%",
+            marginBottom: "0",
           }}
         >
           {children}
