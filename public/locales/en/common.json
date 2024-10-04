@@ -106,7 +106,7 @@
     "inTotal": "in total"
   },
   "search": {
-    "placeholder": "Search by Order, Business, Agent",
+    "placeholder": "Search by Contract, Business, Agent",
     "more": "more",
     "nothing": "nothing more"
   },
@@ -265,7 +265,7 @@
       }
     },
     "orders": {
-      "title": "Orders"
+      "title": "Contracts"
     },
     "revenue": {
       "title": "Revenue"
@@ -277,7 +277,7 @@
       "title": "Daily Revenue"
     },
     "dailyOrders": {
-      "title": "Daily Orders"
+      "title": "Daily Contracts"
     },
     "newCustomers": {
       "title": "New Customers"
@@ -293,7 +293,7 @@
       }
     },
     "recentOrders": {
-      "title": "Recent Orders"
+      "title": "Recent Contracts"
     },
     "trendingMenus": {
       "title": "Daily Trending Menus"
@@ -312,17 +312,17 @@
     }
   },
   "orders": {
-    "orders": "Orders",
-    "order": "Order",
+    "orders": "Contracts",
+    "order": "Contract",
     "titles": {
       "deliveryDetails": "Details",
       "products": "Products",
-      "list": "Orders",
-      "show": "Order"
+      "list": "Contracts",
+      "show": "Contract"
     },
     "fields": {
-      "orderNumber": "Order Number",
-      "orderID": "Order ID",
+      "orderNumber": "Contract Number",
+      "orderID": "Contract ID",
       "status": "Status",
       "store": "Business",
       "user": "User",
@@ -330,7 +330,7 @@
       "createdAt": "CreatedAt",
       "amount": "Amount",
       "itemsAmount": "{{amount}} items",
-      "order": "Order",
+      "order": "Contract",
       "customer": "Customer",
       "courier": "Agent",
       "phone": "Phone",
@@ -344,11 +344,11 @@
       "title": "Filters",
       "search": {
         "label": "Search",
-        "placeholder": "Order Number, User, etc."
+        "placeholder": "Contract Number, User, etc."
       },
       "status": {
         "label": "Status",
-        "placeholder": "Order Status"
+        "placeholder": "Contract Status"
       },
       "store": {
         "label": "Business",
@@ -366,8 +366,8 @@
         "label": "Created At"
       },
       "orderNumber": {
-        "label": "Order Number",
-        "placeholder": "Search Order Number"
+        "label": "Contract Number",
+        "placeholder": "Search Contract Number"
       },
       "submit": "Filter"
     },
@@ -455,7 +455,7 @@
     },
     "fields": {
       "user": "User",
-      "orderId": "Order",
+      "orderId": "Contract",
       "review": "Review",
       "rating": "Rating"
     }
