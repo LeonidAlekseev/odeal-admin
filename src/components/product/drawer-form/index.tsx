@@ -85,7 +85,7 @@ export const ProductDrawerForm = (props: Props) => {
         <Form {...formProps} layout="vertical">
           <Form.Item
             name="image"
-            valuePropName="fileList"
+            valuePropName="file"
             getValueFromEvent={getValueFromEvent}
             style={{
               margin: 0,

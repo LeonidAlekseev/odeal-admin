@@ -27,8 +27,8 @@ export const ProductFormItemAvatar = ({
 
   return (
     <Form.Item
-      name={"image"}
-      valuePropName="fileList"
+      name="image"
+      valuePropName="file"
       getValueFromEvent={getValueFromEvent}
       className={styles.formItem}
       style={{

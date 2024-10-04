@@ -27,8 +27,8 @@ export const CourierFormItemAvatar = ({
 
   return (
     <Form.Item
-      name={"avatar"}
-      valuePropName="fileList"
+      name="avatar"
+      valuePropName="file"
       getValueFromEvent={getValueFromEvent}
       className={styles.formItem}
       style={{
