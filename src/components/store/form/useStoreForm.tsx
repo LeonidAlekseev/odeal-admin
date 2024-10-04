@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { type UseFormProps, useForm } from "@refinedev/antd";
-import { useDebounceValue } from "usehooks-ts";
 import type { IStore } from "../../../interfaces";
 
 type Props = {
@@ -23,13 +22,6 @@ export const useStoreForm = (props: Props) => {
   });
   const store = form.queryResult?.data?.data;
 
-  // we are using these debounced values to get lang and lat from the address text
-  // to minimize the number of requests, we are using debounced values
-  const [debouncedAdressValue, setDebouncedAdressValue] = useDebounceValue(
-    form.formProps.form?.getFieldValue(["address", "text"]),
-    500
-  );
-
   const handleSetIsFormDisabled = (value: boolean) => {
     form.formProps.form?.resetFields();
     setIsFormDisabled(value);
@@ -43,6 +35,5 @@ export const useStoreForm = (props: Props) => {
     formLoading: isLoading,
     isFormDisabled,
     setIsFormDisabled: handleSetIsFormDisabled,
-    handleAddressChange: (address: string) => setDebouncedAdressValue(address),
   };
 };

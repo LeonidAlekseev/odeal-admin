@@ -13,7 +13,6 @@ export const StoreForm = (props: Props) => {
     store,
     formProps,
     saveButtonProps,
-    handleAddressChange,
     formLoading,
     isFormDisabled,
     setIsFormDisabled,
@@ -31,7 +30,6 @@ export const StoreForm = (props: Props) => {
             action={props.action}
             isFormDisabled={isFormDisabled}
             setIsFormDisabled={setIsFormDisabled}
-            handleAddressChange={handleAddressChange}
           />
         </Col>
         <Col

@@ -43,7 +43,6 @@ type Props = {
   action: UseFormProps["action"];
   isFormDisabled: boolean;
   setIsFormDisabled: (value: boolean) => void;
-  handleAddressChange: (address: string) => void;
 };
 
 export const StoreFormFields = ({
@@ -52,7 +51,6 @@ export const StoreFormFields = ({
   action,
   isFormDisabled,
   setIsFormDisabled,
-  handleAddressChange,
 }: Props) => {
   const titleInputRef = useRef<InputRef>(null);
 
