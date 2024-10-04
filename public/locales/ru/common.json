@@ -127,6 +127,31 @@
   },
   "categories": {
     "categories": "Линии",
+    "addNewCategory": "Добавить новую Линию",
+    "filter": {
+      "id": {
+        "label": "ID",
+        "placeholder": "Поиск по ID"
+      },
+      "title": {
+        "label": "Название",
+        "placeholder": "Поиск по названию"
+      },
+      "search": {
+        "label": "Поиск",
+        "placeholder": "Название и т.д."
+      },
+      "createdAt": {
+        "label": "Создано"
+      },
+      "isActive": {
+        "label": "Статус",
+        "placeholder": "Выбрать статус",
+        "true": "Открыт",
+        "false": "Закрыт"
+      },
+      "submit": "Фильтр"
+    },
     "titles": {
       "list": "Линии"
     },

@@ -1,65 +1,34 @@
 "use client";
 
-import { useTranslate, type HttpError } from "@refinedev/core";
-import { List, useTable } from "@refinedev/antd";
-import { Table } from "antd";
-import type { ICategory } from "@/interfaces";
-import {
-  PaginationTotal,
-  CategoryStatus,
-  TableCategoryProductColumn,
-} from "@/components";
+import { useTranslate } from "@refinedev/core";
+import { CreateButton, List } from "@refinedev/antd";
+import { Segmented } from "antd";
+import { CategoryListTable } from "@/components";
 
-const CategoryList = () => {
-  const { tableProps } = useTable<ICategory, HttpError>();
-
+const StoreList = () => {
   const t = useTranslate();
 
   return (
-    <List>
-      <Table
-        {...tableProps}
-        rowKey="id"
-        scroll={{
-          x: true,
-        }}
-        pagination={{
-          ...tableProps.pagination,
-          hideOnSinglePage: true,
-          showTotal: (total) => (
-            <PaginationTotal total={total} entityName="categories" />
-          ),
-        }}
-        locale={{
-          emptyText: t("search.nothing"),
-        }}
+    <>
+      <List
+        breadcrumb={false}
+        headerButtons={(props) => [
+          <Segmented
+            key="view"
+            size="large"
+            value={"table"}
+            style={{ marginRight: 24 }}
+            options={[]}
+          />,
+          <CreateButton {...props.createButtonProps} key="create" size="large">
+            {t("categories.addNewCategory")}
+          </CreateButton>,
+        ]}
       >
-        <Table.Column
-          key="title"
-          dataIndex="title"
-          width={224}
-          title={t("categories.fields.title")}
-        />
-        <Table.Column<ICategory>
-          key="id"
-          dataIndex="id"
-          width={576}
-          title={t("categories.fields.products")}
-          render={(_, record) => {
-            return <TableCategoryProductColumn category={record} />;
-          }}
-        />
-        <Table.Column<ICategory>
-          key="isActive"
-          dataIndex="isActive"
-          title={t("categories.fields.isActive.label")}
-          render={(_, record) => {
-            return <CategoryStatus value={record.isActive} />;
-          }}
-        />
-      </Table>
-    </List>
+        <CategoryListTable />
+      </List>
+    </>
   );
 };
 
-export default CategoryList;
+export default StoreList;

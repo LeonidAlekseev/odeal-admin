@@ -129,6 +129,31 @@
   },
   "categories": {
     "categories": "Lines",
+    "addNewCategory": "Add New Line",
+    "filter": {
+      "id": {
+        "label": "ID",
+        "placeholder": "Search ID"
+      },
+      "title": {
+        "label": "Title",
+        "placeholder": "Search Title"
+      },
+      "search": {
+        "label": "Search",
+        "placeholder": "FirstName, lastName, phone, etc."
+      },
+      "createdAt": {
+        "label": "Created At"
+      },
+      "isActive": {
+        "label": "Status",
+        "placeholder": "Select Status",
+        "true": "Open",
+        "false": "Closed"
+      },
+      "submit": "Filter"
+    },
     "titles": {
       "list": "Lines"
     },

@@ -64,8 +64,8 @@ export const TableCategoryProductColumn = ({ category }: Props) => {
           return (
             <Popover
               key={product.id}
-              title={product?.name}
-              content={product?.description.substring(0, 24) + "..."}
+              title={product?.name?.substring(0, 12) + "..."}
+              content={product?.description?.substring(0, 24) + "..."}
             >
               <Avatar
                 shape="square"
