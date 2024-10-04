@@ -99,10 +99,7 @@ const CourierEdit = () => {
         <Col span={16}>
           <Form {...formProps} layout="horizontal" disabled={isFormDisabled}>
             <Flex align="center" gap={24}>
-              <CourierFormItemAvatar
-                formProps={formProps}
-                disabled={isFormDisabled}
-              />
+              <CourierFormItemAvatar formProps={formProps} disabled={true} />
               <FormItemEditable
                 formItemProps={{
                   name: ["user", "fullName"],
