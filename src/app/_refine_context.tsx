@@ -57,9 +57,9 @@ export const RefineContext = ({ children }: PropsWithChildren) => {
               },
               {
                 name: "stores",
-                list: "/businesses",
-                create: "/businesses/new",
-                edit: "/businesses/edit/:id",
+                list: "/departments",
+                create: "/departments/new",
+                edit: "/departments/edit/:id",
                 meta: {
                   // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                   icon: <ShopOutlined />,

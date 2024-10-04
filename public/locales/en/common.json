@@ -106,7 +106,7 @@
     "inTotal": "in total"
   },
   "search": {
-    "placeholder": "Search by Contract, Business, Agent",
+    "placeholder": "Search by Contract, Department, Agent",
     "more": "more",
     "nothing": "nothing more"
   },
@@ -207,8 +207,8 @@
         "validation": "must be 480x480 px"
       },
       "store": {
-        "label": "Business",
-        "placeholder": "Select Business"
+        "label": "Department",
+        "placeholder": "Select Department"
       },
       "vehicle": {
         "label": "Fee",
@@ -324,7 +324,7 @@
       "orderNumber": "Contract Number",
       "orderID": "Contract ID",
       "status": "Status",
-      "store": "Business",
+      "store": "Department",
       "user": "User",
       "products": "Products",
       "createdAt": "CreatedAt",
@@ -351,8 +351,8 @@
         "placeholder": "Contract Status"
       },
       "store": {
-        "label": "Business",
-        "placeholder": "Search Businesses"
+        "label": "Department",
+        "placeholder": "Search Departmentes"
       },
       "user": {
         "label": "User",
@@ -461,15 +461,15 @@
     }
   },
   "stores": {
-    "stores": "Businesses",
+    "stores": "Departmentes",
     "titles": {
-      "create": "Create Business",
-      "edit": "Edit Business",
-      "list": "Businesses",
-      "show": "Show Business"
+      "create": "Create Department",
+      "edit": "Edit Department",
+      "list": "Departmentes",
+      "show": "Show Department"
     },
     "fields": {
-      "id": "Business ID",
+      "id": "Department ID",
       "title": "Title",
       "isActive": {
         "label": "Status",
@@ -520,12 +520,12 @@
       "outOfStock": "Out Of Stock",
       "edit": "Edit Product"
     },
-    "selectLocation": "Choose Business location on the map",
-    "storeProducts": "Business Products",
+    "selectLocation": "Choose Department location on the map",
+    "storeProducts": "Department Products",
     "tagFilterDescription": "Use tags to filter your search",
     "all": "All",
     "productSearch": "Product Search",
-    "addNewStore": "Add New Business"
+    "addNewStore": "Add New Department"
   },
   "customers": {
     "customers": "Customers"
