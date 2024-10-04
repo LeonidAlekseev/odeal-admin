@@ -13,7 +13,6 @@ export const CategoryForm = (props: Props) => {
     category,
     formProps,
     saveButtonProps,
-    handleAddressChange,
     formLoading,
     isFormDisabled,
     setIsFormDisabled,
@@ -31,7 +30,6 @@ export const CategoryForm = (props: Props) => {
             action={props.action}
             isFormDisabled={isFormDisabled}
             setIsFormDisabled={setIsFormDisabled}
-            handleAddressChange={handleAddressChange}
           />
         </Col>
         <Col
