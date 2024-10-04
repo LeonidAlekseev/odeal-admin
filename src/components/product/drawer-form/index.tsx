@@ -100,8 +100,6 @@ export const ProductDrawerForm = (props: Props) => {
               name="file"
               action={`${apiUrl}/upload`}
               headers={{
-                AccessControlAllowHeaders:
-                  "Origin, X-Requested-With, Content-Type, Accept",
                 Authorization: `Bearer ${localStorage.getItem(AUTH_TOKEN_KEY)}`,
               }}
               accept=".png,.jpg,.jpeg"
