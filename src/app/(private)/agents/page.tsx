@@ -5,10 +5,12 @@ import {
   getDefaultFilter,
   useNavigation,
   useGo,
+  useExport,
 } from "@refinedev/core";
 import {
   CreateButton,
   EditButton,
+  ExportButton,
   FilterDropdown,
   List,
   useTable,
@@ -28,7 +30,7 @@ const CourierList = () => {
   const t = useTranslate();
   const { token } = theme.useToken();
 
-  const { tableProps, filters } = useTable<ICourier>({
+  const { tableProps, filters, sorters } = useTable<ICourier>({
     filters: {
       initial: [
         {
@@ -72,31 +74,45 @@ const CourierList = () => {
     },
   });
 
+  const { isLoading, triggerExport } = useExport<ICourier>({
+    sorters,
+    filters,
+    meta: {
+      populate: {
+        user: {
+          populate: ["avatar"],
+        },
+        store: {
+          populate: ["title"],
+        },
+        status: {
+          populate: ["text"],
+        },
+      },
+    },
+    pageSize: 50,
+    maxItemCount: 50, // TODO
+    mapData: (item) => {
+      return {
+        id: item.id,
+        fullName: item.user?.fullName,
+        licensePlate: item.licensePlate,
+        gsm: item.user?.gsm,
+        store: item.store?.title,
+        city: item.user?.city,
+        status: item.status?.text,
+        createdAt: item.createdAt,
+      };
+    },
+  });
+
   return (
     <>
       <List
         breadcrumb={false}
-        headerButtons={(props) => [
-          <CreateButton
-            {...props.createButtonProps}
-            key="create"
-            size="large"
-            onClick={() => {
-              return go({
-                to: `${createUrl("couriers")}`,
-                query: {
-                  to: pathname,
-                },
-                options: {
-                  keepQuery: true,
-                },
-                type: "push",
-              });
-            }}
-          >
-            {t("couriers.actions.add")}
-          </CreateButton>,
-        ]}
+        headerProps={{
+          extra: <ExportButton onClick={triggerExport} loading={isLoading} />,
+        }}
       >
         <Table
           {...tableProps}
