@@ -8,7 +8,7 @@ import type { ICourier } from "../../../interfaces";
 import { useConfigProvider } from "../../../context";
 import { AgentWhiteIcon } from "../../icons";
 
-type Status = ICourier["status"];
+type Status = ICourier["status"]["text"];
 
 interface IVariant {
   icon: ReactNode;
@@ -48,7 +48,7 @@ export const CourierStatus = ({ value, isLoading }: Props) => {
         light: token.colorTextTertiary,
       },
     },
-    "On delivery": {
+    "On The Way": {
       // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
       icon: <AgentWhiteIcon />,
       tagColor: "blue",
@@ -59,7 +59,8 @@ export const CourierStatus = ({ value, isLoading }: Props) => {
     },
   };
 
-  const valueText = value?.text || "Offline";
+  const valueText =
+    value == undefined || variant[value] == undefined ? "Offline" : value;
   const currentVariant = variant[valueText];
   const { tagColor, tagTextColor, icon } = currentVariant;
 

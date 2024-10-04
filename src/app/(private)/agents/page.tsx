@@ -65,6 +65,9 @@ const CourierList = () => {
         store: {
           populate: ["title"],
         },
+        status: {
+          populate: ["text"],
+        },
       },
     },
   });
@@ -262,11 +265,11 @@ const CourierList = () => {
             title={t("couriers.fields.store.label")}
           />
           <Table.Column<ICourier>
-            dataIndex="status"
+            dataIndex={["status", "text"]}
             key="status"
             title={t("couriers.fields.status.label")}
             render={(_, record) => {
-              return <CourierStatus value={record.status} />;
+              return <CourierStatus value={record.status.text} />;
             }}
           />
           <Table.Column

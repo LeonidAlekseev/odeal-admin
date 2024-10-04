@@ -186,7 +186,7 @@
         "label": "Status",
         "Available": "Available",
         "Offline": "Offline",
-        "On delivery": "In process"
+        "On The Way": "On The Way"
       },
       "vehicleType": {
         "label": "Agency Fee Type",

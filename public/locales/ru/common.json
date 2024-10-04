@@ -184,7 +184,7 @@
         "label": "Статус",
         "Available": "Доступен",
         "Offline": "Неактивен",
-        "On delivery": "В работе"
+        "On The Way": "Работает"
       },
       "vehicleType": {
         "label": "Тип вознаграждения",
