@@ -42,7 +42,6 @@ export const ProductForm = (props: Props) => {
           md={12}
           lg={15}
           style={{
-            height: props.action === "create" ? "calc(100vh - 300px)" : "432px",
             marginTop: "72px",
           }}
         >
