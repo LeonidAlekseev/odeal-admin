@@ -74,9 +74,6 @@ export const OrderFormFields = ({
     optionLabel: "name",
     optionValue: "id",
     defaultValue: order?.courier?.id,
-    queryOptions: {
-      enabled: !!order,
-    },
   });
 
   const { selectProps: courierSelectProps } = useSelect({
@@ -84,9 +81,6 @@ export const OrderFormFields = ({
     optionLabel: "user.fullName",
     optionValue: "id",
     defaultValue: order?.courier?.id,
-    queryOptions: {
-      enabled: !!order,
-    },
     meta: {
       populate: ["user"],
     },
@@ -208,20 +202,6 @@ export const OrderFormFields = ({
             placeholder={t("orders.fields.courier")}
             style={{ width: "200px" }}
           />
-        </FormItemHorizontal>
-        <FormItemHorizontal
-          // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-          icon={<FunctionOutlined />}
-          label={t("orders.fields.metadata.label")}
-          name={["product", "metadata"]}
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-          flexProps={{ style: { height: "0px", overflow: "hidden" } }}
-        >
-          <Input type="hidden" />
         </FormItemHorizontal>
       </Card>
       <Flex
