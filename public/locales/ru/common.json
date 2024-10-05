@@ -432,7 +432,14 @@
         "description": "Загрузить фото.",
         "validation": "Разрешение фото: 1080x1080 пикс."
       },
-      "createdAt": "Создано"
+      "createdAt": "Создано",
+      "metadata": {
+        "label": "Метаданные",
+        "key": "Ключ",
+        "formula": "Формула",
+        "value": "Значение",
+        "addMetaField": "Добавить поле"
+      }
     },
     "filter": {
       "title": "Фильтр",

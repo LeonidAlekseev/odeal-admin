@@ -434,7 +434,14 @@
         "description": "Upload Image",
         "validation": "must be 1080x1080 px"
       },
-      "createdAt": "CreatedAt"
+      "createdAt": "CreatedAt",
+      "metadata": {
+        "label": "Metadata",
+        "key": "Key",
+        "formula": "Formula",
+        "value": "Value",
+        "addMetaField": "Add Meta Field"
+      }
     },
     "filter": {
       "title": "Filters",

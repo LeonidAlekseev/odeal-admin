@@ -134,7 +134,7 @@ export interface IProduct {
     id: number;
     title: string;
   };
-  stock: number;
+  metadata: Object;
 }
 
 export interface ICategory {
@@ -182,4 +182,10 @@ export interface ITrendingProducts {
   id: number;
   product: IProduct;
   orderCount: number;
+}
+
+export interface IMetadata {
+  key: string;
+  formula: string;
+  value: string | number;
 }

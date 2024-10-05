@@ -1,7 +1,8 @@
 import { Col, Row, Spin } from "antd";
-import { useProductForm } from "./useProductForm";
+import { useProductForm, useProductMetaForm } from "./useProductForm";
 import { ProductFormFields } from "./fields";
 import type { UseFormProps } from "@refinedev/antd";
+import { MetaProductForm } from "../meta-product";
 
 type Props = {
   action: UseFormProps["action"];
@@ -16,6 +17,10 @@ export const ProductForm = (props: Props) => {
     isFormDisabled,
     setIsFormDisabled,
   } = useProductForm({
+    action: props.action,
+  });
+
+  const metaProps = useProductMetaForm({
     action: props.action,
   });
 
@@ -40,7 +45,16 @@ export const ProductForm = (props: Props) => {
             height: props.action === "create" ? "calc(100vh - 300px)" : "432px",
             marginTop: "72px",
           }}
-        ></Col>
+        >
+          <MetaProductForm
+            product={metaProps.product}
+            formProps={metaProps.formProps}
+            saveButtonProps={metaProps.saveButtonProps}
+            action={props.action}
+            isFormDisabled={metaProps.isFormDisabled}
+            setIsFormDisabled={metaProps.setIsFormDisabled}
+          />
+        </Col>
       </Row>
     </Spin>
   );
