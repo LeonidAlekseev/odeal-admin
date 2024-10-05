@@ -409,6 +409,10 @@
         "total": "Total"
       },
       "mainTotal": "MAIN TOTAL"
+    },
+    "actions": {
+      "add": "Add new contract",
+      "edit": "Edit contract"
     }
   },
   "products": {

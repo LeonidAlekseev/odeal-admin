@@ -33,6 +33,7 @@ export const FormItemHorizontal = ({
       align={flexProps?.align || "center"}
       style={{
         padding: "24px 16px",
+        overflow: "hidden",
       }}
       {...flexProps}
     >
