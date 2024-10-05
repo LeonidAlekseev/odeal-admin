@@ -32,6 +32,11 @@ export interface IStatus {
     | "Offline";
 }
 
+export interface IRole {
+  name: string;
+  type: string;
+}
+
 export interface IUser {
   id: number;
   firstName: string;
@@ -44,19 +49,14 @@ export interface IUser {
   createdAt: string;
   isActive: boolean;
   avatar: IFile & { thumbnail?: IFile };
-}
-
-export interface IIdentity {
-  id: number | string;
   username: string;
   email: string;
   provider: string;
   confirmed: boolean;
   blocked: boolean;
-  role: IRole;
   created_at: string;
   updated_at: string;
-  avatar: IFile & { thumbnail?: IFile };
+  role: IRole;
 }
 
 export interface IFile {

@@ -33,7 +33,7 @@ import debounce from "lodash/debounce";
 
 import { useConfigProvider } from "@/context";
 import { IconMoon, IconSun } from "@/components/icons";
-import type { IOrder, IStore, ICourier, IIdentity } from "@/interfaces";
+import type { IOrder, IStore, ICourier, IUser } from "@/interfaces";
 import { useStyles } from "./styled";
 import { MEDIA_API_URL } from "@/utils/constants";
 
@@ -59,7 +59,7 @@ export const Header: React.FC = () => {
   const { i18n } = useTranslation();
   const locale = useGetLocale();
   const changeLanguage = useSetLocale();
-  const { data: user } = useGetIdentity<IIdentity>();
+  const { data: user } = useGetIdentity<IUser>();
   const screens = useBreakpoint();
   const t = useTranslate();
 
@@ -286,9 +286,9 @@ export const Header: React.FC = () => {
             />
 
             <Space size={screens.md ? 16 : 8} align="center">
-              {/* <Text ellipsis className={styles.userName}>
-                {user?.name}
-              </Text> */}
+              <Text ellipsis className={styles.userName}>
+                {user?.role?.name}
+              </Text>
               <Avatar
                 size="large"
                 src={`${MEDIA_API_URL}${user?.avatar?.url}`}

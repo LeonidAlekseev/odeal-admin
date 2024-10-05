@@ -5,7 +5,7 @@ import { AuthHelper } from "@refinedev/strapi-v4";
 import Cookies from "js-cookie";
 import { axiosInstance } from "@/utils/axios-instance";
 import { AUTH_API_URL, AUTH_TOKEN_KEY } from "@/utils/constants";
-import type { IIdentity } from "@/interfaces";
+import type { IUser } from "@/interfaces";
 
 const strapiAuthHelper = AuthHelper(AUTH_API_URL);
 
@@ -82,16 +82,17 @@ export const authProvider: AuthProvider = {
 
     const { data, status } = await strapiAuthHelper.me(token, {
       meta: {
-        populate: ["avatar"],
+        populate: ["avatar", "role"],
       },
     });
     if (status === 200) {
-      const { id, username, email, avatar } = data as IIdentity;
+      const { id, username, email, avatar, role } = data as unknown as IUser;
       return {
         id,
         username,
         email,
         avatar,
+        role,
       };
     }
 
