@@ -5,15 +5,24 @@ import {
   FilterDropdown,
   getDefaultSortOrder,
   EditButton,
+  CloneButton,
 } from "@refinedev/antd";
-import { Input, InputNumber, Select, Table, Typography, theme } from "antd";
+import {
+  Flex,
+  Input,
+  InputNumber,
+  Select,
+  Table,
+  Typography,
+  theme,
+} from "antd";
 import type { ICategory } from "@/interfaces";
 import {
   CategoryStatus,
   PaginationTotal,
   TableCategoryProductColumn,
 } from "@/components";
-import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
+import { EyeOutlined, CopyOutlined, SearchOutlined } from "@ant-design/icons";
 
 export const CategoryListTable = () => {
   const { token } = theme.useToken();
@@ -147,12 +156,20 @@ export const CategoryListTable = () => {
         key="actions"
         align="center"
         render={(_, record) => (
-          <EditButton
-            // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-            icon={<EyeOutlined />}
-            recordItemId={record.id}
-            hideText
-          />
+          <Flex gap={8} justify="flex-end" align="center">
+            <EditButton
+              // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+              icon={<EyeOutlined />}
+              recordItemId={record.id}
+              hideText
+            />
+            {/* <CloneButton
+              // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+              icon={<CopyOutlined />}
+              recordItemId={record.id}
+              hideText
+            /> */}
+          </Flex>
         )}
       />
     </Table>

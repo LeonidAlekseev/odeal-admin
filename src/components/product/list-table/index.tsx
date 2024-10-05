@@ -8,6 +8,7 @@ import {
   useTranslate,
 } from "@refinedev/core";
 import {
+  CloneButton,
   EditButton,
   FilterDropdown,
   NumberField,
@@ -19,6 +20,7 @@ import type { ICategory, IProduct } from "../../../interfaces";
 import {
   Avatar,
   Button,
+  Flex,
   Input,
   InputNumber,
   Select,
@@ -28,7 +30,7 @@ import {
 } from "antd";
 import { ProductStatus } from "../status";
 import { PaginationTotal } from "../../paginationTotal";
-import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
+import { EyeOutlined, CopyOutlined, SearchOutlined } from "@ant-design/icons";
 import { usePathname } from "next/navigation";
 import { MEDIA_API_URL } from "@/utils/constants";
 
@@ -313,12 +315,20 @@ export const ProductListTable = () => {
         align="center"
         render={(_, record: IProduct) => {
           return (
-            <EditButton
-              // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-              icon={<EyeOutlined />}
-              hideText
-              recordItemId={record.id}
-            />
+            <Flex gap={8} justify="flex-end" align="center">
+              <EditButton
+                // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+                icon={<EyeOutlined />}
+                recordItemId={record.id}
+                hideText
+              />
+              <CloneButton
+                // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+                icon={<CopyOutlined />}
+                recordItemId={record.id}
+                hideText
+              />
+            </Flex>
           );
         }}
       />

@@ -5,11 +5,20 @@ import {
   FilterDropdown,
   getDefaultSortOrder,
   EditButton,
+  CloneButton,
 } from "@refinedev/antd";
-import { Input, InputNumber, Select, Table, Typography, theme } from "antd";
+import {
+  Flex,
+  Input,
+  InputNumber,
+  Select,
+  Table,
+  Typography,
+  theme,
+} from "antd";
 import type { IStore } from "@/interfaces";
 import { PaginationTotal } from "@/components";
-import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
+import { CopyOutlined, EyeOutlined, SearchOutlined } from "@ant-design/icons";
 import { StoreStatus } from "@/components/store";
 
 export const StoreListTable = () => {
@@ -171,12 +180,20 @@ export const StoreListTable = () => {
         key="actions"
         align="center"
         render={(_, record) => (
-          <EditButton
-            // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-            icon={<EyeOutlined />}
-            recordItemId={record.id}
-            hideText
-          />
+          <Flex gap={8} justify="flex-end" align="center">
+            <EditButton
+              // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+              icon={<EyeOutlined />}
+              recordItemId={record.id}
+              hideText
+            />
+            {/* <CloneButton
+              // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+              icon={<CopyOutlined />}
+              recordItemId={record.id}
+              hideText
+            /> */}
+          </Flex>
         )}
       />
     </Table>

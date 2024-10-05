@@ -9,14 +9,23 @@ import {
 } from "@refinedev/core";
 import {
   CreateButton,
+  CloneButton,
   EditButton,
   ExportButton,
   FilterDropdown,
   List,
   useTable,
 } from "@refinedev/antd";
-import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
-import { Table, Avatar, Typography, theme, InputNumber, Input } from "antd";
+import { EyeOutlined, CopyOutlined, SearchOutlined } from "@ant-design/icons";
+import {
+  Table,
+  Avatar,
+  Typography,
+  theme,
+  InputNumber,
+  Input,
+  Flex,
+} from "antd";
 import InputMask from "react-input-mask";
 import type { ICourier } from "@/interfaces";
 import { PaginationTotal, CourierStatus } from "@/components";
@@ -296,12 +305,20 @@ const CourierList = () => {
             align="center"
             render={(value) => {
               return (
-                <EditButton
-                  // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-                  icon={<EyeOutlined />}
-                  hideText
-                  recordItemId={value}
-                />
+                <Flex gap={8} justify="flex-end" align="center">
+                  <EditButton
+                    // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+                    icon={<EyeOutlined />}
+                    recordItemId={value}
+                    hideText
+                  />
+                  {/* <CloneButton
+                    // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+                    icon={<CopyOutlined />}
+                    recordItemId={value}
+                    hideText
+                  /> */}
+                </Flex>
               );
             }}
           />

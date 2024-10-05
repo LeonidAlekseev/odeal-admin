@@ -70,7 +70,6 @@ export const RefineContext = ({ children }: PropsWithChildren) => {
                 list: "/agents",
                 create: "/agents/new",
                 edit: "/agents/edit/:id",
-                show: "/agents/show/:id",
                 meta: {
                   // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                   icon: <AgentWhiteIcon />,
@@ -91,7 +90,7 @@ export const RefineContext = ({ children }: PropsWithChildren) => {
                 list: "/products",
                 create: "/products/new",
                 edit: "/products/edit/:id",
-                show: "/products/show/:id",
+                clone: "/products/clone/:id",
                 meta: {
                   // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                   icon: <UnorderedListOutlined />,
@@ -100,7 +99,7 @@ export const RefineContext = ({ children }: PropsWithChildren) => {
               {
                 name: "orders",
                 list: "/contracts",
-                show: "/contracts/show/:id",
+                edit: "/contracts/edit/:id",
                 meta: {
                   // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                   icon: <ShoppingOutlined />,
