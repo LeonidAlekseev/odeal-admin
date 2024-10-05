@@ -30,7 +30,7 @@ export const FormItemHorizontal = ({
   const { styles } = useStyles();
   return (
     <Flex
-      align={flexProps?.align || "baseline"}
+      align={flexProps?.align || "center"}
       style={{
         padding: "24px 16px",
       }}
