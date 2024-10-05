@@ -153,6 +153,7 @@ export const MetaProductForm = ({
                     rules={[{ required: true }]}
                     style={{ marginBottom: "0" }}
                     className={styles.formItem}
+                    initialValue={"$key"}
                   >
                     <Input placeholder="Ключ" />
                   </Form.Item>
@@ -163,6 +164,7 @@ export const MetaProductForm = ({
                     rules={[{ required: true }]}
                     style={{ marginBottom: "0" }}
                     className={styles.formItem}
+                    initialValue={0}
                   >
                     <Input placeholder="Формула" />
                   </Form.Item>
@@ -170,10 +172,13 @@ export const MetaProductForm = ({
                     rules={[{ required: false }]}
                     style={{ marginBottom: "0" }}
                     className={styles.formItem}
+                    initialValue={"0"}
                     shouldUpdate
                   >
                     <Typography.Text>
-                      {metadata && name !== undefined
+                      {metadata &&
+                      name !== undefined &&
+                      metadata[name] !== undefined
                         ? evaluated[metadata[name].key.replace(/^\$/, "")]
                         : ""}
                     </Typography.Text>

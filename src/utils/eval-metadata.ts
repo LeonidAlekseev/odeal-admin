@@ -21,10 +21,23 @@ function convertFormulas(formulaArray: FormulaItem[]): Formulas {
 
   // Проходим по каждому элементу массива и добавляем его в объект
   for (const item of formulaArray) {
-    formulas[item.key.replace(/^\$/, "")] = item.formula;
+    if (item !== undefined) {
+      formulas[item.key.replace(/^\$/, "")] = item.formula;
+    }
   }
 
   return formulas;
+}
+
+function tryConvertNumeric(formula: Value) {
+  // Преобразуем строковые числа в числа, если возможно
+  let numericFormula;
+  try {
+    numericFormula = eval(formula.toString());
+  } catch {
+    numericFormula = formula;
+  }
+  return numericFormula;
 }
 
 // Функция для получения context из формул
@@ -35,10 +48,11 @@ function evaluateContext(formulas: Formulas): Context {
     const formula = formulas[key];
 
     // Проверяем, является ли формула явно заданной константой
-    if (isNum(formula)) {
-      // Преобразуем строковые числа в числа, если возможно
-      const numericValue = Number(formula);
-      context[key] = isNaN(numericValue) ? formula : numericValue;
+    if (
+      typeof formula === "number" ||
+      (typeof formula === "string" && !formula.includes("$"))
+    ) {
+      context[key] = tryConvertNumeric(formula);
     }
   }
 
@@ -51,8 +65,11 @@ function evaluateFormulas(formulas: Formulas, context: Context): Context {
 
   function recursiveEvaluate(formula: Value): Value {
     // Если формула — это простое число или строка, возвращаем её как есть
-    if (isNum(formula)) {
-      return formula;
+    if (
+      typeof formula === "number" ||
+      (typeof formula === "string" && !formula.includes("$"))
+    ) {
+      return tryConvertNumeric(formula);
     }
 
     if (typeof formula !== "string") {
