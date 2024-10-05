@@ -4,6 +4,17 @@ export type FormulaItem = { key: string; formula: Value };
 export type Formulas = { [key: string]: Value };
 export type Context = { [key: string]: Value };
 
+const isNum = (num: Value) =>
+  typeof num !== "object" &&
+  !Number.isNaN(
+    +String(
+      (String(num) || "").replace(/[^0-9\.\-e]/, "") !== String(num) ||
+        num === ""
+        ? NaN
+        : num
+    )
+  );
+
 // Функция для конвертации массива формул в объект формул
 function convertFormulas(formulaArray: FormulaItem[]): Formulas {
   const formulas: Formulas = {}; // Результирующий объект
@@ -24,7 +35,7 @@ function evaluateContext(formulas: Formulas): Context {
     const formula = formulas[key];
 
     // Проверяем, является ли формула явно заданной константой
-    if (typeof formula === "string" && !formula.includes("$")) {
+    if (isNum(formula)) {
       // Преобразуем строковые числа в числа, если возможно
       const numericValue = Number(formula);
       context[key] = isNaN(numericValue) ? formula : numericValue;
@@ -40,10 +51,7 @@ function evaluateFormulas(formulas: Formulas, context: Context): Context {
 
   function recursiveEvaluate(formula: Value): Value {
     // Если формула — это простое число или строка, возвращаем её как есть
-    if (
-      typeof formula === "number" ||
-      (typeof formula === "string" && !formula.includes("$"))
-    ) {
+    if (isNum(formula)) {
       return formula;
     }
 
