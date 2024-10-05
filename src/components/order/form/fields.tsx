@@ -89,7 +89,7 @@ export const OrderFormFields = ({
   const { selectProps: statusSelectProps } = useSelect<IStatus>({
     resource: "statuses",
     optionLabel: "text",
-    optionValue: "text",
+    optionValue: "id",
   });
 
   return (
@@ -125,14 +125,14 @@ export const OrderFormFields = ({
         }}
       >
         <FormItemHorizontal
-          name={["status", "text"]}
+          name={["status", "id"]}
           initialValue={true}
           // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
           icon={<RightCircleOutlined />}
           label={t("orders.fields.status")}
         >
           {isFormDisabled ? (
-            <OrderStatus status={statusField?.text} />
+            <OrderStatus status={statusField?.id} />
           ) : (
             <Select
               {...statusSelectProps}
@@ -150,7 +150,7 @@ export const OrderFormFields = ({
           // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
           icon={<ScanOutlined />}
           label={t("orders.fields.product")}
-          name={["product", "name"]}
+          name={["product", "id"]}
           rules={[
             {
               required: true,
@@ -190,7 +190,7 @@ export const OrderFormFields = ({
           // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
           icon={<ScanOutlined />}
           label={t("orders.fields.courier")}
-          name={["courier", "user", "fullName"]}
+          name={["courier", "id"]}
           rules={[
             {
               required: true,

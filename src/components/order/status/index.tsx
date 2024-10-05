@@ -11,42 +11,42 @@ import { Tag } from "antd";
 import { AgentWhiteIcon } from "../../icons";
 
 type StatusProps = {
-  status:
-    | "Pending"
-    | "Ready"
-    | "On The Way"
-    | "Delivered"
-    | "Cancelled"
-    | "Offline";
+  status: number;
 };
 
 export const OrderStatus: React.FC<StatusProps> = ({ status }) => {
   const t = useTranslate();
   let color;
   let icon;
+  let text;
 
   switch (status) {
-    case "Pending":
-      color = "orange";
-      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon = <ClockCircleOutlined />;
-      break;
-    case "Ready":
+    case 1:
+      text = "Ready";
       color = "cyan";
       // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
       icon = <BellOutlined />;
       break;
-    case "On The Way":
+    case 2:
+      text = "Pending";
+      color = "orange";
+      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+      icon = <ClockCircleOutlined />;
+      break;
+    case 3:
+      text = "On The Way";
       color = "blue";
       // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
       icon = <AgentWhiteIcon />;
       break;
-    case "Delivered":
+    case 4:
+      text = "Delivered";
       color = "green";
       // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
       icon = <CheckCircleOutlined />;
       break;
-    case "Cancelled":
+    case 5:
+      text = "Cancelled";
       color = "red";
       // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
       icon = <CloseCircleOutlined />;
@@ -55,7 +55,7 @@ export const OrderStatus: React.FC<StatusProps> = ({ status }) => {
 
   return (
     <Tag color={color} icon={icon}>
-      {t(`enum.orderStatuses.${status}`)}
+      {t(`enum.orderStatuses.${text}`)}
     </Tag>
   );
 };

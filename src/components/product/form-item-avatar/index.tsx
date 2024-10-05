@@ -37,7 +37,7 @@ export const ProductFormItemAvatar = ({
       }}
       rules={[
         {
-          required: true,
+          required: false,
         },
       ]}
     >

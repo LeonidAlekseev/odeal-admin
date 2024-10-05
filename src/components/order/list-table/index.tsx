@@ -71,7 +71,7 @@ export const OrderListTable = () => {
           },
         },
         product: { populate: ["name"] },
-        status: { populate: ["text"] },
+        status: { populate: ["id", "text"] },
       },
     },
   });
@@ -326,7 +326,7 @@ export const OrderListTable = () => {
         dataIndex="status"
         title={t("orders.fields.status")}
         render={(status) => {
-          return <OrderStatus status={status.text} />;
+          return <OrderStatus status={status.id} />;
         }}
         sorter
         defaultSortOrder={getDefaultSortOrder("status.text", sorters)}

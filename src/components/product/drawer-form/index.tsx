@@ -92,7 +92,7 @@ export const ProductDrawerForm = (props: Props) => {
             }}
             rules={[
               {
-                required: true,
+                required: false,
               },
             ]}
           >

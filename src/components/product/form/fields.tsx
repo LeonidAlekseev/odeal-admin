@@ -73,9 +73,6 @@ export const ProductFormFields = ({
   const { selectProps: storeSelectProps } = useSelect({
     resource: "categories",
     defaultValue: product?.category?.id,
-    queryOptions: {
-      enabled: !!product,
-    },
   });
 
   return (
@@ -194,20 +191,22 @@ export const ProductFormFields = ({
         >
           <Input.TextArea />
         </FormItemHorizontal>
-        <FormItemHorizontal
-          // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-          icon={<FunctionOutlined />}
-          label={t("products.fields.metadata.label")}
-          name="metadata"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-          flexProps={{ style: { height: "0px", overflow: "hidden" } }}
-        >
-          <Input type="hidden" />
-        </FormItemHorizontal>
+        {action != "create" && (
+          <FormItemHorizontal
+            // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+            icon={<FunctionOutlined />}
+            label={t("products.fields.metadata.label")}
+            name="metadata"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+            flexProps={{ style: { height: "0px", overflow: "hidden" } }}
+          >
+            <Input type="hidden" />
+          </FormItemHorizontal>
+        )}
       </Card>
       <Flex
         align="center"

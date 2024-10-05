@@ -48,7 +48,7 @@ export const OrderTimeline = ({ height = "432px" }: Props) => {
       },
       meta: {
         populate: {
-          status: { populate: ["text"] },
+          status: { populate: ["id", "text"] },
         },
       },
     });
@@ -120,7 +120,7 @@ export const OrderTimeline = ({ height = "432px" }: Props) => {
                     }}
                   >
                     <div style={{ width: "128px" }}>
-                      <OrderStatus status={item.status?.text} />
+                      <OrderStatus status={item.status?.id} />
                     </div>
                     <Typography.Text strong>
                       #{item.orderNumber}

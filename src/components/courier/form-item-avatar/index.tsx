@@ -37,7 +37,7 @@ export const CourierFormItemAvatar = ({
       }}
       rules={[
         {
-          required: true,
+          required: false,
         },
       ]}
     >

@@ -37,7 +37,7 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
         product: { populate: ["image"] },
         customer: { populate: ["id"] },
         courier: { populate: { user: { populate: ["fullName"] } } },
-        status: { populate: ["status"] },
+        status: { populate: ["id", "text"] },
       },
     },
   });
@@ -80,7 +80,7 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
         dataIndex="status"
         title={t("orders.fields.status")}
         render={(status) => {
-          return <OrderStatus status={status.text} />;
+          return <OrderStatus status={status?.id} />;
         }}
       />
       <Table.Column<IOrder>
