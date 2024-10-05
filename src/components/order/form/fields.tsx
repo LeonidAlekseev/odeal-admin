@@ -95,7 +95,7 @@ export const OrderFormFields = ({
   const { selectProps: statusSelectProps } = useSelect<IStatus>({
     resource: "statuses",
     optionLabel: "text",
-    optionValue: "id",
+    optionValue: "text",
   });
 
   return (
