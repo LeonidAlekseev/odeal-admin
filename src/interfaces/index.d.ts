@@ -134,7 +134,7 @@ export interface IProduct {
     id: number;
     title: string;
   };
-  metadata: Object;
+  metadata: IMetadata[];
 }
 
 export interface ICategory {
@@ -188,4 +188,8 @@ export interface IMetadata {
   key: string;
   formula: string;
   value: string | number;
+}
+
+export interface IOrderMetadata {
+  product: { metadata: IMetadata[] };
 }

@@ -67,23 +67,28 @@ export const OrderFormFields = ({
     }
   }, [isFormDisabled]);
 
-  const status = Form.useWatch(["status", "text"], formProps.form);
+  const statusField = Form.useWatch("status", formProps.form);
 
   const { selectProps: productsSelectProps } = useSelect({
-    resource: "products",
-    defaultValue: order?.product?.id,
-    queryOptions: {
-      enabled: !!order,
-    },
-  });
-
-  const { selectProps: courierSelectProps } = useSelect({
     resource: "products",
     optionLabel: "name",
     optionValue: "id",
     defaultValue: order?.courier?.id,
     queryOptions: {
       enabled: !!order,
+    },
+  });
+
+  const { selectProps: courierSelectProps } = useSelect({
+    resource: "couriers",
+    optionLabel: "user.fullName",
+    optionValue: "id",
+    defaultValue: order?.courier?.id,
+    queryOptions: {
+      enabled: !!order,
+    },
+    meta: {
+      populate: ["user"],
     },
   });
 
@@ -133,7 +138,7 @@ export const OrderFormFields = ({
           label={t("orders.fields.status")}
         >
           {isFormDisabled ? (
-            <OrderStatus status={status} />
+            <OrderStatus status={statusField?.text} />
           ) : (
             <Select
               {...statusSelectProps}

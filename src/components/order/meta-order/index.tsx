@@ -30,20 +30,20 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 import { type Context, evaluateMetadata } from "@/utils/eval-metadata";
-import type { IMetadata, IProduct } from "@/interfaces";
+import type { IOrderMetadata, IOrder } from "@/interfaces";
 import { useStyles } from "./styled";
 
 type Props = {
-  product?: IProduct;
-  formProps: UseFormReturnType<IProduct>["formProps"];
-  saveButtonProps: UseFormReturnType<IProduct>["saveButtonProps"];
+  order?: IOrder;
+  formProps: UseFormReturnType<IOrder>["formProps"];
+  saveButtonProps: UseFormReturnType<IOrder>["saveButtonProps"];
   action: UseFormProps["action"];
   isFormDisabled: boolean;
   setIsFormDisabled: (value: boolean) => void;
 };
 
-export const MetaProductForm = ({
-  product,
+export const MetaOrderForm = ({
+  order,
   formProps,
   saveButtonProps,
   action,
@@ -63,16 +63,18 @@ export const MetaProductForm = ({
       value: "0",
     },
   ];
-  const initialValues: { metadata: IMetadata[] } = {
-    metadata: formProps.initialValues?.metadata || initialMetadata,
+  const initialValues: IOrderMetadata = {
+    product: {
+      metadata: formProps.initialValues?.product?.metadata || initialMetadata,
+    },
   };
 
-  const metadata = Form.useWatch("metadata", formProps.form);
+  const product = Form.useWatch("product", formProps.form);
   const [evaluated, setEvaluated] = useState<Context>({});
   useEffect(() => {
-    if (!metadata) return;
-    setEvaluated(evaluateMetadata(metadata));
-  }, [metadata]);
+    if (!product || !product.metadata) return;
+    setEvaluated(evaluateMetadata(product.metadata));
+  }, [product]);
 
   return (
     <Form
@@ -132,7 +134,7 @@ export const MetaProductForm = ({
           </Typography.Text>
           <div style={{ paddingRight: "14px" }}></div>
         </Space>
-        <Form.List name="metadata">
+        <Form.List name={["product", "metadata"]}>
           {(fields, { add, remove }) => (
             <>
               {fields.map(({ key, name, ...restField }) => (
@@ -176,10 +178,13 @@ export const MetaProductForm = ({
                     shouldUpdate
                   >
                     <Typography.Text>
-                      {metadata &&
+                      {product &&
+                      product.metadata &&
                       name !== undefined &&
-                      metadata[name] !== undefined
-                        ? evaluated[metadata[name].key.replace(/^\$/, "")]
+                      product.metadata[name] !== undefined
+                        ? evaluated[
+                            product.metadata[name].key.replace(/^\$/, "")
+                          ]
                         : ""}
                     </Typography.Text>
                   </Form.Item>

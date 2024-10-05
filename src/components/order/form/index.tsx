@@ -2,7 +2,7 @@ import { Col, Row, Spin } from "antd";
 import { useOrderForm, useOrderMetaForm } from "./useOrderForm";
 import { OrderFormFields } from "./fields";
 import type { UseFormProps } from "@refinedev/antd";
-import { MetaProductForm } from "../meta-order";
+import { MetaOrderForm } from "../meta-order";
 
 type Props = {
   action: UseFormProps["action"];
@@ -45,8 +45,8 @@ export const OrderForm = (props: Props) => {
             marginTop: "40px",
           }}
         >
-          <MetaProductForm
-            product={metaProps.order?.product}
+          <MetaOrderForm
+            order={metaProps.order}
             formProps={metaProps.formProps}
             saveButtonProps={metaProps.saveButtonProps}
             action={props.action}
