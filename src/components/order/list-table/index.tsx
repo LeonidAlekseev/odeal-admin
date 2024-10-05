@@ -34,7 +34,6 @@ import { OrderStatus } from "../status";
 import { PaginationTotal } from "../../paginationTotal";
 import { EyeOutlined, CopyOutlined, SearchOutlined } from "@ant-design/icons";
 import { usePathname } from "next/navigation";
-import { MEDIA_API_URL } from "@/utils/constants";
 
 export const OrderListTable = () => {
   const { token } = theme.useToken();
