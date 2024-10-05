@@ -7,7 +7,12 @@ import {
   useNavigation,
   useTranslate,
 } from "@refinedev/core";
-import { EditButton, NumberField, useSimpleList } from "@refinedev/antd";
+import {
+  CloneButton,
+  EditButton,
+  NumberField,
+  useSimpleList,
+} from "@refinedev/antd";
 import type { ICategory, IProduct } from "@/interfaces";
 import {
   Card,
@@ -21,7 +26,7 @@ import {
 } from "antd";
 import { ProductStatus } from "../status";
 import { PaginationTotal } from "../../paginationTotal";
-import { EyeOutlined, TagOutlined } from "@ant-design/icons";
+import { EyeOutlined, CopyOutlined, TagOutlined } from "@ant-design/icons";
 import { useMemo } from "react";
 import { useStyles } from "./styled";
 import { usePathname } from "next/navigation";
@@ -205,13 +210,22 @@ export const ProductListCard = () => {
               }}
               cover={
                 <>
-                  <EditButton
-                    // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-                    icon={<EyeOutlined />}
-                    hideText
-                    recordItemId={item.id}
-                    className={cx(styles.viewButton, "viewButton")}
-                  />
+                  <Flex gap={8} justify="center" align="center">
+                    <EditButton
+                      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+                      icon={<EyeOutlined />}
+                      recordItemId={item.id}
+                      className={cx(styles.viewButton, "viewButton")}
+                      hideText
+                    />
+                    <CloneButton
+                      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+                      icon={<CopyOutlined />}
+                      recordItemId={item.id}
+                      className={cx(styles.cloneButton, "cloneButton")}
+                      hideText
+                    />
+                  </Flex>
                   <img
                     src={`${MEDIA_API_URL}${item.image?.url}`}
                     alt={item.image?.name}
