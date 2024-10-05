@@ -19,7 +19,7 @@ import {
   Segmented,
   Spin,
 } from "antd";
-import type { IProduct, ICategory } from "../../../interfaces";
+import type { IProduct, ICategory } from "@/interfaces";
 import { Drawer } from "../../drawer";
 import { UploadOutlined } from "@ant-design/icons";
 import { useStyles } from "./styled";

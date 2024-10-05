@@ -1,7 +1,7 @@
 "use client";
 
 import { Flex, Grid, List, Space, Steps, Typography, theme } from "antd";
-import type { IEvent, IOrder } from "../../../interfaces";
+import type { IEvent, IOrder } from "@/interfaces";
 import { useTranslate } from "@refinedev/core";
 import dayjs from "dayjs";
 import {
@@ -14,7 +14,7 @@ import {
 } from "@ant-design/icons";
 import { useMemo } from "react";
 import { AgentWhiteIcon } from "../../icons";
-import { useConfigProvider } from "../../../context";
+import { useConfigProvider } from "@/context";
 
 type Props = {
   order: IOrder;

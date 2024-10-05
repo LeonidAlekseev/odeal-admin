@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { type UseFormProps, useForm } from "@refinedev/antd";
-import type { ICategory } from "../../../interfaces";
+import type { ICategory } from "@/interfaces";
 
 type Props = {
   action: UseFormProps["action"];

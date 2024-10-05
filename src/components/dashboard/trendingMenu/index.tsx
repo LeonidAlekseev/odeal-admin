@@ -1,6 +1,6 @@
 import { NumberField, useSimpleList } from "@refinedev/antd";
 import { Typography, Avatar, List as AntdList, Flex } from "antd";
-import type { ITrendingProducts } from "../../../interfaces";
+import type { ITrendingProducts } from "@/interfaces";
 import {
   Rank1Icon,
   Rank2Icon,

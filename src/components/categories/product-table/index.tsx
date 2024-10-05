@@ -1,5 +1,5 @@
 import { useTable } from "@refinedev/antd";
-import type { IProduct, ICategory } from "../../../interfaces";
+import type { IProduct, ICategory } from "@/interfaces";
 import { Table } from "antd";
 import { useTranslate } from "@refinedev/core";
 

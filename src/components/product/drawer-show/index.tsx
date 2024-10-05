@@ -19,7 +19,7 @@ import {
   theme,
 } from "antd";
 import { Drawer } from "../../drawer";
-import type { ICategory, IProduct } from "../../../interfaces";
+import type { ICategory, IProduct } from "@/interfaces";
 import { DeleteButton, NumberField } from "@refinedev/antd";
 import { ProductStatus } from "../status";
 import { EditOutlined } from "@ant-design/icons";

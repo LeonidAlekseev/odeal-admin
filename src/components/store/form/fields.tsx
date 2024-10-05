@@ -26,7 +26,7 @@ import {
 } from "antd";
 import InputMask from "react-input-mask";
 import _debounce from "lodash/debounce";
-import type { IStore } from "../../../interfaces";
+import type { IStore } from "@/interfaces";
 import {
   EditOutlined,
   EnvironmentOutlined,

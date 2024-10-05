@@ -5,7 +5,7 @@ import { useTranslate } from "@refinedev/core";
 import { Area, type AreaConfig } from "@ant-design/plots";
 import dayjs from "dayjs";
 
-import { useConfigProvider } from "../../../context";
+import { useConfigProvider } from "@/context";
 
 type Props = {
   data: AreaConfig["data"];

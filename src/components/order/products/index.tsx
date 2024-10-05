@@ -1,7 +1,7 @@
 import { useTranslate } from "@refinedev/core";
 import { Avatar, Flex, Table, Typography } from "antd";
-import type { IOrder } from "../../../interfaces";
-import { getUniqueListWithCount } from "../../../utils";
+import type { IOrder } from "@/interfaces";
+import { getUniqueListWithCount } from "@/utils";
 import { NumberField } from "@refinedev/antd";
 import { MEDIA_API_URL } from "@/utils/constants";
 

@@ -3,8 +3,8 @@
 import { Tag, Typography, theme } from "antd";
 import { CheckCircleOutlined, StopOutlined } from "@ant-design/icons";
 import { useTranslate } from "@refinedev/core";
-import type { IProduct } from "../../../interfaces";
-import { useConfigProvider } from "../../../context";
+import type { IProduct } from "@/interfaces";
+import { useConfigProvider } from "@/context";
 
 type Props = {
   value: IProduct["isActive"];

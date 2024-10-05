@@ -1,6 +1,6 @@
 import { Flex, Popover, Typography, Badge, Avatar, theme } from "antd";
-import { getUniqueListWithCount } from "../../../utils";
-import type { IOrder } from "../../../interfaces";
+import { getUniqueListWithCount } from "@/utils";
+import type { IOrder } from "@/interfaces";
 import { useTranslate } from "@refinedev/core";
 import { MEDIA_API_URL } from "@/utils/constants";
 

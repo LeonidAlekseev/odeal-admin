@@ -1,5 +1,5 @@
 import { Flex, Avatar, Typography } from "antd";
-import type { ICustomer } from "../../../interfaces";
+import type { ICustomer } from "@/interfaces";
 import { MEDIA_API_URL } from "@/utils/constants";
 
 type Props = {

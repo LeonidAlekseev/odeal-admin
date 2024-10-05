@@ -8,7 +8,7 @@ import {
   useTranslate,
 } from "@refinedev/core";
 import { EditButton, NumberField, useSimpleList } from "@refinedev/antd";
-import type { ICategory, IProduct } from "../../../interfaces";
+import type { ICategory, IProduct } from "@/interfaces";
 import {
   Card,
   Divider,

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { type UseFormProps, useForm } from "@refinedev/antd";
-import type { IProduct } from "../../../interfaces";
+import type { IProduct } from "@/interfaces";
 import { Form } from "antd";
 
 type Props = {

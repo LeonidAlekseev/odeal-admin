@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { type HttpError, useList } from "@refinedev/core";
 import { Flex, Popover, Avatar } from "antd";
-import type { ICategory, IProduct } from "../../../interfaces";
+import type { ICategory, IProduct } from "@/interfaces";
 import { ProductDrawerForm } from "../../product/drawer-form";
 import { ProductDrawerShow } from "../../product/drawer-show";
 import { MEDIA_API_URL } from "@/utils/constants";

@@ -3,8 +3,8 @@
 import { Tag, Typography, theme } from "antd";
 import { EyeOutlined, StopOutlined } from "@ant-design/icons";
 import { useTranslate } from "@refinedev/core";
-import type { ICategory } from "../../../interfaces";
-import { useConfigProvider } from "../../../context";
+import type { ICategory } from "@/interfaces";
+import { useConfigProvider } from "@/context";
 
 type Props = {
   value: ICategory["isActive"];

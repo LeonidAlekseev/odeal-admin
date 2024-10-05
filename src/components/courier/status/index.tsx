@@ -4,8 +4,8 @@ import { ReactNode } from "react";
 import { Flex, Skeleton, Spin, Tag, Typography, theme } from "antd";
 import { CheckCircleOutlined, PoweroffOutlined } from "@ant-design/icons";
 import { useTranslate } from "@refinedev/core";
-import type { ICourier } from "../../../interfaces";
-import { useConfigProvider } from "../../../context";
+import type { ICourier } from "@/interfaces";
+import { useConfigProvider } from "@/context";
 import { AgentWhiteIcon } from "../../icons";
 
 type Status = ICourier["status"]["text"];

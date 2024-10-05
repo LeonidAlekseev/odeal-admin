@@ -16,7 +16,7 @@ import {
   useSelect,
   useTable,
 } from "@refinedev/antd";
-import type { ICategory, IProduct } from "../../../interfaces";
+import type { ICategory, IProduct } from "@/interfaces";
 import {
   Avatar,
   Button,

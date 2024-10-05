@@ -1,9 +1,5 @@
 import { NumberField, useTable } from "@refinedev/antd";
-import type {
-  IOrder,
-  IOrderFilterVariables,
-  ICustomer,
-} from "../../../interfaces";
+import type { IOrder, IOrderFilterVariables, ICustomer } from "@/interfaces";
 import { type HttpError, useNavigation, useTranslate } from "@refinedev/core";
 import { Table, Typography } from "antd";
 import { OrderStatus, OrderTableColumnProducts } from "../../order";
