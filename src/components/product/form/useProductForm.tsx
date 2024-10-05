@@ -45,7 +45,7 @@ export const useProductForm = (props: Props) => {
 
 export const useProductMetaForm = (props: Props) => {
   const [isFormDisabled, setIsFormDisabled] = useState(
-    () => props.action === "edit"
+    () => props.action === "edit" || props.action === "clone"
   );
 
   const form = useForm<IProduct>({
@@ -53,9 +53,6 @@ export const useProductMetaForm = (props: Props) => {
     redirect: false,
     onMutationSuccess: () => {
       setIsFormDisabled(true);
-    },
-    meta: {
-      populate: ["category", "image"],
     },
   });
 

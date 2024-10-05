@@ -6,7 +6,7 @@ import { Flex, Divider } from "antd";
 import { LeftOutlined } from "@ant-design/icons";
 import { ProductForm } from "@/components";
 
-const ProductCreate = () => {
+const ProductClone = () => {
   const t = useTranslate();
 
   return (
@@ -18,9 +18,9 @@ const ProductCreate = () => {
         </ListButton>
       </Flex>
       <Divider />
-      <ProductForm action="create" />
+      <ProductForm action="clone" />
     </>
   );
 };
 
-export default ProductCreate;
+export default ProductClone;

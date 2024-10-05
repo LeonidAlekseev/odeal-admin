@@ -193,19 +193,21 @@ export const MetaProductForm = ({
                   />
                 </Space>
               ))}
-              <Form.Item>
-                <Button
-                  icon={
-                    /* @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66 */
-                    <PlusOutlined />
-                  }
-                  type="dashed"
-                  onClick={() => add()}
-                  block
-                >
-                  {t("products.fields.metadata.addMetaField")}
-                </Button>
-              </Form.Item>
+              {action !== "clone" && (
+                <Form.Item>
+                  <Button
+                    icon={
+                      /* @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66 */
+                      <PlusOutlined />
+                    }
+                    type="dashed"
+                    onClick={() => add()}
+                    block
+                  >
+                    {t("products.fields.metadata.addMetaField")}
+                  </Button>
+                </Form.Item>
+              )}
             </>
           )}
         </Form.List>

@@ -26,13 +26,11 @@ import {
   type InputRef,
   Select,
 } from "antd";
-import InputMask from "react-input-mask";
 import _debounce from "lodash/debounce";
 import type { IProduct } from "@/interfaces";
 import {
   EditOutlined,
-  EnvironmentOutlined,
-  MailOutlined,
+  FunctionOutlined,
   RightCircleOutlined,
   ScanOutlined,
   TagsOutlined,
@@ -196,6 +194,20 @@ export const ProductFormFields = ({
         >
           <Input.TextArea />
         </FormItemHorizontal>
+        <FormItemHorizontal
+          // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+          icon={<FunctionOutlined />}
+          label={t("products.fields.metadata.label")}
+          name="metadata"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+          flexProps={{ style: { height: "0px", overflow: "hidden" } }}
+        >
+          <Input type="hidden" />
+        </FormItemHorizontal>
       </Card>
       <Flex
         align="center"
@@ -204,7 +216,7 @@ export const ProductFormFields = ({
           padding: "16px 16px 0px 16px",
         }}
       >
-        {action === "create" && (
+        {(action === "create" || action === "clone") && (
           <>
             <ListButton icon={false}>{t("actions.cancel")}</ListButton>
             <SaveButton
