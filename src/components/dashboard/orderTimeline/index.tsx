@@ -120,7 +120,7 @@ export const OrderTimeline = ({ height = "432px" }: Props) => {
                     }}
                   >
                     <div style={{ width: "128px" }}>
-                      <OrderStatus status={item.status.text} />
+                      <OrderStatus status={item.status?.text} />
                     </div>
                     <Typography.Text strong>
                       #{item.orderNumber}
