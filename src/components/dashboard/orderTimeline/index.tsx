@@ -25,7 +25,7 @@ type Props = {
   height?: string;
 };
 
-export const OrderTimeline = ({ height = "760px" }: Props) => {
+export const OrderTimeline = ({ height = "432px" }: Props) => {
   const t = useTranslate();
   const { token } = theme.useToken();
   const { edit } = useNavigation();
@@ -41,7 +41,7 @@ export const OrderTimeline = ({ height = "760px" }: Props) => {
       ],
       pagination: {
         current: 1,
-        pageSize: 8,
+        pageSize: 14,
       },
       meta: {
         populate: {
