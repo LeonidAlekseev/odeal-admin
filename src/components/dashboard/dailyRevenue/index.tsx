@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense } from "react";
-import { useTranslate } from "@refinedev/core";
+import { useTranslate, useTranslation } from "@refinedev/core";
 import { Area, type AreaConfig } from "@ant-design/plots";
 import dayjs from "dayjs";
 
@@ -14,6 +14,7 @@ type Props = {
 
 export const DailyRevenue = ({ data, height }: Props) => {
   const t = useTranslate();
+  const i18n = useTranslation();
   const { mode } = useConfigProvider();
 
   const config: AreaConfig = {
@@ -41,7 +42,7 @@ export const DailyRevenue = ({ data, height }: Props) => {
     yAxis: {
       label: {
         formatter: (v) => {
-          return `$${Number(v) / 1000}k`;
+          return `${Number(v) / 1000}`;
         },
       },
     },
@@ -49,7 +50,7 @@ export const DailyRevenue = ({ data, height }: Props) => {
       formatter: (data) => {
         return {
           name: t("dashboard.revenue.title"),
-          value: new Intl.NumberFormat("en-US", {
+          value: new Intl.NumberFormat(i18n.getLocale(), {
             style: "currency",
             currency: "RUB",
           }).format(data.value),

@@ -91,105 +91,105 @@ const DashboardPage: React.FC = () => {
     }
   }, [selecetedDateFilter]);
 
-  // const { data: dailyRevenueData } = useCustom<{
-  //   data: ISalesChart[];
-  //   total: number;
-  //   trend: number;
-  // }>({
-  //   url: `${API_URL}/dailyRevenue`,
-  //   method: "get",
-  //   config: {
-  //     query: dateFilterQuery,
-  //   },
-  // });
+  const { data: dailyRevenueData } = useCustom<{
+    data: ISalesChart[];
+    total: number;
+    trend: number;
+  }>({
+    url: `https://api.finefoods.refine.dev/dailyRevenue`,
+    method: "get",
+    config: {
+      query: dateFilterQuery,
+    },
+  });
 
-  // const { data: dailyOrdersData } = useCustom<{
-  //   data: ISalesChart[];
-  //   total: number;
-  //   trend: number;
-  // }>({
-  //   url: `${API_URL}/dailyOrders`,
-  //   method: "get",
-  //   config: {
-  //     query: dateFilterQuery,
-  //   },
-  // });
+  const { data: dailyOrdersData } = useCustom<{
+    data: ISalesChart[];
+    total: number;
+    trend: number;
+  }>({
+    url: `https://api.finefoods.refine.dev/dailyOrders`,
+    method: "get",
+    config: {
+      query: dateFilterQuery,
+    },
+  });
 
-  // const { data: newCustomersData } = useCustom<{
-  //   data: ISalesChart[];
-  //   total: number;
-  //   trend: number;
-  // }>({
-  //   url: `${API_URL}/newCustomers`,
-  //   method: "get",
-  //   config: {
-  //     query: dateFilterQuery,
-  //   },
-  // });
+  const { data: newCustomersData } = useCustom<{
+    data: ISalesChart[];
+    total: number;
+    trend: number;
+  }>({
+    url: `https://api.finefoods.refine.dev/newCustomers`,
+    method: "get",
+    config: {
+      query: dateFilterQuery,
+    },
+  });
 
-  // const revenue = useMemo(() => {
-  //   const data = dailyRevenueData?.data?.data;
-  //   if (!data)
-  //     return {
-  //       data: [],
-  //       trend: 0,
-  //     };
+  const revenue = useMemo(() => {
+    const data = dailyRevenueData?.data?.data;
+    if (!data)
+      return {
+        data: [],
+        trend: 0,
+      };
 
-  //   const plotData = data.map((revenue) => {
-  //     const date = dayjs(revenue.date);
-  //     return {
-  //       timeUnix: date.unix(),
-  //       timeText: date.format("DD MMM YYYY"),
-  //       value: revenue.value,
-  //       state: "Daily Revenue",
-  //     };
-  //   });
+    const plotData = data.map((revenue) => {
+      const date = dayjs(revenue.date);
+      return {
+        timeUnix: date.unix(),
+        timeText: date.format("DD MMM YYYY"),
+        value: revenue.value,
+        state: "Daily Revenue",
+      };
+    });
 
-  //   return {
-  //     data: plotData,
-  //     trend: dailyRevenueData?.data?.trend || 0,
-  //   };
-  // }, [dailyRevenueData]);
+    return {
+      data: plotData,
+      trend: dailyRevenueData?.data?.trend || 0,
+    };
+  }, [dailyRevenueData]);
 
-  // const orders = useMemo(() => {
-  //   const data = dailyOrdersData?.data?.data;
-  //   if (!data) return { data: [], trend: 0 };
+  const orders = useMemo(() => {
+    const data = dailyOrdersData?.data?.data;
+    if (!data) return { data: [], trend: 0 };
 
-  //   const plotData = data.map((order) => {
-  //     const date = dayjs(order.date);
-  //     return {
-  //       timeUnix: date.unix(),
-  //       timeText: date.format("DD MMM YYYY"),
-  //       value: order.value,
-  //       state: "Daily Orders",
-  //     };
-  //   });
+    const plotData = data.map((order) => {
+      const date = dayjs(order.date);
+      return {
+        timeUnix: date.unix(),
+        timeText: date.format("DD MMM YYYY"),
+        value: order.value,
+        state: "Daily Orders",
+      };
+    });
 
-  //   return {
-  //     data: plotData,
-  //     trend: dailyOrdersData?.data?.trend || 0,
-  //   };
-  // }, [dailyOrdersData]);
+    return {
+      data: plotData,
+      trend: dailyOrdersData?.data?.trend || 0,
+    };
+  }, [dailyOrdersData]);
 
-  // const newCustomers = useMemo(() => {
-  //   const data = newCustomersData?.data?.data;
-  //   if (!data) return { data: [], trend: 0 };
+  const newCustomers = useMemo(() => {
+    const data = newCustomersData?.data?.data;
+    if (!data) return { data: [], trend: 0 };
 
-  //   const plotData = data.map((customer) => {
-  //     const date = dayjs(customer.date);
-  //     return {
-  //       timeUnix: date.unix(),
-  //       timeText: date.format("DD MMM YYYY"),
-  //       value: customer.value,
-  //       state: "New Customers",
-  //     };
-  //   });
+    const plotData = data.map((customer) => {
+      const date = dayjs(customer.date);
+      return {
+        timeUnix: date.unix(),
+        timeText: date.format("DD MMM YYYY"),
+        value: customer.value,
+        state: "New Customers",
+      };
+    });
 
-  //   return {
-  //     data: plotData,
-  //     trend: newCustomersData?.data?.trend || 0,
-  //   };
-  // }, [newCustomersData]);
+    return {
+      data: plotData,
+      trend: newCustomersData?.data?.trend || 0,
+    };
+  }, [newCustomersData]);
 
   return (
     <List
@@ -210,7 +210,7 @@ const DashboardPage: React.FC = () => {
         <Col md={24}>
           <Row gutter={[16, 16]}>
             <Col xl={{ span: 10 }} lg={24} md={24} sm={24} xs={24}>
-              {/* <CardWithPlot
+              <CardWithPlot
                 icon={
                   // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                   <DollarCircleOutlined
@@ -235,10 +235,10 @@ const DashboardPage: React.FC = () => {
                 }
               >
                 <DailyRevenue height={170} data={revenue.data} />
-              </CardWithPlot> */}
+              </CardWithPlot>
             </Col>
             <Col xl={{ span: 7 }} lg={12} md={24} sm={24} xs={24}>
-              {/* <CardWithPlot
+              <CardWithPlot
                 icon={
                   // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                   <ShoppingOutlined
@@ -257,10 +257,10 @@ const DashboardPage: React.FC = () => {
                 title={t("dashboard.dailyOrders.title")}
               >
                 <DailyOrders height={170} data={orders.data} />
-              </CardWithPlot> */}
+              </CardWithPlot>
             </Col>
             <Col xl={{ span: 7 }} lg={12} md={24} sm={24} xs={24}>
-              {/* <CardWithPlot
+              <CardWithPlot
                 icon={
                   // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
                   <UserOutlined
@@ -290,7 +290,7 @@ const DashboardPage: React.FC = () => {
                 }
               >
                 <NewCustomers height={170} data={newCustomers.data} />
-              </CardWithPlot> */}
+              </CardWithPlot>
             </Col>
           </Row>
         </Col>
