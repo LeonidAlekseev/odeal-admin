@@ -7,6 +7,7 @@ import {
 } from "@refinedev/core";
 import {
   CloneButton,
+  DateField,
   EditButton,
   FilterDropdown,
   NumberField,
@@ -262,6 +263,13 @@ export const ProductListTable = () => {
             </Typography.Text>
           );
         }}
+      />
+      <Table.Column
+        sorter
+        key="createdAt"
+        dataIndex="createdAt"
+        title={t("orders.fields.createdAt")}
+        render={(value) => <DateField value={value} format="LLL" />}
       />
       <Table.Column
         sorter

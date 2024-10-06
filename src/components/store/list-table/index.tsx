@@ -6,6 +6,7 @@ import {
   getDefaultSortOrder,
   EditButton,
   CloneButton,
+  DateField,
 } from "@refinedev/antd";
 import {
   Flex,
@@ -150,6 +151,13 @@ export const StoreListTable = () => {
             {value}
           </Typography.Text>
         )}
+      />
+      <Table.Column
+        sorter
+        key="createdAt"
+        dataIndex="createdAt"
+        title={t("orders.fields.createdAt")}
+        render={(value) => <DateField value={value} format="LLL" />}
       />
       <Table.Column
         sorter
