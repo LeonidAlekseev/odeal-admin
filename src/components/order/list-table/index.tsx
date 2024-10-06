@@ -4,8 +4,6 @@ import {
   type HttpError,
   getDefaultFilter,
   useExport,
-  useGo,
-  useNavigation,
   useTranslate,
 } from "@refinedev/core";
 import {
@@ -20,8 +18,6 @@ import {
 } from "@refinedev/antd";
 import type { ICategory, IOrder, IProduct, IStatus } from "@/interfaces";
 import {
-  Avatar,
-  Button,
   Flex,
   Input,
   InputNumber,
@@ -33,35 +29,21 @@ import {
 import { OrderStatus } from "../status";
 import { PaginationTotal } from "../../paginationTotal";
 import { EyeOutlined, CopyOutlined, SearchOutlined } from "@ant-design/icons";
-import { usePathname } from "next/navigation";
 
 export const OrderListTable = () => {
   const { token } = theme.useToken();
   const t = useTranslate();
-  const go = useGo();
-  const pathname = usePathname();
-  const { showUrl } = useNavigation();
 
   const { tableProps, sorters, filters } = useTable<IOrder, HttpError>({
-    filters: {
+    sorters: {
       initial: [
         {
-          field: "courier.user.fullName",
-          operator: "contains",
-          value: "",
-        },
-        {
-          field: "product.id",
-          operator: "in",
-          value: [],
-        },
-        {
-          field: "status",
-          operator: "in",
-          value: [],
+          field: "id",
+          order: "desc",
         },
       ],
     },
+    syncWithLocation: true,
     meta: {
       populate: {
         courier: {
@@ -90,7 +72,6 @@ export const OrderListTable = () => {
     resource: "statuses",
     optionLabel: "text",
     optionValue: "text",
-    defaultValue: getDefaultFilter("status.text", filters, "in"),
   });
 
   const { isLoading, triggerExport } = useExport<IOrder>({
@@ -329,10 +310,10 @@ export const OrderListTable = () => {
       <Table.Column<IOrder>
         sorter
         key="status.text"
-        dataIndex="status"
+        dataIndex={["status", "text"]}
         title={t("orders.fields.status")}
-        render={(status) => {
-          return <OrderStatus status={status.id} />;
+        render={(_, record) => {
+          return <OrderStatus status={record.status?.id} />;
         }}
         defaultSortOrder={getDefaultSortOrder("status.text", sorters)}
         defaultFilteredValue={getDefaultFilter("status.text", filters, "in")}

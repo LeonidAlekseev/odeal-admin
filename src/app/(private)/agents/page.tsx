@@ -1,15 +1,7 @@
 "use client";
 
+import { useTranslate, getDefaultFilter, useExport } from "@refinedev/core";
 import {
-  useTranslate,
-  getDefaultFilter,
-  useNavigation,
-  useGo,
-  useExport,
-} from "@refinedev/core";
-import {
-  CreateButton,
-  CloneButton,
   EditButton,
   ExportButton,
   FilterDropdown,
@@ -17,6 +9,7 @@ import {
   List,
   useTable,
   useSelect,
+  DateField,
 } from "@refinedev/antd";
 import { EyeOutlined, CopyOutlined, SearchOutlined } from "@ant-design/icons";
 import {
@@ -32,36 +25,13 @@ import {
 import InputMask from "react-input-mask";
 import type { ICourier, IStatus } from "@/interfaces";
 import { PaginationTotal, CourierStatus } from "@/components";
-import { usePathname } from "next/navigation";
 import { MEDIA_API_URL } from "@/utils/constants";
 
 const CourierList = () => {
-  const go = useGo();
-  const pathname = usePathname();
-  const { createUrl } = useNavigation();
   const t = useTranslate();
   const { token } = theme.useToken();
 
   const { tableProps, filters, sorters } = useTable<ICourier>({
-    filters: {
-      initial: [
-        {
-          field: "user.fullName",
-          operator: "contains",
-          value: "",
-        },
-        {
-          field: "licensePlate",
-          operator: "contains",
-          value: "",
-        },
-        {
-          field: "user.email",
-          operator: "contains",
-          value: "",
-        },
-      ],
-    },
     sorters: {
       initial: [
         {
@@ -301,6 +271,13 @@ const CourierList = () => {
             key="store.title"
             dataIndex={["store", "title"]}
             title={t("couriers.fields.store.label")}
+          />
+          <Table.Column
+            sorter
+            key="createdAt"
+            dataIndex="createdAt"
+            title={t("couriers.fields.createdAt")}
+            render={(value) => <DateField value={value} format="LLL" />}
           />
           <Table.Column<ICourier>
             sorter

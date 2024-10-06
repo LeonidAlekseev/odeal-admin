@@ -26,20 +26,15 @@ export const StoreListTable = () => {
   const t = useTranslate();
 
   const { tableProps, sorters, filters } = useTable<IStore>({
-    filters: {
+    sorters: {
       initial: [
         {
-          field: "title",
-          operator: "contains",
-          value: "",
-        },
-        {
-          field: "email",
-          operator: "contains",
-          value: "",
+          field: "id",
+          order: "desc",
         },
       ],
     },
+    syncWithLocation: true,
   });
 
   return (

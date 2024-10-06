@@ -3,8 +3,6 @@
 import {
   type HttpError,
   getDefaultFilter,
-  useGo,
-  useNavigation,
   useTranslate,
 } from "@refinedev/core";
 import {
@@ -31,41 +29,22 @@ import {
 import { ProductStatus } from "../status";
 import { PaginationTotal } from "../../paginationTotal";
 import { EyeOutlined, CopyOutlined, SearchOutlined } from "@ant-design/icons";
-import { usePathname } from "next/navigation";
 import { MEDIA_API_URL } from "@/utils/constants";
 
 export const ProductListTable = () => {
   const { token } = theme.useToken();
   const t = useTranslate();
-  const go = useGo();
-  const pathname = usePathname();
-  const { showUrl } = useNavigation();
 
   const { tableProps, sorters, filters } = useTable<IProduct, HttpError>({
-    filters: {
+    sorters: {
       initial: [
         {
-          field: "description",
-          operator: "contains",
-          value: "",
-        },
-        {
-          field: "name",
-          operator: "contains",
-          value: "",
-        },
-        {
-          field: "category.id",
-          operator: "in",
-          value: [],
-        },
-        {
-          field: "isActive",
-          operator: "in",
-          value: [],
+          field: "id",
+          order: "desc",
         },
       ],
     },
+    syncWithLocation: true,
     meta: {
       populate: ["image", "category"],
     },

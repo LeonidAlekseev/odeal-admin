@@ -29,15 +29,15 @@ export const CategoryListTable = () => {
   const t = useTranslate();
 
   const { tableProps, sorters, filters } = useTable<ICategory>({
-    filters: {
+    sorters: {
       initial: [
         {
-          field: "title",
-          operator: "contains",
-          value: "",
+          field: "id",
+          order: "desc",
         },
       ],
     },
+    syncWithLocation: true,
   });
 
   return (
