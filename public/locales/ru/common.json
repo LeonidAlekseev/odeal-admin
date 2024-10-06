@@ -204,7 +204,7 @@
         "label": "Адрес",
         "placeholder": "Введите адрес Агента"
       },
-      "createdAt": "Создан",
+      "createdAt": "Создано",
       "status": {
         "label": "Статус",
         "Available": "Доступен",
