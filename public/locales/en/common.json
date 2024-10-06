@@ -645,5 +645,9 @@
       "addresses": "Addresses",
       "address": "Address"
     }
+  },
+  "stats": {
+    "sales": "Sold",
+    "units": "times"
   }
 }

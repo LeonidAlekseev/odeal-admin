@@ -9,10 +9,12 @@ import {
   Rank5Icon,
 } from "../../icons";
 import type { ReactNode } from "react";
+import { useTranslate } from "@refinedev/core";
 
 export const TrendingMenu: React.FC = () => {
+  const t = useTranslate();
   const { listProps } = useSimpleList<ITrendingProducts>({
-    resource: "trendingProducts",
+    resource: "stats/trending-products",
     pagination: { pageSize: 5, current: 1 },
     syncWithLocation: false,
   });
@@ -103,7 +105,7 @@ export const TrendingMenu: React.FC = () => {
                       style: "currency",
                       notation: "standard",
                     }}
-                    value={item.orderCount * item.product.price}
+                    value={item.sales * item.product.price}
                   />
                 </Flex>
                 <Typography.Text
@@ -112,9 +114,9 @@ export const TrendingMenu: React.FC = () => {
                   }}
                   type="secondary"
                 >
-                  Ordered{" "}
-                  <Typography.Text strong>{item.orderCount} </Typography.Text>
-                  times
+                  {t("stats.sales")}
+                  <Typography.Text strong> {item.sales} </Typography.Text>
+                  {t("stats.units")}
                 </Typography.Text>
               </Flex>
             </Flex>

@@ -181,7 +181,7 @@ export type IVehicle = {
 export interface ITrendingProducts {
   id: number;
   product: IProduct;
-  orderCount: number;
+  sales: number;
 }
 
 export interface IMetadata {

@@ -297,25 +297,6 @@ const DashboardPage: React.FC = () => {
         <Col xl={15} lg={24} md={24} sm={24} xs={24}>
           <CardWithContent
             bodyStyles={{
-              padding: 0,
-            }}
-            icon={
-              // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-              <ShoppingOutlined
-                style={{
-                  fontSize: 14,
-                  color: token.colorPrimary,
-                }}
-              />
-            }
-            title={t("dashboard.recentOrders.title")}
-          >
-            <RecentOrders />
-          </CardWithContent>
-        </Col>
-        <Col xl={9} lg={24} md={24} sm={24} xs={24}>
-          <CardWithContent
-            bodyStyles={{
               width: "100%",
               padding: 0,
             }}
@@ -332,8 +313,9 @@ const DashboardPage: React.FC = () => {
           >
             <OrderTimeline />
           </CardWithContent>
-          {/* <div style={{ paddingBottom: "16px" }}></div> */}
-          {/* <CardWithContent
+        </Col>
+        <Col xl={9} lg={24} md={24} sm={24} xs={24}>
+          <CardWithContent
             icon={
               // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
               <RiseOutlined
@@ -350,10 +332,8 @@ const DashboardPage: React.FC = () => {
             title={t("dashboard.trendingProducts.title")}
           >
             <TrendingMenu />
-          </CardWithContent> */}
+          </CardWithContent>
         </Col>
-        {/* <Col xl={9} lg={9} md={24} sm={24} xs={24}>
-        </Col> */}
       </Row>
     </List>
   );
