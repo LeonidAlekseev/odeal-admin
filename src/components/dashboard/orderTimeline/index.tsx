@@ -25,7 +25,7 @@ type Props = {
   height?: string;
 };
 
-export const OrderTimeline = ({ height = "432px" }: Props) => {
+export const OrderTimeline = ({ height = "760px" }: Props) => {
   const t = useTranslate();
   const { token } = theme.useToken();
   const { show } = useNavigation();
