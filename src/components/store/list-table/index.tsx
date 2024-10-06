@@ -183,7 +183,7 @@ export const StoreListTable = () => {
       />
       <Table.Column<IStore>
         key="actions"
-        dataIndex="actions"
+        dataIndex="id"
         fixed="right"
         title={t("table.actions")}
         align="center"
