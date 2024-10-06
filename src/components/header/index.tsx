@@ -65,10 +65,10 @@ export const Header: React.FC = () => {
 
   const currentLocale = locale();
 
-  const renderTitle = (title: string) => (
+  const renderTitle = (href: string, title: string) => (
     <div className={styles.headerTitle}>
       <Text style={{ fontSize: "16px" }}>{title}</Text>
-      <Link href={`/${title.toLowerCase()}`}>{t("search.more")}</Link>
+      <Link href={href}>{t("search.more")}</Link>
     </div>
   );
 
@@ -110,7 +110,7 @@ export const Header: React.FC = () => {
           setOptions((prevOptions) => [
             ...prevOptions,
             {
-              label: renderTitle(t("orders.orders")),
+              label: renderTitle("/contracts", t("orders.orders")),
               options: orderOptionGroup,
             },
           ]);
@@ -139,7 +139,7 @@ export const Header: React.FC = () => {
           setOptions((prevOptions) => [
             ...prevOptions,
             {
-              label: renderTitle(t("stores.stores")),
+              label: renderTitle("/departments", t("stores.stores")),
               options: storeOptionGroup,
             },
           ]);
@@ -167,7 +167,7 @@ export const Header: React.FC = () => {
           setOptions((prevOptions) => [
             ...prevOptions,
             {
-              label: renderTitle(t("couriers.couriers")),
+              label: renderTitle("/agents", t("couriers.couriers")),
               options: courierOptionGroup,
             },
           ]);
