@@ -58,6 +58,8 @@ export const CategoryListTable = () => {
       }}
     >
       <Table.Column
+        sorter
+        key="id"
         dataIndex="id"
         width={80}
         title={
@@ -98,6 +100,8 @@ export const CategoryListTable = () => {
         )}
       />
       <Table.Column
+        sorter
+        key="title"
         dataIndex="title"
         title={t("categories.fields.title")}
         filterIcon={(filtered) => (
@@ -116,7 +120,7 @@ export const CategoryListTable = () => {
         )}
       />
       <Table.Column<ICategory>
-        key="id"
+        key="category"
         dataIndex="id"
         width={576}
         title={t("categories.fields.products")}
@@ -150,10 +154,10 @@ export const CategoryListTable = () => {
         render={(value) => <CategoryStatus value={value} />}
       />
       <Table.Column<ICategory>
+        key="actions"
+        dataIndex="id"
         fixed="right"
         title={t("table.actions")}
-        dataIndex="actions"
-        key="actions"
         align="center"
         render={(_, record) => (
           <Flex gap={8} justify="flex-end" align="center">
