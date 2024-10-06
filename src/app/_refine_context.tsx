@@ -6,8 +6,9 @@ import routerProvider from "@refinedev/nextjs-router";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { useNotificationProvider } from "@refinedev/antd";
 
-import { authProvider } from "@/providers/auth-provider";
 import { dataProvider } from "@/providers/data-provider";
+import { authProvider } from "@/providers/auth-provider";
+import { accessControlProvider } from "@/providers/access-control-provider/inedx";
 import { useTranslation } from "next-i18next";
 import "@/providers/i18n-provider";
 
@@ -40,6 +41,7 @@ export const RefineContext = ({ children }: PropsWithChildren) => {
             routerProvider={routerProvider}
             dataProvider={dataProvider}
             authProvider={authProvider}
+            accessControlProvider={accessControlProvider}
             i18nProvider={i18nProvider}
             options={{
               syncWithLocation: true,

@@ -1,10 +1,10 @@
 "use client";
 
 import type { AuthProvider } from "@refinedev/core";
-import { AuthHelper } from "@refinedev/strapi-v4";
 import Cookies from "js-cookie";
 import { axiosInstance } from "@/utils/axios-instance";
 import { AUTH_API_URL, AUTH_TOKEN_KEY } from "@/utils/constants";
+import { AuthHelper } from "./helper";
 import type { IUser } from "@/interfaces";
 
 const strapiAuthHelper = AuthHelper(AUTH_API_URL);
@@ -73,7 +73,26 @@ export const authProvider: AuthProvider = {
       redirectTo: "/login",
     };
   },
-  getPermissions: async () => null,
+  getPermissions: async () => {
+    const token = Cookies.get(AUTH_TOKEN_KEY);
+    if (!token) {
+      return null;
+    }
+
+    const { data, status } = await strapiAuthHelper.me(token, {
+      meta: {
+        populate: ["role"],
+      },
+    });
+    if (status === 200) {
+      const { role } = data;
+      return {
+        role,
+      };
+    }
+
+    return null;
+  },
   getIdentity: async () => {
     const token = Cookies.get(AUTH_TOKEN_KEY);
     if (!token) {
@@ -86,7 +105,7 @@ export const authProvider: AuthProvider = {
       },
     });
     if (status === 200) {
-      const { id, username, email, avatar, role } = data as unknown as IUser;
+      const { id, username, email, avatar, role } = data;
       return {
         id,
         username,

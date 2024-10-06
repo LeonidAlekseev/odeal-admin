@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Authenticated } from "@refinedev/core";
+import { Authenticated, CanAccess } from "@refinedev/core";
 import ThemedLayout from "./_layout_theme";
 
 export default function PrivateLayout({ children }: React.PropsWithChildren) {
@@ -7,7 +7,9 @@ export default function PrivateLayout({ children }: React.PropsWithChildren) {
     <>
       <Suspense>
         <Authenticated key="authenticated-routes">
-          <ThemedLayout>{children}</ThemedLayout>
+          <ThemedLayout>
+            <CanAccess fallback={null}>{children}</CanAccess>
+          </ThemedLayout>
         </Authenticated>
       </Suspense>
     </>
