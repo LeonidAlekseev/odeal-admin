@@ -139,6 +139,9 @@ export const OrderListTable = () => {
       }}
     >
       <Table.Column
+        sorter
+        key="id"
+        dataIndex="id"
         title={
           <Typography.Text
             style={{
@@ -148,8 +151,6 @@ export const OrderListTable = () => {
             ID
           </Typography.Text>
         }
-        dataIndex="id"
-        key="id"
         width={80}
         render={(value) => (
           <Typography.Text
@@ -180,6 +181,7 @@ export const OrderListTable = () => {
         )}
       />
       <Table.Column
+        sorter
         key="orderNumber"
         dataIndex="orderNumber"
         title={t("orders.fields.order")}
@@ -212,9 +214,10 @@ export const OrderListTable = () => {
         )}
       />
       <Table.Column<IOrder>
-        title={t("orders.fields.products")}
-        dataIndex={["product", "name"]}
+        sorter
         key="product.id"
+        dataIndex={["product", "name"]}
+        title={t("orders.fields.products")}
         width={128}
         defaultFilteredValue={getDefaultFilter("product.id", filters, "in")}
         filterDropdown={(props) => {
@@ -250,12 +253,12 @@ export const OrderListTable = () => {
         }}
       />
       <Table.Column
-        align="right"
+        sorter
         key="amount"
         dataIndex="amount"
+        align="right"
         title={t("orders.fields.amount")}
         defaultSortOrder={getDefaultSortOrder("amount", sorters)}
-        sorter
         render={(value) => {
           return (
             <NumberField
@@ -269,6 +272,7 @@ export const OrderListTable = () => {
         }}
       />
       <Table.Column
+        sorter
         key="courier.store.title"
         dataIndex={["courier", "store", "title"]}
         title={t("orders.fields.store")}
@@ -292,6 +296,7 @@ export const OrderListTable = () => {
         )}
       />
       <Table.Column
+        sorter
         key="courier.user.fullName"
         dataIndex={["courier", "user", "fullName"]}
         title={t("orders.fields.courier")}
@@ -315,20 +320,20 @@ export const OrderListTable = () => {
         )}
       />
       <Table.Column
+        sorter
         key="createdAt"
         dataIndex="createdAt"
         title={t("orders.fields.createdAt")}
         render={(value) => <DateField value={value} format="LLL" />}
-        sorter
       />
       <Table.Column<IOrder>
+        sorter
         key="status.text"
         dataIndex="status"
         title={t("orders.fields.status")}
         render={(status) => {
           return <OrderStatus status={status.id} />;
         }}
-        sorter
         defaultSortOrder={getDefaultSortOrder("status.text", sorters)}
         defaultFilteredValue={getDefaultFilter("status.text", filters, "in")}
         filterDropdown={(props) => (
@@ -344,8 +349,9 @@ export const OrderListTable = () => {
         )}
       />
       <Table.Column
-        title={t("table.actions")}
         key="actions"
+        dataIndex="id"
+        title={t("table.actions")}
         fixed="right"
         align="center"
         render={(_, record: IOrder) => {
