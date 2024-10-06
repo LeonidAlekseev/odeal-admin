@@ -97,6 +97,9 @@ export const ProductListTable = () => {
       }}
     >
       <Table.Column
+        sorter
+        key="id"
+        dataIndex="id"
         title={
           <Typography.Text
             style={{
@@ -106,8 +109,6 @@ export const ProductListTable = () => {
             ID
           </Typography.Text>
         }
-        dataIndex="id"
-        key="id"
         width={80}
         render={(value) => (
           <Typography.Text
@@ -138,9 +139,9 @@ export const ProductListTable = () => {
         )}
       />
       <Table.Column
-        title={t("products.fields.image.label")}
-        dataIndex="image"
         key="image"
+        dataIndex="image"
+        title={t("products.fields.image.label")}
         render={(image: IProduct["image"]) => {
           return (
             <Avatar
@@ -152,9 +153,10 @@ export const ProductListTable = () => {
         }}
       />
       <Table.Column
-        title={t("products.fields.name")}
-        dataIndex="name"
+        sorter
         key="name"
+        dataIndex="name"
+        title={t("products.fields.name")}
         filterIcon={(filtered) => (
           // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
           <SearchOutlined
@@ -182,9 +184,10 @@ export const ProductListTable = () => {
         }}
       />
       <Table.Column
-        title={t("products.fields.description")}
-        dataIndex="description"
+        sorter
         key="description"
+        dataIndex="description"
+        title={t("products.fields.description")}
         width={432}
         filterIcon={(filtered) => (
           // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
@@ -219,11 +222,11 @@ export const ProductListTable = () => {
         }}
       />
       <Table.Column
-        title={t("products.fields.price")}
-        dataIndex="price"
-        key="price"
-        align="right"
         sorter
+        key="price"
+        dataIndex="price"
+        title={t("products.fields.price")}
+        align="right"
         defaultSortOrder={getDefaultSortOrder("price", sorters)}
         render={(price: number) => {
           return (
@@ -243,9 +246,10 @@ export const ProductListTable = () => {
         }}
       />
       <Table.Column<IProduct>
-        title={t("products.fields.category")}
-        dataIndex={["category", "title"]}
+        sorter
         key="category.id"
+        dataIndex={["category", "title"]}
+        title={t("products.fields.category")}
         width={128}
         defaultFilteredValue={getDefaultFilter("category.id", filters, "in")}
         filterDropdown={(props) => {
@@ -281,10 +285,10 @@ export const ProductListTable = () => {
         }}
       />
       <Table.Column
-        title={t("products.fields.isActive.label")}
-        dataIndex="isActive"
-        key="isActive"
         sorter
+        key="isActive"
+        dataIndex="isActive"
+        title={t("products.fields.isActive.label")}
         defaultSortOrder={getDefaultSortOrder("isActive", sorters)}
         defaultFilteredValue={getDefaultFilter("isActive", filters, "in")}
         filterDropdown={(props) => (
