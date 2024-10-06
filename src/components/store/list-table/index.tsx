@@ -158,6 +158,7 @@ export const StoreListTable = () => {
       />
       <Table.Column
         sorter
+        key="isActive"
         dataIndex="isActive"
         title={t("stores.fields.isActive.label")}
         defaultSortOrder={getDefaultSortOrder("isActive", sorters)}
