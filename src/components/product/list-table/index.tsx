@@ -313,8 +313,9 @@ export const ProductListTable = () => {
         }}
       />
       <Table.Column
-        title={t("table.actions")}
         key="actions"
+        dataIndex="id"
+        title={t("table.actions")}
         fixed="right"
         align="center"
         render={(_, record: IProduct) => {
