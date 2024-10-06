@@ -294,7 +294,7 @@ const CourierList = () => {
             key="status"
             title={t("couriers.fields.status.label")}
             render={(_, record) => {
-              return <CourierStatus value={record.status.text} />;
+              return <CourierStatus value={record.status?.text} />;
             }}
           />
           <Table.Column
