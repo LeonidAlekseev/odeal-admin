@@ -319,10 +319,17 @@
       "title": "Последние Договоры"
     },
     "trendingMenus": {
-      "title": "Популярные меню"
+      "title": "Лучшие меню"
     },
     "trendingProducts": {
-      "title": "Популярные продукты"
+      "title": "Лучшие продукты"
+    },
+    "trendingCouriers": {
+      "title": "Лучшие агенты"
+    },
+    "stats": {
+      "sales": "Продано",
+      "units": "шт."
     }
   },
   "enum": {
@@ -644,9 +651,5 @@
       "addresses": "Адреса",
       "address": "Адрес"
     }
-  },
-  "stats": {
-    "sales": "Продано",
-    "units": "шт."
   }
 }

@@ -10,6 +10,7 @@ import {
   OrderTimeline,
   RecentOrders,
   TrendingMenu,
+  TrendingAgents,
   CardWithContent,
   TrendUpIcon,
   TrendDownIcon,
@@ -294,7 +295,7 @@ const DashboardPage: React.FC = () => {
             </Col>
           </Row>
         </Col>
-        <Col xl={15} lg={24} md={24} sm={24} xs={24}>
+        <Col xl={8} lg={24} md={24} sm={24} xs={24}>
           <CardWithContent
             bodyStyles={{
               width: "100%",
@@ -314,7 +315,7 @@ const DashboardPage: React.FC = () => {
             <OrderTimeline />
           </CardWithContent>
         </Col>
-        <Col xl={9} lg={24} md={24} sm={24} xs={24}>
+        <Col xl={8} lg={24} md={24} sm={24} xs={24}>
           <CardWithContent
             icon={
               // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
@@ -332,6 +333,26 @@ const DashboardPage: React.FC = () => {
             title={t("dashboard.trendingProducts.title")}
           >
             <TrendingMenu />
+          </CardWithContent>
+        </Col>
+        <Col xl={8} lg={24} md={24} sm={24} xs={24}>
+          <CardWithContent
+            icon={
+              // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+              <RiseOutlined
+                style={{
+                  fontSize: 14,
+                  color: token.colorPrimary,
+                }}
+              />
+            }
+            bodyStyles={{
+              width: "100%",
+              padding: 0,
+            }}
+            title={t("dashboard.trendingCouriers.title")}
+          >
+            <TrendingAgents />
           </CardWithContent>
         </Col>
       </Row>

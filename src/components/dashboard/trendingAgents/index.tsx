@@ -1,6 +1,6 @@
 import { NumberField, useSimpleList } from "@refinedev/antd";
 import { Typography, Avatar, List as AntdList, Flex } from "antd";
-import type { ITrendingProducts } from "@/interfaces";
+import type { ITrendingAgents } from "@/interfaces";
 import {
   Rank1Icon,
   Rank2Icon,
@@ -12,10 +12,10 @@ import type { ReactNode } from "react";
 import { useTranslate } from "@refinedev/core";
 import { MEDIA_API_URL } from "@/utils/constants";
 
-export const TrendingMenu: React.FC = () => {
+export const TrendingAgents: React.FC = () => {
   const t = useTranslate();
-  const { listProps } = useSimpleList<ITrendingProducts>({
-    resource: "stats/trending-products-by-value",
+  const { listProps } = useSimpleList<ITrendingAgents>({
+    resource: "stats/best-agents-by-value",
     pagination: { pageSize: 5, current: 1 },
     syncWithLocation: false,
     queryOptions: { retry: 4 },
@@ -60,7 +60,7 @@ export const TrendingMenu: React.FC = () => {
                     xl: 120,
                     xxl: 120,
                   }}
-                  src={`${MEDIA_API_URL}${item.product?.image?.url}`}
+                  src={`${MEDIA_API_URL}${item.agent?.avatar?.url}`}
                 />
                 <div
                   style={{
@@ -88,7 +88,7 @@ export const TrendingMenu: React.FC = () => {
                         rows: 1,
                         tooltip: {
                           placement: "top",
-                          title: item.product?.name,
+                          title: item.agent?.fullName,
                         },
                       }}
                       style={{
@@ -97,7 +97,7 @@ export const TrendingMenu: React.FC = () => {
                       }}
                       strong={index <= 2}
                     >
-                      {item.product?.name}
+                      {item.agent?.fullName}
                     </Typography.Paragraph>
                   </div>
                   <NumberField

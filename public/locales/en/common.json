@@ -321,10 +321,17 @@
       "title": "Recent Contracts"
     },
     "trendingMenus": {
-      "title": "Daily Trending Menus"
+      "title": "Daily Best Menus"
     },
     "trendingProducts": {
-      "title": "Trending Products"
+      "title": "Best Products"
+    },
+    "trendingCouriers": {
+      "title": "Best Agents"
+    },
+    "stats": {
+      "sales": "Sold",
+      "units": "times"
     }
   },
   "enum": {
@@ -645,9 +652,5 @@
       "addresses": "Addresses",
       "address": "Address"
     }
-  },
-  "stats": {
-    "sales": "Sold",
-    "units": "times"
   }
 }

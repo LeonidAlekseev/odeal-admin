@@ -182,6 +182,14 @@ export interface ITrendingProducts {
   id: number;
   product: IProduct;
   sales: number;
+  value: number;
+}
+
+export interface ITrendingAgents {
+  id: number;
+  agent: IUser;
+  sales: number;
+  value: number;
 }
 
 export interface IMetadata {
