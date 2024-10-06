@@ -60,6 +60,8 @@ export const StoreListTable = () => {
       }}
     >
       <Table.Column
+        sorter
+        key="id"
         dataIndex="id"
         width={80}
         title={
@@ -100,6 +102,8 @@ export const StoreListTable = () => {
         )}
       />
       <Table.Column
+        sorter
+        key="title"
         dataIndex="title"
         title={t("stores.fields.title")}
         filterIcon={(filtered) => (
@@ -118,6 +122,8 @@ export const StoreListTable = () => {
         )}
       />
       <Table.Column
+        sorter
+        key="email"
         dataIndex="email"
         title={t("stores.fields.email")}
         filterIcon={(filtered) => (
@@ -136,6 +142,7 @@ export const StoreListTable = () => {
         )}
       />
       <Table.Column
+        sorter
         dataIndex="gsm"
         title={t("stores.fields.gsm")}
         render={(value) => (
@@ -149,9 +156,9 @@ export const StoreListTable = () => {
         )}
       />
       <Table.Column
+        sorter
         dataIndex="isActive"
         title={t("stores.fields.isActive.label")}
-        sorter
         defaultSortOrder={getDefaultSortOrder("isActive", sorters)}
         defaultFilteredValue={getDefaultFilter("isActive", filters, "in")}
         filterDropdown={(props) => (
