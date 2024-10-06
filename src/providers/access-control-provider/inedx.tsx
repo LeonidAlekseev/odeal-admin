@@ -7,7 +7,7 @@ export const accessControlProvider: AccessControlProvider = {
     const data = (await authProvider.getPermissions?.()) as IUser;
     const role = data?.role?.type || "public";
 
-    let can = true;
+    let can = ["admin"].includes(role);
     let reason = "Unauthorized";
 
     switch (resource) {
