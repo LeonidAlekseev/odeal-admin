@@ -30,6 +30,15 @@ export const CourierStatus = ({ value, isLoading }: Props) => {
   const { mode } = useConfigProvider();
 
   const variant: { [key: string]: IVariant } = {
+    Online: {
+      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+      icon: <CheckCircleOutlined />,
+      tagColor: "green",
+      tagTextColor: {
+        dark: token.colorSuccess,
+        light: "#3C8618",
+      },
+    },
     Available: {
       // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
       icon: <CheckCircleOutlined />,
