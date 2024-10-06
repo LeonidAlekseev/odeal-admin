@@ -143,6 +143,7 @@ export const StoreListTable = () => {
       />
       <Table.Column
         sorter
+        key="gsm"
         dataIndex="gsm"
         title={t("stores.fields.gsm")}
         render={(value) => (
@@ -181,10 +182,10 @@ export const StoreListTable = () => {
         render={(value) => <StoreStatus value={value} />}
       />
       <Table.Column<IStore>
+        key="actions"
+        dataIndex="actions"
         fixed="right"
         title={t("table.actions")}
-        dataIndex="actions"
-        key="actions"
         align="center"
         render={(_, record) => (
           <Flex gap={8} justify="flex-end" align="center">
