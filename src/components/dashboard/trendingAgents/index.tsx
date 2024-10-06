@@ -9,11 +9,12 @@ import {
   Rank5Icon,
 } from "../../icons";
 import type { ReactNode } from "react";
-import { useTranslate } from "@refinedev/core";
+import { useTranslate, useNavigation } from "@refinedev/core";
 import { MEDIA_API_URL } from "@/utils/constants";
 
 export const TrendingAgents: React.FC = () => {
   const t = useTranslate();
+  const { edit } = useNavigation();
   const { listProps } = useSimpleList<ITrendingAgents>({
     resource: "stats/best-agents-by-value",
     pagination: { pageSize: 5, current: 1 },
@@ -31,8 +32,10 @@ export const TrendingAgents: React.FC = () => {
         return (
           <AntdList.Item
             key={index}
+            onClick={() => edit("couriers", item.agent?.id)}
             style={{
               borderBlockEnd: "none",
+              cursor: "pointer",
             }}
           >
             <Flex

@@ -28,7 +28,7 @@ type Props = {
 export const OrderTimeline = ({ height = "760px" }: Props) => {
   const t = useTranslate();
   const { token } = theme.useToken();
-  const { show } = useNavigation();
+  const { edit } = useNavigation();
 
   const { data, isLoading, hasNextPage, fetchNextPage } =
     useInfiniteList<IOrder>({
@@ -85,7 +85,7 @@ export const OrderTimeline = ({ height = "760px" }: Props) => {
           renderItem={(item) => {
             return (
               <List.Item
-                onClick={() => show("orders", item.id)}
+                onClick={() => edit("orders", item.id)}
                 style={{
                   cursor: "pointer",
                   height: "54px",

@@ -9,11 +9,12 @@ import {
   Rank5Icon,
 } from "../../icons";
 import type { ReactNode } from "react";
-import { useTranslate } from "@refinedev/core";
+import { useTranslate, useNavigation } from "@refinedev/core";
 import { MEDIA_API_URL } from "@/utils/constants";
 
 export const TrendingMenu: React.FC = () => {
   const t = useTranslate();
+  const { edit } = useNavigation();
   const { listProps } = useSimpleList<ITrendingProducts>({
     resource: "stats/trending-products-by-value",
     pagination: { pageSize: 5, current: 1 },
@@ -31,8 +32,10 @@ export const TrendingMenu: React.FC = () => {
         return (
           <AntdList.Item
             key={index}
+            onClick={() => edit("products", item.product?.id)}
             style={{
               borderBlockEnd: "none",
+              cursor: "pointer",
             }}
           >
             <Flex
