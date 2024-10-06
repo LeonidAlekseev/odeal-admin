@@ -13,8 +13,10 @@ import {
   EditButton,
   ExportButton,
   FilterDropdown,
+  getDefaultSortOrder,
   List,
   useTable,
+  useSelect,
 } from "@refinedev/antd";
 import { EyeOutlined, CopyOutlined, SearchOutlined } from "@ant-design/icons";
 import {
@@ -25,9 +27,10 @@ import {
   InputNumber,
   Input,
   Flex,
+  Select,
 } from "antd";
 import InputMask from "react-input-mask";
-import type { ICourier } from "@/interfaces";
+import type { ICourier, IStatus } from "@/interfaces";
 import { PaginationTotal, CourierStatus } from "@/components";
 import { usePathname } from "next/navigation";
 import { MEDIA_API_URL } from "@/utils/constants";
@@ -115,6 +118,12 @@ const CourierList = () => {
     },
   });
 
+  const { selectProps: statusSelectProps } = useSelect<IStatus>({
+    resource: "statuses",
+    optionLabel: "text",
+    optionValue: "text",
+  });
+
   return (
     <>
       <List
@@ -138,6 +147,7 @@ const CourierList = () => {
           }}
         >
           <Table.Column
+            sorter
             key="id"
             dataIndex="id"
             title={
@@ -208,6 +218,7 @@ const CourierList = () => {
             )}
           />
           <Table.Column
+            sorter
             key="licensePlate"
             dataIndex="licensePlate"
             title={() => {
@@ -252,7 +263,8 @@ const CourierList = () => {
             )}
           />
           <Table.Column
-            key="gsm"
+            sorter
+            key="user.gsm"
             dataIndex={["user", "gsm"]}
             title={t("couriers.fields.gsm.label")}
             filterIcon={(filtered) => (
@@ -285,22 +297,35 @@ const CourierList = () => {
             )}
           />
           <Table.Column<ICourier>
+            sorter
+            key="store.title"
             dataIndex={["store", "title"]}
-            key="store"
             title={t("couriers.fields.store.label")}
           />
           <Table.Column<ICourier>
+            sorter
+            key="status.text"
             dataIndex={["status", "text"]}
-            key="status"
             title={t("couriers.fields.status.label")}
+            defaultSortOrder={getDefaultSortOrder("isActive", sorters)}
+            defaultFilteredValue={getDefaultFilter("isActive", filters, "in")}
+            filterDropdown={(props) => (
+              <FilterDropdown {...props}>
+                <Select
+                  {...statusSelectProps}
+                  placeholder={t("orders.fields.status")}
+                  style={{ width: "200px" }}
+                />
+              </FilterDropdown>
+            )}
             render={(_, record) => {
               return <CourierStatus value={record.status?.text} />;
             }}
           />
           <Table.Column
-            title={t("table.actions")}
             key="actions"
             dataIndex="id"
+            title={t("table.actions")}
             fixed="right"
             align="center"
             render={(value) => {
