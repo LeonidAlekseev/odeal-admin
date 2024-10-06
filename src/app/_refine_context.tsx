@@ -1,6 +1,6 @@
 "use client";
 
-import React, { type PropsWithChildren } from "react";
+import React, { useEffect, type PropsWithChildren } from "react";
 import { Refine } from "@refinedev/core";
 import routerProvider from "@refinedev/nextjs-router";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
@@ -11,6 +11,7 @@ import { authProvider } from "@/providers/auth-provider";
 import { accessControlProvider } from "@/providers/access-control-provider/inedx";
 import { useTranslation } from "next-i18next";
 import "@/providers/i18n-provider";
+import { dayjsExtend } from "@/utils/dayjs";
 
 import { ConfigProvider } from "../context";
 
@@ -29,7 +30,10 @@ export const RefineContext = ({ children }: PropsWithChildren) => {
   const { t, i18n } = useTranslation();
   const i18nProvider = {
     translate: (key: string, params: object) => t(key, params),
-    changeLocale: (lang: string) => i18n.changeLanguage(lang),
+    changeLocale: (lang: string) => {
+      i18n.changeLanguage(lang);
+      dayjsExtend.locale(lang);
+    },
     getLocale: () => i18n.language,
   };
 

@@ -25,7 +25,7 @@ import {
 import { useMemo, useState } from "react";
 import { List, NumberField } from "@refinedev/antd";
 import { useApiUrl, useCustom, useTranslate } from "@refinedev/core";
-import dayjs from "dayjs";
+import { dayjsExtend } from "@/utils/dayjs";
 import type { ISalesChart } from "@/interfaces";
 
 type DateFilter = "lastWeek" | "lastMonth";
@@ -71,7 +71,7 @@ const DashboardPage: React.FC = () => {
   }, []);
 
   const dateFilterQuery = useMemo(() => {
-    const now = dayjs();
+    const now = dayjsExtend();
     switch (selecetedDateFilter) {
       case "lastWeek":
         return {
@@ -136,7 +136,7 @@ const DashboardPage: React.FC = () => {
       };
 
     const plotData = data.map((revenue) => {
-      const date = dayjs(revenue.date);
+      const date = dayjsExtend(revenue.date);
       return {
         timeUnix: date.unix(),
         timeText: date.format("DD MMM YYYY"),
@@ -156,7 +156,7 @@ const DashboardPage: React.FC = () => {
     if (!data) return { data: [], trend: 0 };
 
     const plotData = data.map((order) => {
-      const date = dayjs(order.date);
+      const date = dayjsExtend(order.date);
       return {
         timeUnix: date.unix(),
         timeText: date.format("DD MMM YYYY"),
@@ -176,7 +176,7 @@ const DashboardPage: React.FC = () => {
     if (!data) return { data: [], trend: 0 };
 
     const plotData = data.map((customer) => {
-      const date = dayjs(customer.date);
+      const date = dayjsExtend(customer.date);
       return {
         timeUnix: date.unix(),
         timeText: date.format("DD MMM YYYY"),

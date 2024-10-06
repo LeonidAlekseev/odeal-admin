@@ -9,7 +9,7 @@ import {
   CalendarOutlined,
 } from "@ant-design/icons";
 import { List, Typography, Space, theme, Card } from "antd";
-import dayjs from "dayjs";
+import { dayjsExtend } from "@/utils/dayjs";
 import { UserStatus } from "../userStatus";
 import { useTranslate } from "@refinedev/core";
 
@@ -51,7 +51,7 @@ export const CustomerInfoList = ({ customer }: Props) => {
             icon: <CalendarOutlined />,
             value: (
               <Typography.Text>
-                {dayjs(customer?.createdAt).format("MMMM, YYYY HH:mm A")}
+                {dayjsExtend(customer?.createdAt).format("MMMM, YYYY HH:mm A")}
               </Typography.Text>
             ),
           },

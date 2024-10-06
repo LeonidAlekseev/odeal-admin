@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { useTranslate } from "@refinedev/core";
 
 import { Column, type ColumnConfig } from "@ant-design/plots";
-import dayjs from "dayjs";
+import { dayjsExtend } from "@/utils/dayjs";
 import { useConfigProvider } from "@/context";
 
 type Props = {
@@ -48,10 +48,10 @@ export const DailyOrders = ({ data, height }: Props) => {
       label: {
         formatter: (v) => {
           if (data.length > 7) {
-            return dayjs(v).format("MM/DD");
+            return dayjsExtend(v).format("MM/DD");
           }
 
-          return dayjs(v).format("ddd");
+          return dayjsExtend(v).format("ddd");
         },
       },
     },

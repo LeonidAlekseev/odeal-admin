@@ -3,7 +3,7 @@
 import { Flex, Grid, List, Space, Steps, Typography, theme } from "antd";
 import type { IEvent, IOrder } from "@/interfaces";
 import { useTranslate } from "@refinedev/core";
-import dayjs from "dayjs";
+import { dayjsExtend } from "@/utils/dayjs";
 import {
   ClockCircleOutlined,
   HistoryOutlined,
@@ -97,8 +97,10 @@ export const OrderDeliveryDetails = ({ order }: Props) => {
               description={
                 event.createdAt && (
                   <Flex wrap={"wrap"} gap={4}>
-                    <div>{dayjs(event.createdAt).format("DD.MM.YYYY")}</div>
-                    <div>{dayjs(event.createdAt).format("HH:mm:ss")}</div>
+                    <div>
+                      {dayjsExtend(event.createdAt).format("DD.MM.YYYY")}
+                    </div>
+                    <div>{dayjsExtend(event.createdAt).format("HH:mm:ss")}</div>
                   </Flex>
                 )
               }

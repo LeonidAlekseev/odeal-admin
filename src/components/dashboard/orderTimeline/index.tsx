@@ -16,13 +16,10 @@ import {
   Space,
   Spin,
 } from "antd";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
+import { dayjsExtend } from "@/utils/dayjs";
 import InfiniteScroll from "react-infinite-scroll-component";
 import type { IOrder } from "@/interfaces";
 import { OrderStatus } from "../../order/status";
-
-dayjs.extend(relativeTime);
 
 type Props = {
   height?: string;
@@ -101,7 +98,7 @@ export const OrderTimeline = ({ height = "432px" }: Props) => {
                     }}
                     key={"createdAt"}
                   >
-                    {dayjs(item.createdAt).fromNow()}
+                    {dayjsExtend(item.createdAt).fromNow()}
                   </Typography.Text>,
                 ]}
               >

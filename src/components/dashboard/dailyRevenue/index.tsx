@@ -3,7 +3,7 @@
 import { Suspense } from "react";
 import { useTranslate, useTranslation } from "@refinedev/core";
 import { Area, type AreaConfig } from "@ant-design/plots";
-import dayjs from "dayjs";
+import { dayjsExtend } from "@/utils/dayjs";
 
 import { useConfigProvider } from "@/context";
 
@@ -32,10 +32,10 @@ export const DailyRevenue = ({ data, height }: Props) => {
       label: {
         formatter: (v) => {
           if (data.length > 7) {
-            return dayjs(v).format("MM/DD");
+            return dayjsExtend(v).format("MM/DD");
           }
 
-          return dayjs(v).format("ddd");
+          return dayjsExtend(v).format("ddd");
         },
       },
     },
