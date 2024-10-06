@@ -189,7 +189,7 @@ const CourierList = () => {
             )}
           />
           <Table.Column
-            key="avatar"
+            key="user.avatar"
             dataIndex={["user", "avatar"]}
             title={t("couriers.fields.avatar.label")}
             render={(value) => <Avatar src={`${MEDIA_API_URL}${value?.url}`} />}
